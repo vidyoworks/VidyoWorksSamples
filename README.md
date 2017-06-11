@@ -4,19 +4,19 @@
 
 ---
 
-.*[Android Samples](Android)
+.*[Android Samples](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/Android)
 
 .*[iOS Samples Objective C](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/iOS)
 
-.*[iOS Samples Swift](tree/master/iOSSwift/VidyoBareBones/VidyoBareBones)
+.*[iOS Samples Swift](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/iOSSwift/VidyoBareBones/VidyoBareBones)
 	
-.*[Qt Samples](tree/master/Qt)
+.*[Qt Samples](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/Qt)
 
-.*[VidyoWeb](tree/master/VidyoWeb)
+.*[VidyoWeb](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/VidyoWeb)
 
-.*[WebRTC samples](tree/master/WebRTC)
+.*[WebRTC samples](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/WebRTC)
 
-.*[Windows Dot Net samples](tree/master/Windows)
+.*[Windows Dot Net samples](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/Windows)
 
 ---
 
