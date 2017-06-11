@@ -4,7 +4,7 @@
 
 ---
 
-.*[Android Samples](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/Android)
+.*[Android Samples](Android)
 
 .*[iOS Samples Objective C](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/iOS)
 
