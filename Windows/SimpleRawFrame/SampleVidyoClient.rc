@@ -1,0 +1,308 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_SAMPLEVIDYOCLIENT   ICON                    "SampleVidyoClient.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDC_SAMPLEVIDYOCLIENT MENU
+BEGIN
+    POPUP "Pre-call Operations"
+    BEGIN
+        MENUITEM "Guest Link",                  ID_PRE_GUESTLINK
+        MENUITEM "Guest SignIn",                ID_PRE_GUESTSIGNIN
+        MENUITEM "User Login",                  ID_PRE_SIGNIN
+        MENUITEM "Sign-out",                    ID_PRE_SIGNOUT
+        MENUITEM "E&xit",                       IDM_EXIT
+    END
+    POPUP "In Events"
+    BEGIN
+        POPUP "Layout"
+        BEGIN
+            MENUITEM "&Selfview",                   ID_COMMAND_SELFVIEW
+        END
+        POPUP "App Share"
+        BEGIN
+            MENUITEM "Start Application Share",     ID_IN_SHARE_APPLICATION
+            MENUITEM "Stop Application Share",      ID_IN_STOP_APPLICATION_SHARE
+        END
+        MENUITEM "&Leave Conference",           ID_COMMAND_LEAVECONFERENCE
+        POPUP "Watch Self-View"
+        BEGIN
+            MENUITEM "Start",                       ID_WATCHSELF_START
+            MENUITEM "Stop",                        ID_WATCHSELF_STOP
+        END
+        MENUITEM "Mute Rendering",              ID_INEVENTS_MUTERENDERING
+        MENUITEM "UnMute Rendering",            ID_INEVENTS_UNMUTERENDERING
+        MENUITEM "ResetRender",                 ID_INEVENTS_RESETRENDER
+    END
+    POPUP "Send Requests"
+    BEGIN
+        MENUITEM "Get Configuration",           ID_SENDREQUESTS_GETCONFIGURATION
+        MENUITEM "Get Watch Format",            ID_GETWATCHFORMAT
+        POPUP "Set Watch Format"
+        BEGIN
+            MENUITEM "ARGB",                        ID_SETWATCHFORMAT_ARGB
+            MENUITEM "YU12",                        ID_SETWATCHFORMAT_YU12
+            MENUITEM "I420",                        ID_SETWATCHFORMAT_I420
+        END
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About ...",                  IDM_ABOUT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDC_SAMPLEVIDYOCLIENT ACCELERATORS
+BEGIN
+    "?",            IDM_ABOUT,              ASCII,  ALT
+    "/",            IDM_ABOUT,              ASCII,  ALT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About SampleVidyoClient"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            128,IDC_STATIC,14,14,21,20
+    LTEXT           "VidyoClient Sample, Version 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2010",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "OK",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_SIGNINBOX DIALOGEX 0, 0, 307, 145
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Login SampleVidyoClient"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Login",ID_OK_LOGIN,99,110,88,14,WS_GROUP
+    EDITTEXT        IDC_EDIT_ADDRESS,135,20,132,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_USERNAME,135,46,134,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PASSWORD,136,78,133,13,ES_AUTOHSCROLL
+    LTEXT           "PORTAL ADDRESS",IDC_STATIC,22,21,86,18
+    LTEXT           "USERNAME",IDC_STATIC,22,51,86,18
+    LTEXT           "PASSWORD",IDC_STATIC,23,79,86,18
+    DEFPUSHBUTTON   "Cancel",ID_OK_CANCEL,197,111,88,14,WS_GROUP
+END
+
+IDD_OUTGOING_CHAT DIALOGEX 0, 0, 307, 145
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Outgoing Chat Messages"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",ID_OK_OUTGOING_CHAT,99,110,88,14,WS_GROUP
+    EDITTEXT        IDC_EDIT_OUTGOING_TEXT,28,20,250,80,ES_AUTOHSCROLL
+END
+
+IDD_JOIN_CONF_BY_NAME DIALOGEX 0, 0, 307, 145
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Join Conference By Name"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",ID_OK_JOIN,99,110,88,14,WS_GROUP
+    EDITTEXT        IDC_EDIT_JOINCONF_NAME_TEXT,28,20,250,80,ES_AUTOHSCROLL
+END
+
+IDD_GUEST_LINK DIALOGEX 0, 0, 307, 145
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Login SampleVidyoClient"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Login",ID_OK_LOGIN,99,110,88,14,WS_GROUP
+    EDITTEXT        IDC_EDIT_ADDRESS1,135,20,132,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_USERNAME1,135,46,134,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_PASSWORD1,136,78,133,13,ES_AUTOHSCROLL
+    LTEXT           "PORTAL ADDRESS",IDC_STATIC,22,21,86,18
+    LTEXT           "USERNAME",IDC_STATIC,22,51,86,18
+    LTEXT           "Guest Link",IDC_STATIC,23,79,86,18
+    DEFPUSHBUTTON   "Cancel",ID_OK_CANCEL,197,111,88,14,WS_GROUP
+END
+
+IDD_GUEST_SIGNIN DIALOGEX 0, 0, 582, 205
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Guest SignIn"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "SignIn",IDOK_GUEST_SIGNIN,75,184,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL_GUEST_SIGNIN,129,184,50,14
+    EDITTEXT        IDC_EDIT_GUEST_UN,84,41,87,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_GUEST_PAK,84,59,87,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_GUESTID,84,78,87,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_GUEST_VMADDRESS,84,97,146,14,ES_AUTOHSCROLL | ES_OEMCONVERT
+    EDITTEXT        IDC_EDIT_GUEST_PROXYADDRESS,84,116,87,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_GUEST_LOCTAG,84,135,87,14,ES_AUTOHSCROLL
+    LTEXT           "Guest UN",IDC_STATIC,15,41,31,8
+    LTEXT           "Guest PAK",IDC_STATIC,15,59,34,8
+    LTEXT           "GuestID",IDC_STATIC,15,80,27,8
+    LTEXT           "VMAddress",IDC_STATIC,15,99,36,8
+    LTEXT           "Proxy Address",IDC_STATIC,15,117,48,8
+    LTEXT           "Location Tag",IDC_STATIC,15,137,42,8
+    EDITTEXT        IDC_EDIT_GUEST_PORTAL,84,20,87,14,ES_AUTOHSCROLL
+    LTEXT           "Portal Address",IDC_STATIC,15,20,48,8
+    EDITTEXT        IDC_EDIT_GUEST_EID,50,166,157,12,ES_AUTOHSCROLL | ES_READONLY
+    CTEXT           "EID",IDC_STATIC,87,155,71,8
+    EDITTEXT        IDC_LOGINRESPONSE,329,39,194,120,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_SIGNINBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 300
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 138
+    END
+
+    IDD_OUTGOING_CHAT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 300
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 138
+    END
+
+    IDD_JOIN_CONF_BY_NAME, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 300
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 138
+    END
+
+    IDD_GUEST_LINK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 300
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 138
+    END
+
+    IDD_GUEST_SIGNIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 574
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 198
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_APP_TITLE           "VidyoClient Sample"
+    IDC_SAMPLEVIDYOCLIENT   "SAMPLEVIDYOCLIENT"
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,16 @@
+Readme 
+
+Features supported
+~~~~~~~~~~~~~~~~~~~
+1. This sample is built using VC
+2. In the sample you can perform user/guest login
+
+Technologies used
+~~~~~~~~~~~~~~~~~~
+1. WCF concepts for making SOAP(WS APIs) calls
+2. Uses framework supported by VS2013 and above version
+3. For most of the client APIs, marshalling wrapper built
+4. Built using winforms, please refer kiosk application for WPF ways of implementing the solution
+
+
+

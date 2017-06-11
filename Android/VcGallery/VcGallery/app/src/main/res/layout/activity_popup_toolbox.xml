@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2dp"
+    android:background="#abffff"
+    >
+    <Button
+        android:id="@+id/button_participant_0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="Participant0" />
+    <Button
+        android:id="@+id/button_participant_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button_participant_0"
+        android:text="Participant1" />
+    <Button
+        android:id="@+id/button_participant_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button_participant_1"
+        android:text="Participant2" />
+    <Button
+        android:id="@+id/button_participant_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button_participant_2"
+        android:text="Participant3" />
+
+</RelativeLayout>

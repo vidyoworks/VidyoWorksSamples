@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:regular,bold">
+  <meta charset="utf-8">
+  <title>Vidyo developer sample app</title>
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/mmedphfiemffkinodeemalghecnicmnh">
+
+  <!-- React.js -->
+  <script src="https://unpkg.com/react@15.3.1/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.js"></script>
+  <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+
+  <!-- Vidyo SOAP proxy -->
+  <script src="/js/utils/soap-proxy.js"></script>
+  <!-- Vidyo Client wrappers -->
+  <script src="/lib/vidyo.client/proxywrapper.js"></script>
+  <script src="/lib/vidyo.client/vidyo.client2.js"></script>
+</head>
+<body>
+
+<div>
+  <div id="app"></div>
+</div>
+
+<!-- React app components -->
+<script src="/js/pages/logged-in-page.js" type="text/babel"></script>
+<script src="/js/pages/call-page.js" type="text/babel"></script>
+<script src="/js/pages/plugin-stop-page.js" type="text/babel"></script>
+<script src="/js/pages/configuration-page.js" type="text/babel"></script>
+<script src="/js/pages/login-page.js" type="text/babel"></script>
+<script src="/js/pages/join-as-guest-page.js" type="text/babel"></script>
+<script src="/js/pages/plugin-init-page.js" type="text/babel"></script>
+<script src="/js/pages/plugin-detection-page.js" type="text/babel"></script>
+<script src="/js/react-app.js" type="text/babel"></script>
+</body>
+</html>

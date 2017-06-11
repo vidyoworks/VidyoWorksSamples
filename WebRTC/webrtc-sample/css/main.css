@@ -1,0 +1,403 @@
+html {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container{
+    position: fixed;
+    width:100%;
+    height: 100%;
+    bottom: 27px;
+}
+
+.videoWrapperSmall {
+    position:relative;
+	width:100%;
+	height:1%;
+    max-width: 100%;
+    max-height: 100%;
+    display: none;
+}
+
+.videoWrapperFull {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+	height:99%;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.videoFull{
+    position: relative;
+    width:100%;
+	height:100%;
+    max-width: 100%;
+    max-height: 100%;
+    background: black;
+}
+
+img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.buttons {
+    position: fixed;
+    width:100%;
+    height: 24px;
+	bottom: 0px;
+    padding-top: 3px;
+}
+
+.button {
+   border-top: 1px solid #96d1f8;
+   background: #65a9d7;
+   background: -webkit-gradient(linear, left top, left bottom, from(#3e779d), to(#65a9d7));
+   background: -webkit-linear-gradient(top, #3e779d, #65a9d7);
+   background: -moz-linear-gradient(top, #3e779d, #65a9d7);
+   background: -ms-linear-gradient(top, #3e779d, #65a9d7);
+   background: -o-linear-gradient(top, #3e779d, #65a9d7);
+   padding: 5px 10px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 14px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+}
+.button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+}
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+}
+
+#js-progressbar-container {
+        position: relative;
+        width: 300px; 
+        /*padding: 20px 5px 20px 5px; /* Space for progresbar-texts */
+        background-color: transparent;
+}
+
+.splash {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	margin: 100px 0;
+}
+
+/* Badge related styles */
+.superscript {
+	font-size: xx-small;
+	vertical-align: top;
+	display: inline;
+}
+
+.overlap-to-left {
+	margin-left: -2px;
+}
+
+.subscript {
+	font-size: xx-small;
+	vertical-align: bottom;
+}
+
+.small-font {
+	font-size: small;
+}
+
+.btn-vertical {
+	float: right;
+	margin-top: 0px;
+	margin-bottom: 3px;
+}
+
+.btn-vertical:last-child {
+	float: right;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+/* End Badge related styles */
+#errorWrapper {
+	z-index: 1000;
+}
+
+#pluginContainer {
+	position: relative;
+	height: 370px;
+}
+
+#pluginContainer.fullscreen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 260px;
+	height: auto;
+}
+
+#pluginContainer.off {
+	position: relative;
+	width: 1px;
+	height: 1px;
+}
+
+#pluginContainer.maximized {
+	height: 560px;
+}
+
+#pluginContainer.fullscreen.maximized {
+	bottom: 70px;
+	height: auto;
+}
+
+#pluginContainer.fullscreen.maximized.nochat {
+	bottom: 20px;
+	height: auto;
+}
+
+/*#pluginContainer {
+    width: 100%;
+    min-width: 800px;
+    margin: 0;
+    padding: 0;
+    min-height: 1px;
+    display:inline;
+}
+
+#pluginContainer.fullscreen {
+    min-width: 800px;
+    margin: 0;
+    padding: 0;
+    min-height: 1px;
+    position: absolute;
+    left: 59px;
+    right: 0px;
+}*/
+#pluginAndChatContainer {
+	width: 100%;
+	min-width: 800px;
+	margin: 0;
+	padding: 0;
+	min-height: 1px;
+	display: inline;
+}
+
+#pluginAndChatContainer.fullscreen {
+	min-width: 200px;
+	margin: 0;
+	padding: 0;
+	min-height: 1px;
+	position: absolute;
+	left: 59px;
+	right: 0px;
+}
+
+#inCallContainer {
+	margin: 0px;
+	margin-top: 10px;
+	padding: 0px;
+	min-width: 1181px;
+	width: 1181px;
+	margin-left: auto;
+	margin-right: auto;
+	box-sizing: border-box;
+	display: block;
+}
+
+#inCallContainer.fullscreen {
+	width: auto;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	min-height: 400px;
+	min-width: 770px;
+}
+
+#vidyoPlugin {
+	min-width: 1px;
+	min-height: 1px;
+	/*    width: 1px;
+    height: 1px;*/
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+#vidyoPlugin.minimized {
+	min-width: 1px;
+	min-height: 1px;
+}
+
+#vidyoPlugin.fullscreen {
+	width: 100%;
+	height: 100%;
+}
+
+
+
+.inCallParticipant .inCallChatLink:hover {
+	text-decoration: none;
+}
+
+.inCallParticipant>.btn-toolbar {
+	margin: 0;
+	z-index: 100;
+	vertical-align: middle;
+	display: inline-block;
+	padding: 0px;
+	border: 0;
+}
+
+.inCallParticipant .inCallParticipantNameDiv {
+	display: inline-block;
+	width: 200px;
+	z-index: 1;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.inCallParticipant .inCallParticipantNameDiv.short {
+	width: 90px;
+	float: left;
+}
+
+
+/* Bootstrap overrides */
+.dl-horizontal dt {
+	float: left;
+	width: 100px;
+	clear: left;
+	text-align: right;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.dl-horizontal dd {
+	margin-left: 120px;
+}
+
+.participant-wrapper {
+	position: absolute;
+/*    
+	width: 50%;
+	height: 50%
+*/
+}
+
+.local-participant-wrapper {
+	position: absolute;
+    z-index: 200;
+/*	width: 25%;
+	height: 25%;
+    left: 75%;
+    top: 75%;
+    visibility: visible;
+*/    
+
+
+}
+
+.remotevideo-default {
+	visibility: visible;
+	width: 100%;
+	height: 100%
+}
+
+.localvideo-default {
+	width: 100%;
+	height: 100%
+}
+
+.sharevideo-wrapper {
+	position: absolute;
+/*
+    display: none;
+    width: 75%;
+	height: 75%;
+	top: 10%;
+	left: 0%
+*/    
+}
+
+.participant-title {
+	z-index: 100;
+	color: white;
+	font-size: 24px;
+	font-weight: bold;
+	position: relative;
+    background-color: rgba(0, 0, 0, 0.2);
+    bottom: 50px;
+}
+
+.local-participant-title {
+    z-index: 300;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+.fill-parent {
+	width: 100%;
+	height: 100%;
+}
+
+.remotevideo-with-share {
+	position: absolute;
+	width: 25%;
+	height: 25%;
+	left: 75%;
+}
+
+.transparent-strip {
+	position: absolute;
+	left: 22%;
+	right: 22%;
+	bottom: 5%;
+	background-color: rgba(100, 100, 100, 0.5);
+	height: 40px;
+	visibility: hidden;
+}
+
+.local-transparent-strip {
+	position: absolute;
+	left: 22%;
+	right: 22%;
+	bottom: 5%;
+	background-color: rgba(100, 100, 100, 0.5);
+	height: 40px;
+}
+
+.hide{
+    display: none;
+}

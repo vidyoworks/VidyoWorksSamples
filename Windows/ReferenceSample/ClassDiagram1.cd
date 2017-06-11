@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Typedef Name="VidyoClientInEvent" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\VidyoClientMessages.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="VidyoClientOutEvent" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\VidyoClientMessages.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="VidyoClientRequest" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>include\VidyoClientMessages.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="VidyoClientInEvent_" Collapsed="true">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ooFEE4WAATIEgKIRQIAYQkQFE1BmAAWKI0QCIIMRFcE=</HashCode>
+      <FileName>include\VidyoClientMessages.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VidyoClientOutEvent_" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAUCeOAMpNCQAhhQ0KBBYoEgKIHJWMwMUAJBwAEBA0w=</HashCode>
+      <FileName>include\VidyoClientMessages.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VidyoClientRequest_" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEUgIIBIcRIgAvokMmCBLGEYUKEoBQ0AAtBATMGMwA=</HashCode>
+      <FileName>include\VidyoClientMessages.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

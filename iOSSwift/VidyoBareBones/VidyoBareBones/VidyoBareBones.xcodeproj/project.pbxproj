@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1B8824DE1E79E5D3007FB34C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8824DD1E79E5D3007FB34C /* AppDelegate.swift */; };
+		1B8824E01E79E5D3007FB34C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8824DF1E79E5D3007FB34C /* ViewController.swift */; };
+		1B8824E31E79E5D3007FB34C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B8824E11E79E5D3007FB34C /* Main.storyboard */; };
+		1B8824E51E79E5D3007FB34C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B8824E41E79E5D3007FB34C /* Assets.xcassets */; };
+		1B8824E81E79E5D3007FB34C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B8824E61E79E5D3007FB34C /* LaunchScreen.storyboard */; };
+		1B8824F11E79EBE2007FB34C /* VidyoClientLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8824F01E79EBE2007FB34C /* VidyoClientLib.a */; };
+		1B8824F41E79EE50007FB34C /* VcBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8824F31E79EE50007FB34C /* VcBridge.m */; };
+		1B8824F61E79FE17007FB34C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8824F51E79FE17007FB34C /* Security.framework */; };
+		1B8824F81E79FE35007FB34C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8824F71E79FE35007FB34C /* Foundation.framework */; };
+		1B8824FA1E79FE58007FB34C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8824F91E79FE58007FB34C /* UIKit.framework */; };
+		1B8824FC1E79FE6D007FB34C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8824FB1E79FE6D007FB34C /* CoreGraphics.framework */; };
+		1B8824FE1E79FE85007FB34C /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8824FD1E79FE85007FB34C /* OpenGLES.framework */; };
+		1B8825001E79FE99007FB34C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8824FF1E79FE99007FB34C /* AudioToolbox.framework */; };
+		1B8825021E79FEAB007FB34C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8825011E79FEAB007FB34C /* QuartzCore.framework */; };
+		1B8825041E79FEBF007FB34C /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8825031E79FEBF007FB34C /* CoreVideo.framework */; };
+		1B8825061E79FED0007FB34C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8825051E79FED0007FB34C /* CoreMedia.framework */; };
+		1B8825081E79FEE3007FB34C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8825071E79FEE3007FB34C /* AVFoundation.framework */; };
+		1B88250A1E79FEF4007FB34C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8825091E79FEF4007FB34C /* CFNetwork.framework */; };
+		1B88250C1E79FF07007FB34C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88250B1E79FF07007FB34C /* SystemConfiguration.framework */; };
+		1B88250E1E7A02BD007FB34C /* libc++.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B88250D1E7A02BD007FB34C /* libc++.1.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B8824DA1E79E5D3007FB34C /* VidyoBareBones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VidyoBareBones.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B8824DD1E79E5D3007FB34C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1B8824DF1E79E5D3007FB34C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1B8824E21E79E5D3007FB34C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1B8824E41E79E5D3007FB34C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1B8824E71E79E5D3007FB34C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1B8824E91E79E5D3007FB34C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B8824F01E79EBE2007FB34C /* VidyoClientLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = VidyoClientLib.a; path = vc/lib/VidyoClientLib.a; sourceTree = "<group>"; };
+		1B8824F21E79EE4F007FB34C /* VidyoBareBones-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VidyoBareBones-Bridging-Header.h"; sourceTree = "<group>"; };
+		1B8824F31E79EE50007FB34C /* VcBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VcBridge.m; path = vc/incl/VcBridge.m; sourceTree = "<group>"; };
+		1B8824F51E79FE17007FB34C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		1B8824F71E79FE35007FB34C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1B8824F91E79FE58007FB34C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1B8824FB1E79FE6D007FB34C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1B8824FD1E79FE85007FB34C /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		1B8824FF1E79FE99007FB34C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		1B8825011E79FEAB007FB34C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1B8825031E79FEBF007FB34C /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		1B8825051E79FED0007FB34C /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1B8825071E79FEE3007FB34C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1B8825091E79FEF4007FB34C /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1B88250B1E79FF07007FB34C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1B88250D1E7A02BD007FB34C /* libc++.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.1.dylib"; path = "../../../../../usr/lib/libc++.1.dylib"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1B8824D71E79E5D3007FB34C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B88250E1E7A02BD007FB34C /* libc++.1.dylib in Frameworks */,
+				1B88250C1E79FF07007FB34C /* SystemConfiguration.framework in Frameworks */,
+				1B88250A1E79FEF4007FB34C /* CFNetwork.framework in Frameworks */,
+				1B8825081E79FEE3007FB34C /* AVFoundation.framework in Frameworks */,
+				1B8825061E79FED0007FB34C /* CoreMedia.framework in Frameworks */,
+				1B8825041E79FEBF007FB34C /* CoreVideo.framework in Frameworks */,
+				1B8825021E79FEAB007FB34C /* QuartzCore.framework in Frameworks */,
+				1B8825001E79FE99007FB34C /* AudioToolbox.framework in Frameworks */,
+				1B8824FE1E79FE85007FB34C /* OpenGLES.framework in Frameworks */,
+				1B8824FC1E79FE6D007FB34C /* CoreGraphics.framework in Frameworks */,
+				1B8824FA1E79FE58007FB34C /* UIKit.framework in Frameworks */,
+				1B8824F81E79FE35007FB34C /* Foundation.framework in Frameworks */,
+				1B8824F61E79FE17007FB34C /* Security.framework in Frameworks */,
+				1B8824F11E79EBE2007FB34C /* VidyoClientLib.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1B8824D11E79E5D3007FB34C = {
+			isa = PBXGroup;
+			children = (
+				1B8824F31E79EE50007FB34C /* VcBridge.m */,
+				1B8824DC1E79E5D3007FB34C /* VidyoBareBones */,
+				1B8824DB1E79E5D3007FB34C /* Products */,
+				1B8824EF1E79EBE2007FB34C /* Frameworks */,
+				1B8824F21E79EE4F007FB34C /* VidyoBareBones-Bridging-Header.h */,
+			);
+			sourceTree = "<group>";
+		};
+		1B8824DB1E79E5D3007FB34C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B8824DA1E79E5D3007FB34C /* VidyoBareBones.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1B8824DC1E79E5D3007FB34C /* VidyoBareBones */ = {
+			isa = PBXGroup;
+			children = (
+				1B8824DD1E79E5D3007FB34C /* AppDelegate.swift */,
+				1B8824DF1E79E5D3007FB34C /* ViewController.swift */,
+				1B8824E11E79E5D3007FB34C /* Main.storyboard */,
+				1B8824E41E79E5D3007FB34C /* Assets.xcassets */,
+				1B8824E61E79E5D3007FB34C /* LaunchScreen.storyboard */,
+				1B8824E91E79E5D3007FB34C /* Info.plist */,
+			);
+			path = VidyoBareBones;
+			sourceTree = "<group>";
+		};
+		1B8824EF1E79EBE2007FB34C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B88250D1E7A02BD007FB34C /* libc++.1.dylib */,
+				1B88250B1E79FF07007FB34C /* SystemConfiguration.framework */,
+				1B8825091E79FEF4007FB34C /* CFNetwork.framework */,
+				1B8825071E79FEE3007FB34C /* AVFoundation.framework */,
+				1B8825051E79FED0007FB34C /* CoreMedia.framework */,
+				1B8825031E79FEBF007FB34C /* CoreVideo.framework */,
+				1B8825011E79FEAB007FB34C /* QuartzCore.framework */,
+				1B8824FF1E79FE99007FB34C /* AudioToolbox.framework */,
+				1B8824FD1E79FE85007FB34C /* OpenGLES.framework */,
+				1B8824FB1E79FE6D007FB34C /* CoreGraphics.framework */,
+				1B8824F91E79FE58007FB34C /* UIKit.framework */,
+				1B8824F71E79FE35007FB34C /* Foundation.framework */,
+				1B8824F51E79FE17007FB34C /* Security.framework */,
+				1B8824F01E79EBE2007FB34C /* VidyoClientLib.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B8824D91E79E5D3007FB34C /* VidyoBareBones */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1B8824EC1E79E5D3007FB34C /* Build configuration list for PBXNativeTarget "VidyoBareBones" */;
+			buildPhases = (
+				1B8824D61E79E5D3007FB34C /* Sources */,
+				1B8824D71E79E5D3007FB34C /* Frameworks */,
+				1B8824D81E79E5D3007FB34C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VidyoBareBones;
+			productName = VidyoBareBones;
+			productReference = 1B8824DA1E79E5D3007FB34C /* VidyoBareBones.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B8824D21E79E5D3007FB34C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Dinesh Sinha";
+				TargetAttributes = {
+					1B8824D91E79E5D3007FB34C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6888NB32SR;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1B8824D51E79E5D3007FB34C /* Build configuration list for PBXProject "VidyoBareBones" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1B8824D11E79E5D3007FB34C;
+			productRefGroup = 1B8824DB1E79E5D3007FB34C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B8824D91E79E5D3007FB34C /* VidyoBareBones */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1B8824D81E79E5D3007FB34C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B8824E81E79E5D3007FB34C /* LaunchScreen.storyboard in Resources */,
+				1B8824E51E79E5D3007FB34C /* Assets.xcassets in Resources */,
+				1B8824E31E79E5D3007FB34C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1B8824D61E79E5D3007FB34C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B8824E01E79E5D3007FB34C /* ViewController.swift in Sources */,
+				1B8824F41E79EE50007FB34C /* VcBridge.m in Sources */,
+				1B8824DE1E79E5D3007FB34C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1B8824E11E79E5D3007FB34C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B8824E21E79E5D3007FB34C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1B8824E61E79E5D3007FB34C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B8824E71E79E5D3007FB34C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1B8824EA1E79E5D3007FB34C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1B8824EB1E79E5D3007FB34C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1B8824ED1E79E5D3007FB34C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 6888NB32SR;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = VidyoBareBones/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vc/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.VidyoBareBones;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VidyoBareBones-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1B8824EE1E79E5D3007FB34C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 6888NB32SR;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = VidyoBareBones/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/vc/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.VidyoBareBones;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VidyoBareBones-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1B8824D51E79E5D3007FB34C /* Build configuration list for PBXProject "VidyoBareBones" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B8824EA1E79E5D3007FB34C /* Debug */,
+				1B8824EB1E79E5D3007FB34C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1B8824EC1E79E5D3007FB34C /* Build configuration list for PBXNativeTarget "VidyoBareBones" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B8824ED1E79E5D3007FB34C /* Debug */,
+				1B8824EE1E79E5D3007FB34C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B8824D21E79E5D3007FB34C /* Project object */;
+}

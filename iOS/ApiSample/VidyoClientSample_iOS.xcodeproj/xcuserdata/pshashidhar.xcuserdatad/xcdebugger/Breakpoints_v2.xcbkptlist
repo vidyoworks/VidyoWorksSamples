@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sample/LoginWindow.m"
+            timestampString = "480018691.952458"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-buttonGuestPressed:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sample/VidyoClientSample.m"
+            timestampString = "480012661.901705"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "vidyoClientSampleOnVidyoClientEvent()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vidyoClientSampleOnVidyoClientEvent"
+                  moduleName = "VidyoClientSample_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pshashidhar/Downloads/VidyoClientAPI_Sample_iOS_3_3_1_0004_64BitSample_for_iOS901/sample/VidyoClientSample.m"
+                  timestampString = "480018404.362322"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "644">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__vidyoClientSampleOnVidyoClientEvent_block_invoke"
+                  moduleName = "VidyoClientSample_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pshashidhar/Downloads/VidyoClientAPI_Sample_iOS_3_3_1_0004_64BitSample_for_iOS901/sample/VidyoClientSample.m"
+                  timestampString = "480018404.362454"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sample/VidyoClientSample.m"
+            timestampString = "480013063.410546"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "vidyoClientSampleOnVidyoClientEvent()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "vidyoClientSampleOnVidyoClientEvent"
+                  moduleName = "VidyoClientSample_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pshashidhar/Downloads/VidyoClientAPI_Sample_iOS_3_3_1_0004_64BitSample_for_iOS901/sample/VidyoClientSample.m"
+                  timestampString = "480018404.363238"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "732">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__vidyoClientSampleOnVidyoClientEvent_block_invoke35"
+                  moduleName = "VidyoClientSample_iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pshashidhar/Downloads/VidyoClientAPI_Sample_iOS_3_3_1_0004_64BitSample_for_iOS901/sample/VidyoClientSample.m"
+                  timestampString = "480018404.363361"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sample/VidyoClientSample.m"
+            timestampString = "480013040.13771"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "vidyoClientSampleOnVidyoClientEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

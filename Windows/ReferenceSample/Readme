@@ -1,0 +1,34 @@
+Readme 
+
+Features supported
+~~~~~~~~~~~~~~~~~~~
+1. This sample is built using VidyoClient lib
+2. In the sample you can perform user/guest login
+3. Supports both Join Conference and Direct Call mechanism
+4. Local shares and remote shares are supported(new added)
+5. Set/Get congifuration item is fixed in marshalling wrapper. (No UI presence of this API is shown)
+6. Supports muting of Camera/Speaker/Mic
+7. Supports toggle preview and toggle layout
+8. Supports search users for direct call
+9. Supports leave, cancel direct call and logout functionality of the APIs
+10. Logs location can be modified in the following line such as- logParams.setpathToLogDir("c:\\VidyoSample\\logs\\log_");
+11. Creation and deletion of Public rooms is added into the sample(newly added 3/8/2016)
+
+Technologies used
+~~~~~~~~~~~~~~~~~~
+1. WCF concepts for making SOAP(WS APIs) calls
+2. Uses framework supported by VS2013 and above version
+3. For most of the client APIs, marshalling wrapper built
+4. Built using winforms, please refer kiosk application for WPF ways of implementing the solution
+
+
+Points to remember 
+~~~~~~~~~~~~~~~~~~~~~
+1. You cannot join the call until -"VIDYO_CLIENT_OUT_EVENT_SIGNED_IN " is received.
+2. Guest feature handles both login and join conference feature, hence no need to clieck on join button
+3. Use threading concepts to enable or disable a button after a particular out_event is recieved
+4. Search API can also be used to join a conference of another user
+5. Set/Get config can be used to select a camera/speaker/mic from pool of I/O devices available
+6. Inorder to fit the whole screen, you may have to work with your OS to change screen size in concatenation with -"VIDYO_CLIENT_IN_EVENT_RESIZE"
+7. Marshalling wrapper (vidyo32.cs) is not upto date, please review it if you notice any glitches.
+

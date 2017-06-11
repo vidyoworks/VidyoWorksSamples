@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A5A6F091298BEA9004DA40B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5A6F081298BEA9004DA40B /* OpenGLES.framework */; };
+		1A5A6F111298BF87004DA40B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5A6F101298BF87004DA40B /* AudioToolbox.framework */; };
+		1A5A6FE81298CD85004DA40B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5A6FE71298CD85004DA40B /* QuartzCore.framework */; };
+		1A96AFBD1316070200993678 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A96AFBC1316070200993678 /* SystemConfiguration.framework */; };
+		1AB3C89712A43A56007B03C5 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3C89612A43A56007B03C5 /* CoreVideo.framework */; };
+		1AB3C89F12A43AFC007B03C5 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3C89E12A43AFC007B03C5 /* CoreMedia.framework */; };
+		1AB3C8A512A43B53007B03C5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB3C8A412A43B53007B03C5 /* AVFoundation.framework */; };
+		1AD9C1DB12D8FB28009E04DC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD9C1DA12D8FB28009E04DC /* CFNetwork.framework */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		55263678174BCC89007219D6 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55263677174BCC89007219D6 /* ReleaseNotes.txt */; };
+		55563F1C174A9C28002416B3 /* VidyoClientLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55563F1B174A9C28002416B3 /* VidyoClientLib.a */; };
+		55563F1E174A9DCE002416B3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55563F1D174A9DCE002416B3 /* Default-568h@2x.png */; };
+		55ACA12717E10CC000AD8DC1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55ACA12617E10CC000AD8DC1 /* Security.framework */; };
+		55C58F9515AE17C8002AB90A /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C58F9415AE17C8002AB90A /* NSString+Base64.m */; };
+		94F244011A5C223200850B88 /* ca-certificates-base.crt in Resources */ = {isa = PBXBuildFile; fileRef = 94F244001A5C223200850B88 /* ca-certificates-base.crt */; };
+		F47F22C713FF0518006471AD /* main_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = F47F22C613FF0518006471AD /* main_ios.mm */; };
+		F47F237413FF064B006471AD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47F237313FF064B006471AD /* MainWindow.xib */; };
+		F47F242913FF11B9006471AD /* VidyoClientSample_iOS_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47F242813FF11B9006471AD /* VidyoClientSample_iOS_AppDelegate.m */; };
+		F47F245713FF1376006471AD /* VidyoClientSample.m in Sources */ = {isa = PBXBuildFile; fileRef = F47F245513FF1376006471AD /* VidyoClientSample.m */; };
+		F483C315159E72C700F03FDD /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F483C314159E72C700F03FDD /* Icon.png */; };
+		F48DEF041438082600733D64 /* LoginWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F48DEF021438082600733D64 /* LoginWindow.m */; };
+		F48DEF051438082600733D64 /* LoginWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F48DEF031438082600733D64 /* LoginWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1A5A6F081298BEA9004DA40B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		1A5A6F101298BF87004DA40B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		1A5A6FE71298CD85004DA40B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1A96AFBC1316070200993678 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1AB3C89612A43A56007B03C5 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		1AB3C89E12A43AFC007B03C5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		1AB3C8A412A43B53007B03C5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		1AD9C1DA12D8FB28009E04DC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* VidyoClientSample_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VidyoClientSample_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		55263677174BCC89007219D6 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = SOURCE_ROOT; };
+		55563F16174A9BF6002416B3 /* VidyoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidyoClient.h; path = VidyoClientLibrary/include/VidyoClient.h; sourceTree = "<group>"; };
+		55563F17174A9BF6002416B3 /* VidyoClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidyoClientConstants.h; path = VidyoClientLibrary/include/VidyoClientConstants.h; sourceTree = "<group>"; };
+		55563F18174A9BF6002416B3 /* VidyoClientMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidyoClientMessages.h; path = VidyoClientLibrary/include/VidyoClientMessages.h; sourceTree = "<group>"; };
+		55563F19174A9BF6002416B3 /* VidyoClientParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidyoClientParameters.h; path = VidyoClientLibrary/include/VidyoClientParameters.h; sourceTree = "<group>"; };
+		55563F1A174A9BF6002416B3 /* VidyoTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidyoTypes.h; path = VidyoClientLibrary/include/VidyoTypes.h; sourceTree = "<group>"; };
+		55563F1B174A9C28002416B3 /* VidyoClientLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = VidyoClientLib.a; path = VidyoClientLibrary/lib/VidyoClientLib.a; sourceTree = "<group>"; };
+		55563F1D174A9DCE002416B3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		55AC5B6D18084AFA001C72D8 /* VidyoClientSample_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VidyoClientSample_iOS.entitlements; sourceTree = "<group>"; };
+		55ACA12617E10CC000AD8DC1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		55C58F9315AE17C8002AB90A /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
+		55C58F9415AE17C8002AB90A /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
+		94F244001A5C223200850B88 /* ca-certificates-base.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "ca-certificates-base.crt"; path = "VidyoClientLibrary/certificate/ca-certificates-base.crt"; sourceTree = "<group>"; };
+		F47F22C113FF04F1006471AD /* VidyoClientSample_iOS.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientSample_iOS.pch; sourceTree = "<group>"; };
+		F47F22C613FF0518006471AD /* main_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main_ios.mm; sourceTree = "<group>"; };
+		F47F237113FF0642006471AD /* VidyoClientSample_iOS_Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = VidyoClientSample_iOS_Info.plist; path = sample/VidyoClientSample_iOS_Info.plist; sourceTree = "<group>"; };
+		F47F237313FF064B006471AD /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = sample/MainWindow.xib; sourceTree = "<group>"; };
+		F47F242713FF11B9006471AD /* VidyoClientSample_iOS_AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientSample_iOS_AppDelegate.h; sourceTree = "<group>"; };
+		F47F242813FF11B9006471AD /* VidyoClientSample_iOS_AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VidyoClientSample_iOS_AppDelegate.m; sourceTree = "<group>"; };
+		F47F245513FF1376006471AD /* VidyoClientSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VidyoClientSample.m; sourceTree = "<group>"; };
+		F47F245613FF1376006471AD /* VidyoClientSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientSample.h; sourceTree = "<group>"; };
+		F483C314159E72C700F03FDD /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		F48DEF011438082600733D64 /* LoginWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWindow.h; sourceTree = "<group>"; };
+		F48DEF021438082600733D64 /* LoginWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWindow.m; sourceTree = "<group>"; };
+		F48DEF031438082600733D64 /* LoginWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LoginWindow.xib; path = sample/LoginWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55ACA12717E10CC000AD8DC1 /* Security.framework in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				1A5A6F091298BEA9004DA40B /* OpenGLES.framework in Frameworks */,
+				1A5A6F111298BF87004DA40B /* AudioToolbox.framework in Frameworks */,
+				1A5A6FE81298CD85004DA40B /* QuartzCore.framework in Frameworks */,
+				1AB3C89712A43A56007B03C5 /* CoreVideo.framework in Frameworks */,
+				1AB3C89F12A43AFC007B03C5 /* CoreMedia.framework in Frameworks */,
+				1AB3C8A512A43B53007B03C5 /* AVFoundation.framework in Frameworks */,
+				1AD9C1DB12D8FB28009E04DC /* CFNetwork.framework in Frameworks */,
+				1A96AFBD1316070200993678 /* SystemConfiguration.framework in Frameworks */,
+				55563F1C174A9C28002416B3 /* VidyoClientLib.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* VidyoClientSample_iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				55563F13174A9BD2002416B3 /* VidyoClientLibrary */,
+				F47F22BA13FF04F1006471AD /* sample */,
+				F48DEEDF1438062500733D64 /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55ACA12617E10CC000AD8DC1 /* Security.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				1A5A6F081298BEA9004DA40B /* OpenGLES.framework */,
+				1A5A6F101298BF87004DA40B /* AudioToolbox.framework */,
+				1A5A6FE71298CD85004DA40B /* QuartzCore.framework */,
+				1AB3C89612A43A56007B03C5 /* CoreVideo.framework */,
+				1AB3C89E12A43AFC007B03C5 /* CoreMedia.framework */,
+				1AB3C8A412A43B53007B03C5 /* AVFoundation.framework */,
+				1AD9C1DA12D8FB28009E04DC /* CFNetwork.framework */,
+				1A96AFBC1316070200993678 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55263676174BCA4D007219D6 /* certificates */ = {
+			isa = PBXGroup;
+			children = (
+				94F244001A5C223200850B88 /* ca-certificates-base.crt */,
+			);
+			name = certificates;
+			sourceTree = "<group>";
+		};
+		55563F13174A9BD2002416B3 /* VidyoClientLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				55263676174BCA4D007219D6 /* certificates */,
+				55563F15174A9BE2002416B3 /* include */,
+				55563F14174A9BDD002416B3 /* lib */,
+			);
+			name = VidyoClientLibrary;
+			sourceTree = "<group>";
+		};
+		55563F14174A9BDD002416B3 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				55563F1B174A9C28002416B3 /* VidyoClientLib.a */,
+			);
+			name = lib;
+			sourceTree = "<group>";
+		};
+		55563F15174A9BE2002416B3 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				55563F16174A9BF6002416B3 /* VidyoClient.h */,
+				55563F17174A9BF6002416B3 /* VidyoClientConstants.h */,
+				55563F18174A9BF6002416B3 /* VidyoClientMessages.h */,
+				55563F19174A9BF6002416B3 /* VidyoClientParameters.h */,
+				55563F1A174A9BF6002416B3 /* VidyoTypes.h */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		55AC5B6A18084AB6001C72D8 /* entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				55AC5B6D18084AFA001C72D8 /* VidyoClientSample_iOS.entitlements */,
+			);
+			name = entitlements;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		F47F22BA13FF04F1006471AD /* sample */ = {
+			isa = PBXGroup;
+			children = (
+				55AC5B6A18084AB6001C72D8 /* entitlements */,
+				55263677174BCC89007219D6 /* ReleaseNotes.txt */,
+				F47F245513FF1376006471AD /* VidyoClientSample.m */,
+				F47F245613FF1376006471AD /* VidyoClientSample.h */,
+				F47F242713FF11B9006471AD /* VidyoClientSample_iOS_AppDelegate.h */,
+				F47F242813FF11B9006471AD /* VidyoClientSample_iOS_AppDelegate.m */,
+				F47F22C613FF0518006471AD /* main_ios.mm */,
+				F47F22C113FF04F1006471AD /* VidyoClientSample_iOS.pch */,
+				F48DEF011438082600733D64 /* LoginWindow.h */,
+				F48DEF021438082600733D64 /* LoginWindow.m */,
+				55C58F9315AE17C8002AB90A /* NSString+Base64.h */,
+				55C58F9415AE17C8002AB90A /* NSString+Base64.m */,
+			);
+			path = sample;
+			sourceTree = "<group>";
+		};
+		F48DEEDF1438062500733D64 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F47F237113FF0642006471AD /* VidyoClientSample_iOS_Info.plist */,
+				55563F1D174A9DCE002416B3 /* Default-568h@2x.png */,
+				F483C314159E72C700F03FDD /* Icon.png */,
+				F48DEF031438082600733D64 /* LoginWindow.xib */,
+				F47F237313FF064B006471AD /* MainWindow.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* VidyoClientSample_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "VidyoClientSample_iOS" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VidyoClientSample_iOS;
+			productName = NoGuiClient;
+			productReference = 1D6058910D05DD3D006BFB54 /* VidyoClientSample_iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						DevelopmentTeam = 6888NB32SR;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "VidyoClientSample_iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* VidyoClientSample_iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F47F237413FF064B006471AD /* MainWindow.xib in Resources */,
+				F48DEF051438082600733D64 /* LoginWindow.xib in Resources */,
+				94F244011A5C223200850B88 /* ca-certificates-base.crt in Resources */,
+				F483C315159E72C700F03FDD /* Icon.png in Resources */,
+				55563F1E174A9DCE002416B3 /* Default-568h@2x.png in Resources */,
+				55263678174BCC89007219D6 /* ReleaseNotes.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F47F22C713FF0518006471AD /* main_ios.mm in Sources */,
+				F47F242913FF11B9006471AD /* VidyoClientSample_iOS_AppDelegate.m in Sources */,
+				F47F245713FF1376006471AD /* VidyoClientSample.m in Sources */,
+				F48DEF041438082600733D64 /* LoginWindow.m in Sources */,
+				55C58F9515AE17C8002AB90A /* NSString+Base64.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = VidyoClientSample_iOS.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = sample/VidyoClientSample_iOS.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = VIDYO_MACOS;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = sample/VidyoClientSample_iOS_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/VidyoClientLibrary/lib\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vidyo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = VidyoClientSample_iOS;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = VidyoClientSample_iOS.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = sample/VidyoClientSample_iOS.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = VIDYO_MACOS;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = sample/VidyoClientSample_iOS_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/VidyoClientLibrary/lib\"",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vidyo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = VidyoClientSample_iOS;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT) ";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-all_load";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT) ";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-all_load";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "VidyoClientSample_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "VidyoClientSample_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

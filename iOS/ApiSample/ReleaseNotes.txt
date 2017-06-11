@@ -1,0 +1,106 @@
+Version 3.3.1.0004
+
+Features:
+	- Guest access features are available in the sample’s UI.
+Improvements/Bug fixes:
+	- Contains the latest 3.3.1.0004 library containing all fixes (see library’s release notes).
+
+Version 3.3.0.0015
+
+Features:
+	- Can be built as 64bit version (read Readme.txt for details)
+Improvements/Bug fixes:
+	- Orients video properly on iOS7 and iOS8 (read Readme.txt for details)
+
+Version 1.5.0.00084
+
+Features:
+	- 720p encoding support on newer iOS devices (Lib)
+Improvements:
+	- Work better on slower networks (Lib)
+Bug fixes:
+	- Wifi is used when available (Lib)
+	- AppShare dock fix (Lib)
+
+
+Version 1.4.5.00076
+
+Bug fixes:
+	- Minor bug fixes (Lib)
+
+Version 1.4.4.00070
+Features:
+	- iOS 7.0.2 tested (Lib)
+Bug fixes:
+	- Improved licensing handling for non-Vidyo applications (Lib, Sample)
+	Now licencing is working as follows:
+	1. Application provides Keychain access
+		WHen application uses VidyoClient lib and signed with XX.entitlements (CODE_SIGN_ENTITLEMENTS = XX.entitlements) which has in keychain-access-groups exact item 
+		"$(AppIdentifierPrefix)VidyoLicense" - consume additional license only after applying "Reset All Content and Settings" and fresh installation
+	2. Application doesn't provide Keychain access
+		Application that have not been signed with XX.entitlements or does not have required item "$(AppIdentifierPrefix)VidyoLicense"
+		has licensing mechanism based on [UIDevice identifierForVendor] with following iOS limitations - 
+		a) consume additional license after complete deleting and installing fresh Application
+		b) consume additional license on every Application's launch in case of [UIDevice identifierForVendor] returns all "0000" - known bug at least in iOS 6 for applications obtained "via air"
+
+Version 1.4.3.00067
+Features:
+	- iOS 7 support (Lib)
+Bug fixes:
+	- Improved performance on older iOS devices (Lib)
+Changes:
+	- Advanced EID generation for licensing (Lib)
+	- Supporting VidyoPortal 2.2.x+ (Sample)
+
+Version 1.4.1.0057
+Bug fixes:
+	- License utilization is corrected
+	- Crash in the background when preview is set to none
+Changes:
+	- Sample now supports orientation
+	- Sample now supports backgrounding
+
+Version 1.4.0.0054
+Bug fixes:
+	- Misc bug fixes
+Changes:
+	- One VidyoClient library is used
+	- Replace usage of UDID to comply with Apple requirments
+	- Guest API support
+	- Library backgrounding enchancements
+	- iPhone 5 tested
+
+Version 1.2.0.0044
+Features:
+	- iOS 6 support
+
+Version 1.1.0.0041
+Features:
+	- Scripts to download and build all third party libraries are included in 'lib/ThirdParty' folder
+Changes:
+	- The following 2 Vidyo libraries were replaced:
+		Replaced \lib\LmiVidyoClient\libCfHttpPlugIn.a with \lib\LmiVidyoClient\libCurlHttpPlugIn.a
+		Replaced \lib\LmiSDK\libLmiCsTlsTransport.a with \lib\LmiSDK\libLmiCsTls.a
+	- The following new 3rd party library is required
+		New \lib\ThirdParty\libcurl.a (version 7.23.1: source http://curl.haxx.se/download/)
+
+Version 1.2.0.0046
+Bug fixes:
+	- Misc bug fixes
+Changes:
+	- New algorithm for bandwidth detection
+
+Version 1.2.0.0044
+Features:
+	- iOS 6 support
+
+Version 1.1.0.0041
+Features:
+	- Scripts to download and build all third party libraries are included in 'lib/ThirdParty' folder
+Changes:
+	- The following 2 Vidyo libraries were replaced:
+		Replaced \lib\LmiVidyoClient\libCfHttpPlugIn.a with \lib\LmiVidyoClient\libCurlHttpPlugIn.a
+		Replaced \lib\LmiSDK\libLmiCsTlsTransport.a with \lib\LmiSDK\libLmiCsTls.a
+	- The following new 3rd party library is required
+		New \lib\ThirdParty\libcurl.a (version 7.23.1: source http://curl.haxx.se/download/)
+

@@ -1,0 +1,82 @@
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/RelativeLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@color/white" >
+
+        <RelativeLayout
+            android:id="@+id/glsurfaceview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="visible"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <ImageButton
+                android:id="@+id/conference_callend_button"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:padding="20dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/exit"
+            android:text="CallEnd" />
+            <ImageButton
+                android:id="@+id/conference_render_reset_button"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@id/conference_callend_button"
+                android:padding="20dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/refresh"
+                android:text="CallEnd" />
+
+        <ImageView
+            android:id="@+id/action_camera_icon"
+            android:layout_below="@id/conference_callend_button"
+            android:layout_alignParentLeft="true"
+            android:padding="20dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/icon_front_camera" />
+
+            <ImageView
+                android:id="@+id/slot1"
+                android:layout_below="@id/action_camera_icon"
+                android:layout_alignParentLeft="true"
+                android:padding="10dp"
+                android:layout_width="320dp"
+                android:layout_height="180dp"
+                android:src="@drawable/defimage" />
+
+            <ImageView
+                android:id="@+id/slot2"
+                android:layout_below="@id/action_camera_icon"
+                android:layout_toRightOf="@+id/slot1"
+                android:padding="10dp"
+                android:layout_width="320dp"
+                android:layout_height="180dp"
+                android:src="@drawable/defimage" />
+
+            <ImageView
+                android:id="@+id/slot3"
+                android:layout_below="@id/slot1"
+                android:layout_alignParentLeft="true"
+                android:padding="10dp"
+                android:layout_width="320dp"
+                android:layout_height="180dp"
+                android:src="@drawable/defimage" />
+
+            <ImageView
+                android:id="@+id/slot4"
+                android:layout_below="@id/slot2"
+                android:layout_toRightOf="@+id/slot3"
+                android:padding="10dp"
+                android:layout_width="320dp"
+                android:layout_height="180dp"
+                android:src="@drawable/defimage" />
+
+    </RelativeLayout>
+    </RelativeLayout>
