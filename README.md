@@ -4,7 +4,7 @@
 
 ---
 
-.*[Android Samples](tree/master/Android)
+.*[Android Samples](/tree/master/Android)
 
 .*[iOS Samples Objective C](tree/master/iOS)
 
