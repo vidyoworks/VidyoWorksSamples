@@ -30,3 +30,9 @@ Qt sample that shows how to get all log events as an out event. Here the test ap
 
 ..*[QtPrecall](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/Qt/QtPrecall)
 Qt sample shows how to test camera, microphone and speaker pre-call.
+
+..*[QtCallAndFecc](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/Qt/QtCallAndFecc)
+Qt sample that shows how to login to a portal. It also uses direct call instead of joining a conference. This example also shows how to do far end camera control.
+
+..*[QtMultiSession](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/Qt/QtMultiSession)
+Qt sample that shows how to run multiple VidyoClient sessions on the same machine simultaneously
