@@ -6,7 +6,7 @@
 
 .*[Android Samples](Android)
 
-.*[iOS Samples Objective C](tree/master/iOS)
+.*[iOS Samples Objective C](iOS)
 
 .*[iOS Samples Swift](tree/master/iOSSwift/VidyoBareBones/VidyoBareBones)
 	
