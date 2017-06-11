@@ -1,6 +1,6 @@
 
 
-.*[WebRTC samples](https://github.com/dineshsinha/VidyoWorksSamples/tree/master/WebRTC)
+.*[WebRTC samples](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/WebRTC)
 
-..*[WebRTC Sample](https://github.com/dineshsinha/VidyoWorksSamples/tree/master/WebRTC/webrtc-sample)
+..*[WebRTC Sample](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/WebRTC/webrtc-sample)
 	 Hello World of WebRTC sample.
