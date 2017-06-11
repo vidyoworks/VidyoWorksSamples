@@ -4,9 +4,9 @@
 
 ---
 
-.*[Android Samples](Android)
+.*[Android Samples](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/Android)
 
-.*[iOS Samples Objective C](iOS)
+.*[iOS Samples Objective C](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/iOS)
 
 .*[iOS Samples Swift](tree/master/iOSSwift/VidyoBareBones/VidyoBareBones)
 	
