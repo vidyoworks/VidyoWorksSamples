@@ -22,8 +22,8 @@ VidyoWorksUi::~VidyoWorksUi()
 
 void VidyoWorksUi::on_pushButtonStart_clicked()
 {
-    map<string, string> parameter;
-    if(!vsPlugin->VsInit(parameter))
+    string parametersInit("one\tonepara\ntwo\ttwopara");
+    if(!vsPlugin->VsInit(parametersInit.c_str()))
     {
         QMessageBox msgBox;
         msgBox.setText("Error");
@@ -32,8 +32,8 @@ void VidyoWorksUi::on_pushButtonStart_clicked()
         return;
 
     }
-
-    if(!vsPlugin->VsStart(parameter))
+    string parametersStart;
+    if(!vsPlugin->VsStart(parametersStart.c_str()))
     {
         QMessageBox msgBox;
         msgBox.setText("Error");
@@ -94,7 +94,7 @@ void VidyoWorksUi::on_pushButtonRoomLink_clicked()
     roomLink->exec();
 
 
-    if(!vsPlugin->VsRoomLink(roomLink->result))
+    if(!vsPlugin->VsRoomLink(roomLink->result.c_str()))
     {
         QMessageBox msgBox;
         msgBox.setText("Error");

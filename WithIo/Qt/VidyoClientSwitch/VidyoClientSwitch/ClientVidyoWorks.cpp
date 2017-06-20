@@ -3,6 +3,8 @@
 #include "VidyoClient.h"
 #include "VidyoClientSwitchUtils.h"
 #include <vector>
+#include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string/join.hpp>
 
 
 
@@ -33,7 +35,7 @@ typedef VidyoUint(__cdecl  *VidyoClientSendRequestPtr)(VidyoClientRequest reques
 	VidyoSizeT paramSize);
 
 
-ClientVidyoWorksImpl* gImpl = NULL;
+static ClientVidyoWorksImpl* gImpl = NULL;
 
 
 class ClientVidyoWorksImpl
@@ -111,14 +113,14 @@ ClientVidyoWorks::~ClientVidyoWorks()
 {
 }
 
-static void InitLogParams(VidyoClientLogParams& logParams, map<string, string> &parameter, string &buffer)
+static void InitLogParams(VidyoClientLogParams& logParams, map<string, string> &parameter, string &buffer, string &folder)
 {
 	const unsigned int maxLogFileSize = 1000000;
 
 #ifdef VIDYO_WIN32
-	string folder("log\\");
+	folder = ("log\\");
 #else
-	string folder = QDir::homePath() + QString("/VsLog/");
+	folder = QDir::homePath() + QString("/VsLog/");
 #endif
 	logParams.pathToLogDir = folder.c_str();
 	logParams.pathToDumpDir = folder.c_str();
@@ -158,13 +160,17 @@ static void InitProfileParams(VidyoClientProfileParams& profileParams, map<strin
 	profileParams.portNumber = VidyoClientSwitchGetPara(parameter, "portNumber", 63460);
 }
 
-VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Initialize(map<string, string> &parameter, VidyoClientCallerPtr& caller)
+VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Initialize(const char* strParameter, VidyoClientCallerPtr& caller)
 {
 	{
-		wchar_t szFullPath[MAX_PATH] = {};
-		GetCurrentDirectory(MAX_PATH, szFullPath);
+		wchar_t szFullPath[MAX_PATH + 1] = {};
+
+		GetModuleFileName(NULL, szFullPath, MAX_PATH + 1);
 		std::wstring wsPath(szFullPath);
-		wsPath += L"\\VidyoClientDll.dll";
+		vector<wstring> pathComps;
+		boost::split(pathComps, wsPath, boost::is_any_of("\\"));
+		pathComps[pathComps.size() - 1] = L"VidyoClientDll.dll";
+		wsPath = boost::algorithm::join(pathComps, "\\");
 		m_impl->m_hDLL = LoadLibrary(wsPath.c_str());
 	}
 
@@ -212,12 +218,16 @@ VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Initialize(map<string, string
 
 		}
 
+		map<string, string> parameters;
+		ConvertFromStringToMap(strParameter, parameters);
+
 		m_impl->m_caller = caller;
 
 		const unsigned int maxLogFileSize = 1000000;
 		VidyoClientLogParams logParams = { 0 };
 
-		InitLogParams(logParams, parameter, string());
+		string result, folder;
+		InitLogParams(logParams, parameters, result, folder);
 
 		VidyoBool retVal = m_impl->VidyoClientInitialize((VidyoClientOutEventCallback)VidyoClientOutCallback, NULL, &logParams);
 	
@@ -228,7 +238,7 @@ VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Initialize(map<string, string
 }
 
 
-VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Start(map<string, string> &parameter)
+VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Start(const char* strParameter)
 {
 	const unsigned int maxLogFileSize = 1000000;
 	VidyoClientLogParams logParams = { 0 };
@@ -238,8 +248,13 @@ VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Start(map<string, string> &pa
 	unsigned window_width = 400;
 	unsigned window_height = 300;
 
-	InitLogParams(logParams, parameter, string());
-	InitProfileParams(profileParams, parameter, vector<string>());
+	map<string, string> parameters;
+	ConvertFromStringToMap(strParameter, parameters);
+
+	string buffer1, buffer2;
+	InitLogParams(logParams, parameters, buffer1, buffer2);
+	vector<string> profileBuffer;
+	InitProfileParams(profileParams, parameters, profileBuffer);
 
 	VidyoRect videoRect = { window_origin_x, window_origin_y, window_width, window_height };
 
@@ -274,12 +289,15 @@ bool ClientVidyoWorks::Uninitialize()
 }
 
 
-VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Join(map<string, string> &parameter)
+VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Join(const char* strParameter)
 {
+	map<string, string> parameters;
+	ConvertFromStringToMap(strParameter, parameters);
+
 	VidyoClientInEventRoomLink backendReq = {};
 	{
 		string portalUri;
-		VidyoClientSwitchGetPara(parameter, "portalUri", portalUri);
+		VidyoClientSwitchGetPara(parameters, "portalUri", portalUri);
 		if (!portalUri.empty())
 		{
 			SAFE_STRING_CPY((char *)backendReq.portalUri, portalUri.c_str(), sizeof(backendReq.portalUri));
@@ -290,7 +308,7 @@ VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Join(map<string, string> &par
 
 	{
 		string roomKey;
-		VidyoClientSwitchGetPara(parameter, "roomKey", roomKey);
+		VidyoClientSwitchGetPara(parameters, "roomKey", roomKey);
 		if (!roomKey.empty())
 		{
 			SAFE_STRING_CPY((char *)backendReq.roomKey, roomKey.c_str(), sizeof(backendReq.roomKey));
@@ -301,7 +319,7 @@ VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Join(map<string, string> &par
 
 	{
 		string displayName;
-		VidyoClientSwitchGetPara(parameter, "displayName", displayName);
+		VidyoClientSwitchGetPara(parameters, "displayName", displayName);
 		if (!displayName.empty())
 		{
 			SAFE_STRING_CPY((char *)backendReq.displayName, displayName.c_str(), sizeof(backendReq.displayName));
@@ -312,7 +330,7 @@ VidyoClientSwitchDefs::ErrorType ClientVidyoWorks::Join(map<string, string> &par
 
 	{
 		string pin;
-		VidyoClientSwitchGetPara(parameter, "pin", pin);
+		VidyoClientSwitchGetPara(parameters, "pin", pin);
 		if (!pin.empty())
 		{
 			SAFE_STRING_CPY((char *)backendReq.pin, pin.c_str(), sizeof(backendReq.pin));
@@ -338,4 +356,9 @@ bool ClientVidyoWorks::Leave()
 	if (!m_impl->VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_LEAVE, NULL, 0))
 		return false;
 	return true;
+}
+
+void ClientVidyoWorks::tmp(const char * test)
+{
+
 }

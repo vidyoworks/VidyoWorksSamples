@@ -71,10 +71,13 @@ void VsRoomLink::on_buttonBox_accepted()
         msgBox.exec();
         return;
     }
-    result.insert ( std::pair<string,string>("portalUri",ui->lineEditPortalName->text().toStdString()) );
-    result.insert ( std::pair<string,string>("roomKey",ui->lineEditPortalName->text().toStdString()) );
-    result.insert ( std::pair<string,string>("displayName",ui->lineEditPortalName->text().toStdString()) );
-    result.insert ( std::pair<string,string>("pin",ui->lineEditPortalName->text().toStdString()) );
+    QString strResult(QString("portalUri\t%1\nroomKey\t%2\ndisplayName\t%3\npin\t%4\n")
+                      .arg(ui->lineEditPortalName->text())
+                      .arg(ui->lineEditRoomKey->text())
+                      .arg(ui->lineEditDisplayName->text())
+                      .arg(ui->lineEditPin->text()));
+
+    result = strResult.toStdString();
 
     SetConfig("Account", "PortalName", ui->lineEditPortalName->text());
     SetConfig("Account", "RoomKey", ui->lineEditRoomKey->text());

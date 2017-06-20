@@ -18,7 +18,7 @@ class VsRoomLink : public QDialog
 public:
     explicit VsRoomLink(QWidget *parent = 0);
     virtual ~VsRoomLink();
-    map<string, string> result;
+    string result;
 
 private slots:
 

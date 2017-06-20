@@ -11,3 +11,4 @@ using namespace std;
 
 const char* VidyoClientSwitchGetPara(map<string, string> &parameter, const string& key, string& value, const string& defValue = "");
 int VidyoClientSwitchGetPara(map<string, string> &parameter, const string& key, int defValue = 0);
+void ConvertFromStringToMap(const char* strPara, map<string, string> &parameter);

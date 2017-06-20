@@ -27,14 +27,14 @@ class VsPluginPrivate : public IVidyoClientCaller
 {
 
 public:
-    VsPluginPrivate(VsPlugin* plugin)
+    VsPluginPrivate(VsPlugin*)
     {
 
 
     }
 
     virtual void CallComplete(){}
-    virtual void CallFailure(VidyoClientSwitchDefs::ErrorCall errorCall){}
+    virtual void CallFailure(VidyoClientSwitchDefs::ErrorCall){}
     virtual void CallEnd(){}
 
 
@@ -67,7 +67,7 @@ VsPlugin::~VsPlugin()
     }
 }
 
-bool VsPlugin::VsInit(map<string, string>& parameters)
+bool VsPlugin::VsInit(const char* parameters)
 {
     if(!gVidyoClientPtr)
         return false;
@@ -79,7 +79,7 @@ bool VsPlugin::VsInit(map<string, string>& parameters)
 
 
 
-bool VsPlugin::VsStart(map<string, string>& parameters)
+bool VsPlugin::VsStart(const char*  parameters)
 {
     if(!gVidyoClientPtr)
         return false;
@@ -107,7 +107,7 @@ bool VsPlugin::VsUninit()
 }
 
 
-bool VsPlugin::VsRoomLink(map<string, string>& parameters)
+bool VsPlugin::VsRoomLink(const char*  parameters)
 {
     if(!gVidyoClientPtr)
         return false;

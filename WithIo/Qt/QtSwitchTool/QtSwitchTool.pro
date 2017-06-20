@@ -30,7 +30,7 @@ FORMS    += mainwindow.ui \
     VidyoWorksUi.ui
 
 INCLUDEPATH +=\
-                VidyoClient/include
+                ../VidyoClientSwitch/include
 
 macx {
         QMAKE_INFO_PLIST = resources/macx/info.plist
@@ -61,7 +61,8 @@ unix {
 }
 win32 {
         LIBS += \
-        -L..\\QtSwitchTool\\VidyoClient\\lib\\win\
+        -L..\\win32\
         VidyoClientSwitch.lib
+        DESTDIR =../win32
 }
 

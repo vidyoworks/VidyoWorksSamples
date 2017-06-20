@@ -2,9 +2,10 @@
 #include "ClientVidyoIo.h"
 #include "VidyoClient.h"
 #include "VidyoClientSwitchUtils.h"
-#include <boost/lexical_cast.hpp>
+#include <vector>
+#include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string/join.hpp>
 
-using boost::bad_lexical_cast;
 
 
 
@@ -34,7 +35,7 @@ typedef VidyoUint(__cdecl  *VidyoClientSendRequestPtr)(VidyoClientRequest reques
 	VidyoSizeT paramSize);
 
 
-ClientVidyoIoImpl* gImpl = NULL;
+static ClientVidyoIoImpl* gImpl = NULL;
 
 
 class ClientVidyoIoImpl
@@ -113,33 +114,30 @@ ClientVidyoIo::~ClientVidyoIo()
 {
 }
 
-static void InitLogParams(VidyoClientLogParams& logParams, map<string, string> &parameter)
+static void InitLogParams(VidyoClientLogParams& logParams, map<string, string> &parameter, string &buffer, string &folder)
 {
 	const unsigned int maxLogFileSize = 1000000;
 
 #ifdef VIDYO_WIN32
-	string folder("log\\");
+	folder = ("log\\");
 #else
-	string folder = QDir::homePath() + QString("/VsLog/");
+	folder = QDir::homePath() + QString("/VsLog/");
 #endif
 	logParams.pathToLogDir = folder.c_str();
 	logParams.pathToDumpDir = folder.c_str();
 	logParams.pathToConfigDir = folder.c_str();
 
 	logParams.logBaseFileName = "VidyoSample_";
-	logParams.logLevelsAndCategories = "fatal error warning info@App info@AppEmcpClient info@AppEvents all@AppVcsoapClient";
 
-	auto search = parameter.find("logLevelsAndCategories");
-	if (search != parameter.end())
-	{
-		logParams.logLevelsAndCategories = search->second.c_str();
-	}
+	logParams.logLevelsAndCategories = VidyoClientSwitchGetPara(parameter, "logLevelsAndCategories", buffer,
+		"fatal error warning info@App info@AppEmcpClient info@AppEvents all@AppVcsoapClient");
 
 	logParams.logSize = maxLogFileSize;
 
 }
 
-static void InitProfileParams(VidyoClientProfileParams& profileParams, map<string, string> &parameter)
+static void InitProfileParams(VidyoClientProfileParams& profileParams, map<string, string> &parameter,
+	vector<string>& buffer)
 {
 #ifdef VIDYO_WIN32
 	profileParams.PROGFILES_DIR = ".\\";
@@ -155,69 +153,25 @@ static void InitProfileParams(VidyoClientProfileParams& profileParams, map<strin
 	profileParams.VIDYO_DIR = "./";*/
 
 #endif
-	profileParams.portNumber = 63460;
-	profileParams.PRODUCT_NAME = "VidyoDesktop";
-
-	{
-		auto search = parameter.find("progfiles_dir");
-		if (search != parameter.end())
-		{
-			profileParams.PROGFILES_DIR = search->second.c_str();
-		}
-	}
-
-	{
-		auto search = parameter.find("config_key_path");
-		if (search != parameter.end())
-		{
-			profileParams.CONFIG_KEY_PATH = search->second.c_str();
-		}
-	}
-
-	{
-		auto search = parameter.find("mydocs_dir");
-		if (search != parameter.end())
-		{
-			profileParams.MYDOCS_DIR = search->second.c_str();
-		}
-	}
-
-	{
-		auto search = parameter.find("vidyo_dir");
-		if (search != parameter.end())
-		{
-			profileParams.VIDYO_DIR = search->second.c_str();
-		}
-	}
-
-	{
-		auto search = parameter.find("portNumber");
-		if (search != parameter.end())
-		{
-			try
-			{
-				profileParams.portNumber = boost::lexical_cast<int>(search->second);
-			}
-			catch (const bad_lexical_cast &)
-			{
-
-			}
-		}
-	}
-
+	buffer.resize(4);
+	profileParams.PRODUCT_NAME = VidyoClientSwitchGetPara(parameter, "progfiles_dir", buffer[0], "VidyoDesktop");
+	profileParams.CONFIG_KEY_PATH = VidyoClientSwitchGetPara(parameter, "config_key_path", buffer[1], "SOFTWARE\\Vidyo\\Vidyo Desktop\\");
+	profileParams.MYDOCS_DIR = VidyoClientSwitchGetPara(parameter, "mydocs_dir", buffer[2], ".\\");
+	profileParams.VIDYO_DIR = VidyoClientSwitchGetPara(parameter, "vidyo_dir", buffer[3], ".\\");
+	profileParams.portNumber = VidyoClientSwitchGetPara(parameter, "portNumber", 63460);
 }
 
-
-
-
-
-VidyoClientSwitchDefs::ErrorType ClientVidyoIo::Initialize(map<string, string> &parameter, VidyoClientCallerPtr& caller)
+VidyoClientSwitchDefs::ErrorType ClientVidyoIo::Initialize(const char* strParameter, VidyoClientCallerPtr& caller)
 {
 	{
-		wchar_t szFullPath[MAX_PATH] = {};
-		GetCurrentDirectory(MAX_PATH, szFullPath);
+		wchar_t szFullPath[MAX_PATH + 1] = {};
+
+		GetModuleFileName(NULL, szFullPath, MAX_PATH + 1);
 		std::wstring wsPath(szFullPath);
-		wsPath += L"\\VidyoClientDll.dll";
+		vector<wstring> pathComps;
+		boost::split(pathComps, wsPath, boost::is_any_of("\\"));
+		pathComps[pathComps.size() - 1] = L"VidyoClientDll.dll";
+		wsPath = boost::algorithm::join(pathComps, "\\");
 		m_impl->m_hDLL = LoadLibrary(wsPath.c_str());
 	}
 
@@ -265,12 +219,16 @@ VidyoClientSwitchDefs::ErrorType ClientVidyoIo::Initialize(map<string, string> &
 
 	}
 
+	map<string, string> parameters;
+	ConvertFromStringToMap(strParameter, parameters);
+
 	m_impl->m_caller = caller;
 
 	const unsigned int maxLogFileSize = 1000000;
 	VidyoClientLogParams logParams = { 0 };
 
-	InitLogParams(logParams, parameter);
+	string result, folder;
+	InitLogParams(logParams, parameters, result, folder);
 
 	VidyoBool retVal = m_impl->VidyoClientInitialize((VidyoClientOutEventCallback)VidyoClientOutCallback, NULL, &logParams);
 
@@ -281,7 +239,7 @@ VidyoClientSwitchDefs::ErrorType ClientVidyoIo::Initialize(map<string, string> &
 }
 
 
-VidyoClientSwitchDefs::ErrorType ClientVidyoIo::Start(map<string, string> &parameter)
+VidyoClientSwitchDefs::ErrorType ClientVidyoIo::Start(const char* strParameter)
 {
 	const unsigned int maxLogFileSize = 1000000;
 	VidyoClientLogParams logParams = { 0 };
@@ -291,8 +249,13 @@ VidyoClientSwitchDefs::ErrorType ClientVidyoIo::Start(map<string, string> &param
 	unsigned window_width = 400;
 	unsigned window_height = 300;
 
-	InitLogParams(logParams, parameter);
-	InitProfileParams(profileParams, parameter);
+	map<string, string> parameters;
+	ConvertFromStringToMap(strParameter, parameters);
+
+	string buffer1, buffer2;
+	InitLogParams(logParams, parameters, buffer1, buffer2);
+	vector<string> profileBuffer;
+	InitProfileParams(profileParams, parameters, profileBuffer);
 
 	VidyoRect videoRect = { window_origin_x, window_origin_y, window_width, window_height };
 
@@ -327,44 +290,51 @@ bool ClientVidyoIo::Uninitialize()
 }
 
 
-VidyoClientSwitchDefs::ErrorType ClientVidyoIo::Join(map<string, string> &parameter)
+VidyoClientSwitchDefs::ErrorType ClientVidyoIo::Join(const char* strParameter)
 {
+	map<string, string> parameters;
+	ConvertFromStringToMap(strParameter, parameters);
+
 	VidyoClientInEventRoomLink backendReq = {};
 	{
-		auto search = parameter.find("portalUri");
-		if (search != parameter.end())
+		string portalUri;
+		VidyoClientSwitchGetPara(parameters, "portalUri", portalUri);
+		if (!portalUri.empty())
 		{
-			SAFE_STRING_CPY((char *)backendReq.portalUri, search->second.c_str(), sizeof(backendReq.portalUri));
+			SAFE_STRING_CPY((char *)backendReq.portalUri, portalUri.c_str(), sizeof(backendReq.portalUri));
 		}
 		else
 			return VidyoClientSwitchDefs::ErrorVcMissingPara;
 	}
 
 	{
-		auto search = parameter.find("roomKey");
-		if (search != parameter.end())
+		string roomKey;
+		VidyoClientSwitchGetPara(parameters, "roomKey", roomKey);
+		if (!roomKey.empty())
 		{
-			SAFE_STRING_CPY((char *)backendReq.roomKey, search->second.c_str(), sizeof(backendReq.roomKey));
+			SAFE_STRING_CPY((char *)backendReq.roomKey, roomKey.c_str(), sizeof(backendReq.roomKey));
 		}
 		else
 			return VidyoClientSwitchDefs::ErrorVcMissingPara;
 	}
 
 	{
-		auto search = parameter.find("displayName");
-		if (search != parameter.end())
+		string displayName;
+		VidyoClientSwitchGetPara(parameters, "displayName", displayName);
+		if (!displayName.empty())
 		{
-			SAFE_STRING_CPY((char *)backendReq.displayName, search->second.c_str(), sizeof(backendReq.displayName));
+			SAFE_STRING_CPY((char *)backendReq.displayName, displayName.c_str(), sizeof(backendReq.displayName));
 		}
 		else
 			return VidyoClientSwitchDefs::ErrorVcMissingPara;
 	}
 
 	{
-		auto search = parameter.find("pin");
-		if (search != parameter.end())
+		string pin;
+		VidyoClientSwitchGetPara(parameters, "pin", pin);
+		if (!pin.empty())
 		{
-			SAFE_STRING_CPY((char *)backendReq.pin, search->second.c_str(), sizeof(backendReq.pin));
+			SAFE_STRING_CPY((char *)backendReq.pin, pin.c_str(), sizeof(backendReq.pin));
 		}
 	}
 
@@ -387,4 +357,9 @@ bool ClientVidyoIo::Leave()
 	if (!m_impl->VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_LEAVE, NULL, 0))
 		return false;
 	return true;
+}
+
+void ClientVidyoIo::tmp(const char * test)
+{
+
 }

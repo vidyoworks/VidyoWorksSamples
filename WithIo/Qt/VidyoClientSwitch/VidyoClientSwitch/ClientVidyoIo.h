@@ -3,6 +3,7 @@
 #include <boost/smart_ptr.hpp>
 
 
+
 class ClientVidyoIoImpl;
 typedef boost::shared_ptr<ClientVidyoIoImpl> ClientVidyoIoImplPtr;
 
@@ -13,13 +14,13 @@ public:
 	ClientVidyoIo();
 	virtual ~ClientVidyoIo();
 
-	virtual VidyoClientSwitchDefs::ErrorType Initialize(map<string, string> &parameter, VidyoClientCallerPtr& caller);
-	virtual VidyoClientSwitchDefs::ErrorType Start(map<string, string> &parameter);
+	virtual VidyoClientSwitchDefs::ErrorType Initialize(const char* strParameter, VidyoClientCallerPtr& caller);
+	virtual VidyoClientSwitchDefs::ErrorType Start(const char* strParameter);
 	virtual bool Stop();
 	virtual bool Uninitialize();
-	virtual VidyoClientSwitchDefs::ErrorType Join(map<string, string> &parameter);
+	virtual VidyoClientSwitchDefs::ErrorType Join(const char* strParameter);
 	virtual bool Leave();
+	virtual void tmp(const char * test);
 private:
 	ClientVidyoIoImplPtr m_impl;
 };
-

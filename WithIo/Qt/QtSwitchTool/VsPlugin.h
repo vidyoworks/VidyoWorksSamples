@@ -19,11 +19,11 @@ class VsPlugin : public QObject
 public:
     explicit VsPlugin(VsStatus* statusWindow, int typeOfBackend);
     virtual ~VsPlugin();
-    bool VsInit(map<string, string> &parameter);
-    bool VsStart(map<string, string> &parameter);
+    bool VsInit(const char* parameter);
+    bool VsStart(const char* parameter);
     bool VsStop();
     bool VsUninit();
-    bool VsRoomLink(map<string, string> &parameter);
+    bool VsRoomLink(const char* parameter);
     bool VsCallEnd();
     static VsPlugin* getInstance();
 
