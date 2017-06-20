@@ -52,9 +52,9 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;VIDYOIOWRAPPER_EXPORTS;VIDYO_WIN32;BUILD_VIDYO_CLIENT_DLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;VIDYOIOWRAPPER_EXPORTS;VIDYO_WIN32;BUILD_VIDYO_CLIENT_DLL;_CRT_SECURE_NO_WARNINGS;Q_WS_WIN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)..\4.1.13.4\VidyoClient-WindowsSDK\include;$(FRAMEWORKS_DIR)\boost\boost_1_52_0;$(ProjectDir)\..\include;$(ProjectDir)\VidyoWorks\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)..\4.1.13.4\VidyoClient-WindowsSDK\include;$(FRAMEWORKS_DIR)\boost\boost_1_52_0;$(ProjectDir)\..\include;$(ProjectDir)\VidyoWorks\include;$(ProjectDir)\..\..\VidyoIoWrapper\VidyoIoWrapper;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions>/D_SCL_SECURE_NO_WARNINGS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
