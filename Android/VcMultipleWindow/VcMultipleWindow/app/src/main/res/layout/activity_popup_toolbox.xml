@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2dp"
+    android:background="#abffff"
+    >
+	<ImageView
+		android:id="@+id/slot_self_view"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true"
+		android:padding="10dp"
+		android:layout_width="320dp"
+		android:layout_height="180dp"
+		android:src="@drawable/defimage" />
+
+	<Button
+        android:id="@+id/button_get_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/slot_self_view"
+        android:layout_alignParentLeft="true"
+        android:text="GetVideoHere" />
+	 <Button
+	        android:id="@+id/button_stop_video_here"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+		    android:layout_below="@id/slot_self_view"
+	        android:layout_toRightOf="@+id/button_get_video"
+	        android:text="StopVideoHere" />
+
+</RelativeLayout>

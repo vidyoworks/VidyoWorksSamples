@@ -31,3 +31,6 @@
 
 ..*[VcStats](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/Android/VcStats)
 	Android sample that turns on and off the call statistics.
+	
+..*[VcMultipleWindow](https://github.com/vidyoworks/VidyoWorksSamples/tree/master/Android/VcMultipleWindow)
+	Android sample that is built on VcSimpleRoomLink64Or32. Additionally it is an option to stop and resume default renderer when in the call, and when that happens, to show to self view on a different window. This selfview uses raw frame.
