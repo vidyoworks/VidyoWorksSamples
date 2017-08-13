@@ -1,0 +1,52 @@
+README  - Documentation starting point
+- documentation/    - Documentation folder
+    - LICENSE           - Vidyo license agreement
+    - README            - Information about this package
+    - FILES             - This file
+    - SAMPLE-CHANGELOG  - Change log for the sample
+    - VidyoWebAPI_ReferenceGuide_*.pdf  - Plugin JavaScipt reference guide
+    - VidyoWebAPI_ReleaseNotes_*.pdf    - Plugin release notes
+- soap-proxy/       - SOAP proxy sample. Proxies HTTP requests to SOAP requsts.
+	- client/
+		- soap-proxy.js     - JavaScript library to work with SOAP proxy
+	- server/
+		- index.php         - Dummy to disable current folder index
+		- soap_proxy.php    - Server side SOAP proxy PHP script
+- www/  - Web application for VidyoWeb Sample
+    - index.html    - Main HTML markup file. Application view.
+    - css/          - Stylesheets for VidyoWeb sample application
+        - bootstrap.min.css         - Bootstrap stylesheet (http://twitter.github.io/bootstrap/)
+        - elusive-webfont-ie7.css   - Elusive fonts support for IE7 (http://aristeides.com/elusive-iconfont/)
+        - elusive-webfont.css       - Elusive fonts stylesheet (http://aristeides.com/elusive-iconfont/)
+        - vidyo-app.css             - Application specific stylesheet
+    - files/        - Additional files
+        - VidyoWeb-win32-1.0.x.yyyy.msi    - Windows installer for the VidyoWeb plugin
+        - VidyoWeb-macosx-1.0.x.yyyy.pkg   - OSX installer for the VidyoWeb plugin
+    - font/         - Fonts used in application
+        - Elusive-Icons.eot         - Elusive fonts (http://aristeides.com/elusive-iconfont/)
+        - Elusive-Icons.svg         - Elusive fonts (http://aristeides.com/elusive-iconfont/)
+        - Elusive-Icons.ttf         - Elusive fonts (http://aristeides.com/elusive-iconfont/)
+        - Elusive-Icons.woff        - Elusive fonts (http://aristeides.com/elusive-iconfont/)
+    - img/          - Images and glyphs
+        - loader-bar.gif            - Progress bar for splash screen
+        - logo-big.jpg              - Vidyo logo for splash screen
+    - scripts/      - JavaScript files
+        - main.js           - Main application
+        - main.config.js    - Configuration for the main application. Contains UI links, templates, etc.
+        - libs/     - 3rd party libraries
+            - require.min.*js               - RequireJS library (http://requirejs.org/)
+            - jquery.*.js                   - jQuery library (http://jquery.com/)
+            - bootstrap.min.*.js            - Bootstrap (http://twitter.github.io/bootstrap/)
+            - jquery.html5storage.min.*.js  - jQuery peristant storage plugin library (https://github.com/artberri/jquery-html5storage)
+            - jquery.typewatch.*.js         - Typewatch helper plugin for jQuery (http://github.com/dennyferra/TypeWatch)
+            - domReady.*.js                 - Dom ready plugin for jquery (http://github.com/requirejs/domReady)
+            - handlebars.min.*.js           - Handlebars templating engine library (http://handlebarsjs.com/)
+            - lte-ie7.js                    - Elusive fonts support for IE7 (http://aristeides.com/elusive-iconfont/)
+        - utils/    - Helpers and utilities
+            - soap-proxy.js     - SOAP proxy helper
+        - vidyo/    - VidyoWeb plugin wrapper libraries
+            - vidyo.app.strings.js                - Application strings
+            - vidyo.client.js                     - VidyoWeb client library
+            - vidyo.client.messages.js            - Messages sent/received from plugin
+            - vidyo.client.parameters.js          - Dummy messages' parameters placeholder
+            - vidyo.client.private.messages.js    - New/beta messages

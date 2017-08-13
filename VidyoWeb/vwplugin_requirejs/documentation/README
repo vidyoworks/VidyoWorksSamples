@@ -1,0 +1,56 @@
+WHAT IS IT
+This package contains a sample application for VidyoWeb platform provided by Vidyo Inc. All rights reserved.
+Please see FILES file for the full file list and links to their origin.
+
+LICENSE
+(c) 2006-2014 Vidyo, Inc.,
+433 Hackensack Avenue, 6th Floor,
+Hackensack, NJ  07601.
+All rights reserved.
+The information contained herein is proprietary to Vidyo, Inc.
+and shall not be reproduced, copied (in whole or in part), adapted,
+modified, disseminated, transmitted, transcribed, stored in a retrieval
+system, or translated into any language in any form by any means
+without the express written consent of Vidyo, Inc.
+
+WHO IS IT FOR
+This package is intended for Web developers to show how to implement and use applications based on VidyoWeb platform.
+
+MODULES
+VidyoWeb application consists of 3 parts:
+    - VidyoWeb plugin
+    - JavaScript/SOAP proxy
+    - VidyoWeb sample application
+
+VIDYOWEB PLUGIN
+This is a plugin binary code that has to be installed at the user's machine in order for VidyoWeb to work. It performs rendering/capturing and network resiliance operations.
+This package provides msi installation file in the www/files folder.
+
+SOAP PROXY
+VidyoWeb requires SOAP interaction with VidyoPortal to perform User Web Services calls like searching contacts. Due to the cross-browser access limitation JavaScript cannot send actual SOAP requests to the VidyoPortal. This package contains a sample JavaScript client and PHP server to overcome this issue and provide SOAP proxying from Web application.
+Make sure to install SOAP proxy on your server and change main.config.js soapProxyURL to point to your server.
+
+JAVASCRIPT APPLICATION
+VidyoWeb application is based on HTML5 and JavaScript using requireJS (http://requirejs.org/) approach to dependency handling. This helps to define all JavaScript libraries that application depends on. See http://requirejs.org/ for detail and examples.
+
+VidyoWeb sample application takes advantage of simple but powerful templating engine called handlebars (http://handlebarsjs.com/).
+
+VidyoWeb sample uses jQuery and few jQuery plugins (see FILES for a list) for UI (User Interface) interactions.
+
+It is not mandatory to use any of the 3rd party libraries listed above, they are used as a sample reference.
+
+HOW TO READ main.js
+The main application file main.js is built using the following conventions:
+    - General application functions are prefixed with "application".
+    - Functions that operate on UI elements are prefixed with "ui".
+    - Functions that operate on plugin's JavaScript wrapper "client". This functions interact with VidyoWeb plugin.
+    - Helper functions are prefixed with "helper".
+    - Functions that send requests to the VidyoPortal using WebServices are prefixed with "portalUser".
+    - There are some functions that user deferred variables that are resolved some time in the future, see http://api.jquery.com/jQuery.Deferred/. They have "promise" in their name.
+    - VidyoWeb plugin life-cycle related functions are prefixed with "vidyoPlugin".
+    - VidyoWeb sample application is using pub/sub to notify UI about plugin events. See applicationBindSubscribeEvents() for example.
+
+VidyoWeb sample application defines UI elements identifiers in the main.config.js file. That way it is easy to customize UI without modifying application.
+
+CONTACTS
+Please contact api@vidyo.com with any questions. API maintenance agreement is required to contact API support team.

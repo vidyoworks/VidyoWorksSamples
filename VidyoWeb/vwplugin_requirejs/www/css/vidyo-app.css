@@ -1,0 +1,519 @@
+.splash {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    margin: 100px 0;
+}
+
+/* Badge related styles */
+.superscript {
+    font-size: xx-small;
+    vertical-align: top;
+    display: inline;
+}
+
+.overlap-to-left {
+    margin-left: -2px;
+}
+
+.subscript {
+    font-size: xx-small;
+    vertical-align: bottom;
+}
+
+.small-font {
+    font-size: small;
+}
+
+.btn-vertical {
+    float: right;
+    margin-top: 0px;
+    margin-bottom: 3px;
+}
+
+.btn-vertical:last-child {
+    float: right;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+/* End Badge related styles */
+#errorWrapper {
+    z-index: 1000;
+}
+
+#pluginContainer {
+    position: relative;
+    height: 370px;
+}
+
+#pluginContainer.fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 260px;
+    height: auto;
+}
+
+#pluginContainer.off {
+    position: relative;
+    width: 1px;
+    height: 1px;
+}
+
+#pluginContainer.maximized {
+    height: 560px;
+}
+
+#pluginContainer.fullscreen.maximized {
+    bottom: 70px;
+    height: auto;
+}
+
+#pluginContainer.fullscreen.maximized.nochat {
+    bottom: 20px;
+    height: auto;
+}
+
+/*#pluginContainer {
+    width: 100%;
+    min-width: 800px;
+    margin: 0;
+    padding: 0;
+    min-height: 1px;
+    display:inline;
+}
+
+#pluginContainer.fullscreen {
+    min-width: 800px;
+    margin: 0;
+    padding: 0;
+    min-height: 1px;
+    position: absolute;
+    left: 59px;
+    right: 0px;
+}*/
+
+#pluginAndChatContainer {
+    width: 100%;
+    min-width: 800px;
+    margin: 0;
+    padding: 0;
+    min-height: 1px;
+    display:inline;
+}
+
+#pluginAndChatContainer.fullscreen {
+    min-width: 200px;
+    margin: 0;
+    padding: 0;
+    min-height: 1px;
+    position: absolute;
+    left: 59px;
+    right: 0px;
+}
+
+#inCallContainer {
+    margin: 0px;
+    margin-top: 10px;
+    padding: 0px;
+    min-width: 1181px;
+    width: 1181px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    display: block;
+}
+
+#inCallContainer.fullscreen {
+    width:auto;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    min-height: 400px;
+    min-width: 770px;
+}
+
+#vidyoPlugin {
+    min-width: 1px;
+    min-height: 1px;
+/*    width: 1px;
+    height: 1px;*/
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#vidyoPlugin.minimized {
+    min-width: 1px;
+    min-height: 1px;
+}
+
+#vidyoPlugin.fullscreen {
+    width: 100%;
+    height: 100%;
+}
+
+#inCallParticipantsPanel {
+    /*float: left;*/
+    width: 240px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-right: 20px;
+    margin-left: 10px;
+    background-color: #E5E5E5;
+    vertical-align: top;
+    float: left;
+    max-height: 575px;
+}
+
+#inCallParticipantsPanel.fullscreen {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    bottom: 0px;
+    max-height: none;
+}
+
+#inCallParticipantsPanel hr {
+    margin: 5px 0;
+    border: 0;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+#inCallButtonPanel {
+    width: 54px;
+    margin-top: 0px;
+    height: 100%;
+    /*display: inline-block;*/
+    margin-right: 5px;
+}
+
+#inCallButtonPanel li {
+    font-size: 12px;
+}
+
+#inCallPluginAndControlsWrap {
+    vertical-align: top;
+    float: right;
+    width: 859px;
+    min-width: 200px;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#inCallPluginAndControlsWrap.fullscreen {
+    /*display: inherit;*/
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    left: 300px;
+    bottom: 0;
+    padding-bottom: 0px;
+    width:auto;
+}
+
+#inCallPluginAndControlsWrap.fullscreenNoParticipantPanel {
+    /*display: inherit;*/
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    left: 20px;
+    bottom: 20px;
+    padding-bottom: 60px;
+    width:auto;
+}
+
+#inCallLocalShareList {
+    max-height: 370px;
+    max-width: 300px;
+    overflow: auto;
+}
+
+.inCallSelectedShare {
+    background-color: beige;
+}
+
+.inCallSelectedLocalShare {
+    background-color: beige;
+}
+
+.inCallLocalShareUnshare {
+    background-color: red;
+}
+
+#inCallParticipantHeaderName {
+    color: orangered;
+    text-transform: none;
+    font-size: small;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-variant:small-caps;
+    white-space: nowrap;
+}
+
+#inCallParticipantsList .inCallParticipant {
+    padding: 1px 2px;
+    border: 0;
+    vertical-align: middle;
+    margin: 2px -15px;
+    white-space: nowrap;
+    color: maroon;
+    height: 25px;
+}
+
+#inCallParticipantsList .inCallParticipant:hover {
+    padding: 0px 2px;
+    border: 0px solid #C3C3C3;
+
+    border-top: 1px solid #CECECE;
+    border-bottom: 1px solid #D5D5D5;
+
+/*    vertical-align: middle;
+    margin: 2px -15px;
+*/    background-color: #D1D1D1;
+    /*height: 22px;*/
+}
+
+#inCallParticipantsList .inCallParticipantHeader {
+    border-bottom: 2px solid #D0D0D0;
+    overflow: hidden;
+    padding: 0px 8px;
+}
+
+#inCallChatContainer {
+    position: relative;
+    margin-top: 5px;
+    height: 215px;
+}
+
+#inCallChatContainer.fullscreen {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 215px;
+}
+
+#inCallChatContainer.minimized {
+    height: 28px;
+}
+
+#inCallChatPanes.tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+    height: 135px;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+}
+
+#inCallChatTabs .notify {
+    background-color: orange;
+}
+
+#inCallChatPanes ul {
+    list-style-type: none;
+}
+
+#inCallChatPanes ul>li {
+    margin-bottom: 5px;
+}
+
+#inCallChatPanes .chatTime {
+    display: inline-block;
+    width: 100px;
+    color: #A9A9A9;
+    text-align: left;
+    vertical-align: top;
+}
+
+#inCallChatPanes .chatName {
+    display: inline-block;
+    width: 140px;
+    color: blue;
+    text-align: right;
+    vertical-align: top;
+    overflow-wrap: normal;
+    overflow-x: hidden;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
+
+#inCallChatPanes .chatName.chatSelf {
+     color: #898989;
+}
+
+#inCallChatPanes .chatMessage {
+    display: inline-block;
+    width: 455px;
+    overflow: auto;
+    text-align: left;
+    vertical-align: top;
+    margin-left: 10px;
+    margin-right: 10px;
+    overflow-wrap: normal;
+    overflow-x: hidden;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
+
+.inCallChatLink {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.inCallParticipant .inCallChatLink:hover {
+    text-decoration: none;
+}
+
+.inCallParticipant > .btn-toolbar {
+    margin: 0;
+    z-index: 100;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 0px;
+    border: 0;
+}
+
+.inCallParticipant .inCallParticipantNameDiv {
+    display: inline-block;
+    width: 200px;
+    z-index: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.inCallParticipant .inCallParticipantNameDiv.short {
+    width: 90px;
+    float: left;
+}
+
+#inCallParticipantUserSearchContainer {
+    height: 40px;
+    border: 0;
+    vertical-align: middle;
+    margin: 5px -15px;
+    white-space: nowrap;
+}
+
+/* Pre-call styles */
+#preCallJoinMyRoomButton {
+    margin-left: 10px;
+}
+
+#preCallUserInfo {
+    padding-top: 0;
+    margin-top: 0;
+}
+
+#preCallSearchNavigationList {
+    overflow: auto;
+    height: 100%;
+    background-color: #F1F1F1;
+    margin-top: 0;
+    padding-top: 10px;
+    width: 100%;
+    max-height: 550px;
+    padding-bottom: 70px;
+}
+
+
+#preCallSearchNavigationList .user {
+    padding: 5px 8px;
+    border: 0;
+    vertical-align: middle;
+    margin: 2px 10px;
+    white-space: nowrap;
+    height: 25px;
+}
+
+#preCallSearchNavigationList .btn-toolbar {
+    padding: 0px;
+    border: 0;
+    vertical-align: middle;
+    margin: 0;
+    /*display: inline-block;*/
+}
+
+#preCallSearchNavigationList .userName {
+    padding: 0px;
+    border: 0;
+    vertical-align: middle;
+    margin: 0;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 330px;
+}
+
+#preCallSearchNavigationList .user:hover {
+    padding: 4px 8px;
+    border: 0;
+    border-top: 1px solid #DEDEDE;
+    border-bottom: 1px solid #E5E5E5;
+    vertical-align: middle;
+    margin: 2px 10px;
+    background-color: #E1E1E1;
+}
+
+#preCallSearchNavigationList form {
+    margin-bottom: 0px;
+}
+
+#preCallContainer {
+    margin-top: 40px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 700px;
+    padding-top: 15px;
+}
+
+#preCallSearchProgressBarContainer {
+    padding: 10px;
+}
+
+/* Configuration styles */
+#configurationWrap {
+    width: 700px;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#configurationWrap .tab-content {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    background-color: #ffffff;
+}
+
+.inCallDeviceMenu {
+    right: 0;
+    left: auto;
+    width: 200px;
+}
+
+.evenSmaller {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+}
+/* Bootstrap overrides */
+.dl-horizontal dt{float:left;width:100px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.dl-horizontal dd{margin-left:120px;}

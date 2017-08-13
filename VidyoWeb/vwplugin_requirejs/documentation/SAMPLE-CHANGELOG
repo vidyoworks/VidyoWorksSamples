@@ -1,0 +1,90 @@
+VidyoWeb Sample application
+1.0.3.60 - June 9 2014
+Bug fixed:
+  - Fixed desktop notifications
+  - Varios bug fixes in VidyoWeb plugin. See release notes for more details.
+Notes:
+  - Plugin JavaScript layer dropped version numbers
+  - IE8 and IE9 will not print logs by default
+
+1.0.2.57 - April 27 2014
+Bug fixed:
+  - OpenSSL Heartbleed fix applied.
+
+1.0.1.53-B - March 27 2014
+Features:
+  - Direct call support.
+  - Chat support.
+  - Desktop notifications on supported browsers.
+  - Room control APIs.
+  - Invite to conference.
+Improvements:
+  - Varios UI tweaks.
+  - Default full page mode.
+
+1.0.1.53 - March 20 2014
+Bug fixed:
+  - Browser and OS compatibility bug fixes.
+Improvements:
+  - Support for Windows 8.1.
+  - Support for Windows 8.1 + IE11 combination.
+  - Update participant list on participant changes.
+
+VidyoWeb Sample application
+1.0.0.48 - February 27 2014
+Bug fixed:
+  - Multiple bug fixes.
+Improvements:
+  - Auto detect plugin load in the sample.
+  - OS compatibility improvements.
+
+1.0.0.40 - December 09 2013
+Bug fixed:
+  - Self view freezes on vidyoweb plugin.
+  - Unable to share selected documents/applications. If the user shares anything, the whole desktop gets shared (IE10 with EPM is set to 'ON' - Win7/8 64 bit)
+  - Plugin doesn't get detected on windows 8.1 64 bit
+  - Unable to use VidyoWeb plugin in IE running in Admin mode
+  - When a user covers a share with other window or application it displays the application which is in focus and not the document that the user is sharing on IE10/Win7 64 bit
+  - [Win8.1 64bit / Chrome 31]: Audio is not working during the conference.
+  - VidyoWeb plugin becomes unresponsive when a user tries to switch audio devices on Safari+FF+Chrome/Mac
+  - Win7 64b+Symantec: Unable to install vidyoweb plugin when end point protection was enabled
+
+1.0.0.38 - November 14 2013
+Improvements:
+    - Use 1.0.0.38 version of plugin with bug fixes
+
+1.0.0.37 - October 30 2013
+Improvements:
+    - Use 1.0.0.37 version of plugin with bug fixes
+Bug fixed:
+	- Define console if not defined for IE
+
+1.0.0.33 - August 15 2013
+Improvements:
+    - Use 1.0.0.33 Version of plugin with bug fixes
+    - Workaround guest login issue with 2.2.1 portal
+Bug fixed:
+	- InEventParticipantsLimit has an extra "willMute" parameter which is not documented
+	- OutEventMouse events not working
+	- OutEventKeyup & OutEventKeydown not received after a key press/release
+
+1.0.0.31 - July 12 2013
+Initial version
+Features:
+    - Login with credentials
+    - Guest login
+    - Join conference
+    - Call directly to another registered user
+    - Sharing local application
+    - Viewing remotely shared application
+Limitations and know issues:
+    - Windows only
+    - IE9 and IE10 do not allow full screen mode
+Improvements:
+    N/A
+Bug fixed:
+    N/A
+Tested browsers:
+    - Firefox   20.0.1
+    - Chrome    26.0.1410.64 m
+    - IE        10
