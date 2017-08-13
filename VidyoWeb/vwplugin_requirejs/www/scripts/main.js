@@ -50,9 +50,17 @@
             "utils/soap-proxy",
             "utils/logger",
             "domReady",
-            "vidyo/vidyo.client",
-            "vidyo/vidyo.client.messages",
-            "vidyo/vidyo.client.private.messages",
+
+            /*** M.F. ***/
+            // *** "vidyo/vidyo.client",
+            // *** "vidyo/vidyo.client.messages",
+            // *** "vidyo/vidyo.client.private.messages",
+            "vidyo_1_3_2_reqJS/vidyo.client2",
+            "vidyo_1_3_2_reqJS/vidyo.client.messages",
+            "vidyo_1_3_2_reqJS/vidyo.client.private.messages",
+            "vidyo_1_3_2_reqJS/proxywrapper",
+            /*** M.F. ***/
+
             "main.config",
             "handlebars",
             "bootstrap",
@@ -65,9 +73,16 @@
             soapProxy,
             logger,
             domReady,
+
+
+            /*** M.F. ***/
             vidyoClient,
             vidyoClientMessages,
             vidyoClientPrivateMessages,
+            proxyWrapper,
+            /*** M.F. ***/
+
+
             config,
             handlebars
         ) {
@@ -94,6 +109,12 @@ uiSetMicMuted, uiSetSpeakerMuted, uiSetVideoMuted, uiShareSelect, uiSharesUpdate
                  * @type {Object}
                  */
                 self.config = config;
+
+
+                /*** M.F. ***/
+                mfTest("application()");
+                /**
+
 
                 /**
                  * Vidyo library specific configuration
@@ -4764,55 +4785,71 @@ uiSetMicMuted, uiSetSpeakerMuted, uiSetVideoMuted, uiShareSelect, uiSharesUpdate
                     return clientConfigurationSet(conf);
                 };
 
+
+                /*** M.F. ***/
+
                 /**
                  * Initializes and connects vidyo.client JavaScript library and plugin object.
                  * @return {Object} Application object
                  */
                 vidyoPluginInitAndStart = function () {
-                    logger.log('info', 'plugin', 'vidyoPluginInitAndStart()');
 
-                    /* Sets configuration to defaults */
-                    vidyoPluginConfigurationPrepare(self.cache.$plugin.get()[0]);
+                    // *** 
+                    // *** logger.log('info', 'plugin', 'vidyoPluginInitAndStart()');
+                    // *** 
+                    // *** /* Sets configuration to defaults */
+                    // *** vidyoPluginConfigurationPrepare(self.cache.$plugin.get()[0]);
+                    // *** 
+                    // *** /* Attaches plugin object to the JS vidyo.client library */
+                    // *** vidyoPluginLoad();
+                    // *** 
+                    // *** /* Check if started correctly */
+                    // *** if (vidyoPluginIsLoaded()) {
+                    // ***     if (vidyoPluginIsStarted()) { // started already
+                    // ***         self.events.pluginLoadedEvent.trigger('fail', "Another instance is running?");
+                    // ***     } else { // not started yet
+                    // ***         if (vidyoPluginStart()) {
+                    // ***             self.events.pluginLoadedEvent.trigger('done');
+                    // ***         } else { //failed to start
+                    // ***             self.events.pluginLoadedEvent.trigger('fail', "Failed to start Vidyo Library");
+                    // ***         }
+                    // ***     }
+                    // *** } else {
+                    // ***     /* Failed to load plugin */
+                    // ***     logger.log('warning', 'plugin', "Failed to load plugin.");
+                    // *** 
+                    // ***     if (vidyoPluginIsInstalled()) {
+                    // ***         /* Plugin is installed but not loaded. Probably blocked by the browser. */
+                    // ***         logger.log('warning', 'plugin', "Plugin is installed but not loaded. Probably blocked by the browser.");
+                    // ***         var details = self.templates.pluginEnableInstructionsTemplate({
+                    // ***             version: self.config.pluginVersion
+                    // ***         });
+                    // ***         self.events.pluginLoadedEvent.trigger('info', {message: "Plugin detected but not loaded", details: details});
+                    // ***         uiStartPluginDetection(true);
+                    // ***     } else {
+                    // ***         /* Notify deferred object to show plugin download */
+                    // ***         logger.log('warning', 'plugin', "Plugin is not installed. Starting plugin auto detection.");
+                    // ***         var details = self.templates.pluginInstallInstructionsTemplate({
+                    // ***             version: self.config.pluginVersion
+                    // ***         });
+                    // ***         self.events.pluginLoadedEvent.trigger('info', {message: "Plugin is not installed", details: details});
+                    // ***         /* Start plugin polling */
+                    // ***         uiStartPluginDetection(false);
+                    // ***     }
+                    // *** }
+                    // *** return self;
+                    // *** 
 
-                    /* Attaches plugin object to the JS vidyo.client library */
-                    vidyoPluginLoad();
+                    self.client = vidyoClient();
 
-                    /* Check if started correctly */
-                    if (vidyoPluginIsLoaded()) {
-                        if (vidyoPluginIsStarted()) { // started already
-                            self.events.pluginLoadedEvent.trigger('fail', "Another instance is running?");
-                        } else { // not started yet
-                            if (vidyoPluginStart()) {
-                                self.events.pluginLoadedEvent.trigger('done');
-                            } else { //failed to start
-                                self.events.pluginLoadedEvent.trigger('fail', "Failed to start Vidyo Library");
-                            }
-                        }
-                    } else {
-                        /* Failed to load plugin */
-                        logger.log('warning', 'plugin', "Failed to load plugin.");
+                    adapter123.detectPlugin();
+                    adapter123.startVidyoClient(self);
 
-                        if (vidyoPluginIsInstalled()) {
-                            /* Plugin is installed but not loaded. Probably blocked by the browser. */
-                            logger.log('warning', 'plugin', "Plugin is installed but not loaded. Probably blocked by the browser.");
-                            var details = self.templates.pluginEnableInstructionsTemplate({
-                                version: self.config.pluginVersion
-                            });
-                            self.events.pluginLoadedEvent.trigger('info', {message: "Plugin detected but not loaded", details: details});
-                            uiStartPluginDetection(true);
-                        } else {
-                            /* Notify deferred object to show plugin download */
-                            logger.log('warning', 'plugin', "Plugin is not installed. Starting plugin auto detection.");
-                            var details = self.templates.pluginInstallInstructionsTemplate({
-                                version: self.config.pluginVersion
-                            });
-                            self.events.pluginLoadedEvent.trigger('info', {message: "Plugin is not installed", details: details});
-                            /* Start plugin polling */
-                            uiStartPluginDetection(false);
-                        }
-                    }
                     return self;
                 };
+
+                /*** M.F. ***/
+
 
                 /**
                  * Get status of plugin in the DOM
@@ -4823,35 +4860,48 @@ uiSetMicMuted, uiSetSpeakerMuted, uiSetVideoMuted, uiShareSelect, uiSharesUpdate
                     return self.client.isLoaded();
                 };
 
-                /**
-                 * Prepares configuration object for JavaScript Library
-                 * @param  {Object} plugin Plugin DOM object
-                 * @param  {Object} config Configuration
-                 * @return {Object} Application object with applied configuration
-                 */
+
+                /*** M.F. ***/
+
+                // *** 
+                // *** /**
+                // ***  * Prepares configuration object for JavaScript Library
+                // ***  * @param  {Object} plugin Plugin DOM object
+                // ***  * @param  {Object} config Configuration
+                // ***  * @return {Object} Application object with applied configuration
+                // ***  */
+                // *** vidyoPluginConfigurationPrepare = function (plugin, config) {
+                // ***     logger.log('info', 'plugin', 'vidyoPluginConfigurationPrepare()');
+                // *** 
+                // *** 
+                // ***     var localConfig = {
+                // ***         plugin: plugin,
+                // ***         defaultOutEventCallbackMethod: function (event) {
+                // ***             logger.log('info', 'plugin', 'default callback for client lib: ', event);
+                // ***         },
+                // ***         useCallbackWithPlugin: true,
+                // ***         outEventCallbackObject: self,
+                // ***         logCallback: function (message) {
+                // ***             if (self.logConfig.enableVidyoPluginLogs) {
+                // ***                 console.log("jsclient::", message);
+                // ***             }
+                // ***         },
+                // ***         callbacks: self.callbacks
+                // ***     };
+                // *** 
+                // ***     self.config.vidyoConfig = $.extend({}, self.config.vidyoConfig, config, localConfig);
+                // *** 
+                // ***     return self;
+                // *** };
+                // *** 
+
+                // to be eleiminated !
                 vidyoPluginConfigurationPrepare = function (plugin, config) {
-                    logger.log('info', 'plugin', 'vidyoPluginConfigurationPrepare()');
-
-
-                    var localConfig = {
-                        plugin: plugin,
-                        defaultOutEventCallbackMethod: function (event) {
-                            logger.log('info', 'plugin', 'default callback for client lib: ', event);
-                        },
-                        useCallbackWithPlugin: true,
-                        outEventCallbackObject: self,
-                        logCallback: function (message) {
-                            if (self.logConfig.enableVidyoPluginLogs) {
-                                console.log("jsclient::", message);
-                            }
-                        },
-                        callbacks: self.callbacks
-                    };
-
-                    self.config.vidyoConfig = $.extend({}, self.config.vidyoConfig, config, localConfig);
-
                     return self;
                 };
+
+                /*** M.F. ***/
+
 
                 /**
                  * Loads plugin into vidyo.client library with configuration

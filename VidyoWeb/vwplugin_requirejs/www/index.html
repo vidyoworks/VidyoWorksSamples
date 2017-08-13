@@ -19,13 +19,28 @@
     <!--[if lte IE 7]><script src="scripts/libs/lte-ie7.js"></script><![endif]-->
     <!-- Custom css -->
     <link rel="stylesheet" href="css/vidyo-app.css">
+
+
+    <!-- mfTest -->
+    <script language="JavaScript" src="scripts/adapter132/adapter132.js"></script>
+    <!-- mfTest -->
+
+    <!-- mfTest -->
+    <script type="text/javascript">
+        function mfTest(calledFrom) {
+            console.log("in mfTest(), called from " + calledFrom);
+        }
+    </script>
+    <!-- mfTest end -->
+
+
 </head>
-<body>
+<body onload='mfTest("onload")'>
     <div id="withjs" class="hide">
         <!-- Splash screen -->
         <div class="splash" id="splash">
             <div><img src="img/logo-big.jpg" alt="Vidyo Logo"/></div>
-            <div id="splashText" style="margin-top: 15px;"><h4>Preparing Vidyo experience</h4></div>
+            <div id="splashText" style="margin-top: 15px;"><h4>Preparing Vidyo 1  experience</h4></div>
             <div><img src="img/loader-bar.gif" alt="Loading"/></div>
         </div>
         <!-- End Splash screen -->
@@ -350,6 +365,14 @@
     }
     </script>
     <!-- Main application script -->
+
+	
+    <!--
+        M.F.
+		This loads require.js and tells it to load main.js in turn !
+	-->
     <script data-main="scripts/main" src="scripts/libs/require.min.2.1.10.js"></script>
+	
+	
 </body>
 </html>
