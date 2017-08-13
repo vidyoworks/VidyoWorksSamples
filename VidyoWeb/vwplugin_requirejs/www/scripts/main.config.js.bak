@@ -53,7 +53,7 @@
             /* Conference control */
             defaultRecorderTypes: ['"HD-RECORDER"', '"HIGH-QUALITY"'],
             /* SOAP configuration */
-            soapProxyURL: "https://localhost:4443/marek/marek2/soap-proxy/server/soap_proxy.php",
+            soapProxyURL: "https://localhost:4443/marek/marek/soap-proxy/server/soap_proxy.php",
             soapUserServicePath: "/services/v1_1/VidyoPortalUserService?wsdl",
             /* Generic classes */
             btnOnClass: "btn-success",

@@ -15,36 +15,40 @@ var adapter123 = {
 
    // logic to detect plugin, it checks, if chrome will try to detect the chrome plugin, if not npapi
    detectPlugin: function() {
+      var retv;
       if (this.isChrome) {
       
       
          // *** !!! ***
          console.log("ERROR: unexpected execution path in detectPlugin()");
-         return;
+         return(false);
          // *** !!! ***
          
          
-         this.detectChromePlugin();
+         retv = this.detectChromePlugin();
       } else {
-         this.detectNPAPIPlugin();
+         retv = this.detectNPAPIPlugin();
       }
+   return(retv);
    },
 
    startVidyoClient : function(contextObject) {
+      var retv;
       if (proxyWrapper.isChrome) { //checks to see if is chrome, if chrome will start vidyoforWeb, if not the npapi plugin
       
       
          // *** !!! ***
          console.log("ERROR: unexpected execution path in startVidyoClient()");
-         return;
+         return(false);
          // *** !!! ***
          
          
          contextObject.client.setProxy(proxyWrapper);
-         this.startVidyoClientForWeb();
+         retv = this.startVidyoClientForWeb();
       } else {
-         this.startPlugin(contextObject);
+         retv = this.startPlugin(contextObject);
       }
+   return(retv);
    },
 
 
@@ -144,8 +148,9 @@ var adapter123 = {
     // ***       });
     // ***   }
     // *** });
-    this.addPluginToDom();
 
+    var retv = this.addPluginToDom();
+    return(retv);
   },
 
 
@@ -362,6 +367,7 @@ var adapter123 = {
 
   // initializes npapi plugin
   startPlugin : function (contextObject)   {
+      var retv;
 
       // application is the global object -> 'self'
 
@@ -403,10 +409,13 @@ var adapter123 = {
       if (contextObject.client.start(locConfig)) {
           // *** this.addText("VidyoWeb started successfully"); //started succesfully
           console.log("INFO: VidyoClient lib started successfully");
+          retv = true;
       } else {
           // *** this.addText("VidyoWeb did not start successfully!");
           console.log("ERROR: failed to start VidyoClient lib");
+          retv = false;
       }
+  return(retv);
   },
 
   //checks version of IE

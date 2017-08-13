@@ -4840,10 +4840,34 @@ uiSetMicMuted, uiSetSpeakerMuted, uiSetVideoMuted, uiShareSelect, uiSharesUpdate
                     // *** return self;
                     // *** 
 
+                    var retv;
+
                     self.client = vidyoClient();
 
-                    adapter123.detectPlugin();
-                    adapter123.startVidyoClient(self);
+                    retv = adapter123.detectPlugin();
+                    if(retv) {
+                       retv = adapter123.startVidyoClient(self);
+                       if(retv) {
+                          self.events.pluginLoadedEvent.trigger('done');
+                       } else {
+                          self.events.pluginLoadedEvent.trigger('fail', "Failed to start Vidyo Library");
+                       }
+                    } else {
+                       /* Notify deferred object to show plugin download */
+                       logger.log('warning', 'plugin', "Plugin is not installed. Starting plugin auto detection.");
+                       var details = self.templates.pluginInstallInstructionsTemplate({
+                           version: self.config.pluginVersion
+                       });
+                       self.events.pluginLoadedEvent.trigger('info', {message: "Plugin is not installed", details: details});
+
+
+                       // *** // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                       // *** /* Start plugin polling */
+                       // *** uiStartPluginDetection(false);
+                       // *** // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+                    }
 
                     return self;
                 };
