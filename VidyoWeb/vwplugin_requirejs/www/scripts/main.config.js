@@ -31,6 +31,11 @@
                 login: "debug",
                 application: "info",
                 soap: "warning",
+
+                /*** vcpa ***/
+                plugin: "all",
+                /*** vcpa ***/
+
                 ui: "info",
                 callback: "info",
                 cache: "none"
@@ -53,7 +58,7 @@
             /* Conference control */
             defaultRecorderTypes: ['"HD-RECORDER"', '"HIGH-QUALITY"'],
             /* SOAP configuration */
-            soapProxyURL: "https://localhost:4443/marek/marek2/soap-proxy/server/soap_proxy.php",
+            soapProxyURL: "http://vidyoweb.apps.vidyo.com/sp/soap_proxy.php",
             soapUserServicePath: "/services/v1_1/VidyoPortalUserService?wsdl",
             /* Generic classes */
             btnOnClass: "btn-success",
