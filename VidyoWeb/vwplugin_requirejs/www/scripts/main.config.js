@@ -14,7 +14,7 @@
             /* behavior */
             developerEdition: true,
             enableChat: true,
-            pluginVersion: "1.1.1.00075",
+            pluginVersion: "1.3.20.0006",
             pluginMimeType: "application/x-vidyoweb-", // will add version later on
             activexType: "VidyoInc.VidyoWeb_", // will add version later on
             pluginDetectionTimeout: 1000, //in ms, polling frequency
