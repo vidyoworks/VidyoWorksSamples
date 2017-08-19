@@ -50,13 +50,13 @@
             "utils/soap-proxy",
             "utils/logger",
             "domReady",
+            "vidyo/vidyo.client2",
+            "vidyo/vidyo.client.messages",
+            "vidyo/vidyo.client.private.messages",
 
             /*** vcpa ***/
-            "vidyo_1_3_2_reqJS/vidyo.client2",
-            "vidyo_1_3_2_reqJS/vidyo.client.messages",
-            "vidyo_1_3_2_reqJS/vidyo.client.private.messages",
-            "vidyo_1_3_2_reqJS/proxywrapper",
-            "vidyo_1_3_2_reqJS/vcpadapter",
+            "vidyo/proxywrapper",
+            "vidyo/vcpadapter",
             /*** vcpa ***/
 
             "main.config",
@@ -71,11 +71,11 @@
             soapProxy,
             logger,
             domReady,
-
-            /*** vcpa ***/
             vidyoClient,
             vidyoClientMessages,
             vidyoClientPrivateMessages,
+
+            /*** vcpa ***/
             proxyWrapper,
             vcpadapter,
             /*** vcpa ***/
@@ -1206,6 +1206,10 @@ uiSetMicMuted, uiSetSpeakerMuted, uiSetVideoMuted, uiShareSelect, uiSharesUpdate
                             self.isLoggedIn = true;
                             self.recorderProfiles = undefined;
                             portalRecordGetProfiles();
+
+
+                            /*** vcpa ***/
+
                             /* Will delay show if precall until search results are back */
                             helperSoapPromiseToGetMyAccount()
                                 .done(function (response) {
@@ -1226,10 +1230,41 @@ uiSetMicMuted, uiSetSpeakerMuted, uiSetVideoMuted, uiShareSelect, uiSharesUpdate
                                         });
                                 })
                                 .fail(function (error) {
+                                    logger.log('warning', 'login', "first attempt to get user's account information failed: " + error );
+
+                                    setTimeout(function() {
+
+                                        helperSoapPromiseToGetMyAccount()
+                                            .done(function (response) {
+                                                logger.log('info', 'login', 'loginEvent - my Account (after retry): ', response, response.Entity);
+                                        
+                                                self.myAccount = response.Entity;
+                                                uiUpdateUserLoginProgress("80%");
+                                                self.cache.$preCallUserDisplayName.html(self.myAccount.displayName);
+                                                self.cache.$preCallPortalName.html(self.loginInfo.portalUri.replace("http://", "").replace("https://", ""));
+                                                portalParticipantsPromiseToGet(self.myAccount.entityID)
+                                                    .done(function (data) {
+                                                        uiUpdateUserLoginProgress("90%");
+                                                        self.events.portalParticipantUpdateEvent.trigger('done', data);
+                                                        portalUserSearchBothFavAndUsers(false);
+                                                    })
+                                                    .fail(function (error) {
+                                                        self.events.loginEvent.trigger('fail', "Unable to get user's participants list: " + error);
+                                                    });
+                                            })
+                                            .fail(function (error) {
                                     self.events.loginEvent.trigger('fail', "Unable to get user's account information: " + error);
+                                });
+                                        ;
+                                    }, 3000);
+
                                 });
 
                             uiUpdateUserLoginProgress("80%");
+
+                            /*** vcpa ***/
+
+
                         })
                         .on('fail', function (event, error) {
                             logger.log('error', 'login', 'loginEvent::fail', event, error);

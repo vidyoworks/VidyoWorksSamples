@@ -135,8 +135,10 @@ define(["./vidyo.client.parameters"],
 				that.portalVersion = params && params.portalVersion || "";
 				that.vmIdentity = params && params.vmIdentity || "";
 				that.locationTag = params && params.locationTag || "";
-				that.vidyoProxyAddress = params && params.vidyoProxyAddress || [""];
-				that.vidyoProxyPort = params && params.vidyoProxyPort || [""];
+				that.vidyoProxyAddress = params && params.vidyoProxyAddress || "";
+				that.vidyoProxyPort = params && params.vidyoProxyPort || "";
+				that.numberProxies = params && (that.vidyoProxyAddress.length>0?1:0);
+				that.proxyType = params && (that.numberProxies>0?1:0);
 				that.emcpSecured = params && params.emcpSecured || false;
 				that.guestLogin = params && params.guestLogin || false;
 				that.showDialpad = params && params.showDialpad || false;
@@ -316,6 +318,7 @@ define(["./vidyo.client.parameters"],
 				// initial values of which are potentially passed
 				// into this factory function
 				that.window = params && params.window || "0x0000000000000000";
+				that.shareType = params && params.shareType || "0x0000000000000000";
 
 				// return object created by this factory function
 				return that;
@@ -354,7 +357,7 @@ define(["./vidyo.client.parameters"],
 			  */
 			'inEventParticipantsLimit': function (params) {
 				// object created by this factory function
-				var that = this.inEventMute("InEventParticipantsLimit", params);
+				var that = this.inEvent("InEventParticipantsLimit", params);
 
 				// public properties for created object,
 				// initial values of which are potentially passed
@@ -385,7 +388,7 @@ define(["./vidyo.client.parameters"],
 			  */
 			'inEventLayout': function (params) {
 				// object created by this factory function
-				var that = this.inEventMute("InEventLayout", params);
+				var that = this.inEvent("InEventLayout", params);
 
 				// public properties for created object,
 				// initial values of which are potentially passed
@@ -1238,6 +1241,24 @@ define(["./vidyo.client.parameters"],
 			},
 
 			/**
+			  * Returns type of a VidyoClient video streams changed out event object.
+			  * Event used to signal that the number of video streams received from
+			  * the server has changed.
+			  *
+			  * The event object can store the following
+			  * properties:<br/>
+			  *  - streamCount<br/>
+			  *
+			  * @name vidyoClientMessages.outEventVideoStreamsChangedType
+			  * @function
+			  * @return {String} String value for type.
+			  */
+			'outEventVideoStreamsChangedType': function () {
+			// return type of event
+				return "OutEventVideoStreamsChanged";
+			},
+
+			/**
 			  * Returns type of a VidyoClient muted audio in out event object.
 			  * Event used to acknowledge change of mute state of audio input
 			  * (capture/microphone) device.
@@ -2044,7 +2065,7 @@ define(["./vidyo.client.parameters"],
 				// public properties for created object,
 				// initial values of which are potentially passed
 				// into this factory function
-				that.levelsAndCategories = params && params.levelsAndCategories || "fatal error warning info@App info@LmiApp info@AppGui info@LmiH264SvcPace info@AppWebProxy";
+				that.levelsAndCategories = params && params.levelsAndCategories || "FATAL ERROR WARNING INFO@AppGuiUser INFO@AppGui INFO@App INFO@LmiApp INFO@AppEmcpClient INFO@AppWebProxy";
 
 				// return object created by this factory function
 				return that;
@@ -2094,7 +2115,7 @@ define(["./vidyo.client.parameters"],
 			  *  - mediaHighPort<br/>
 			  *  - proxySettings<br/>
 			  *  - videoPreferences ("BestQuality", "BestFramerate", "BestResolution", "LimitedBandwidth",<br/>
-			  *                      "Advanced450p30", "Advanced720p15", "Advanced720p30")<br/>
+			  *                      "Advanced450p30", "Advanced720p15", "Advanced720p30", "1080p30")<br/>
 			  *  - enableLogging<br/>
 			  *  - enableAutoAnswer<br/>
 			  *  - enableForceProxy<br/>
@@ -2235,7 +2256,7 @@ define(["./vidyo.client.parameters"],
 			  *  - mediaHighPort<br/>
 			  *  - proxySettings<br/>
 			  *  - videoPreferences ("BestQuality", "BestFramerate", "BestResolution", "LimitedBandwidth",<br/>
-			  *                      "Advanced450p30", "Advanced720p15", "Advanced720p30")<br/>
+			  *                      "Advanced450p30", "Advanced720p15", "Advanced720p30", "1080p30")<br/>
 			  *  - enableLogging<br/>
 			  *  - enableAutoAnswer<br/>
 			  *  - enableForceProxy<br/>
@@ -2314,7 +2335,7 @@ define(["./vidyo.client.parameters"],
 			  *  - mediaHighPort<br/>
 			  *  - proxySettings<br/>
 			  *  - videoPreferences ("BestQuality", "BestFramerate", "BestResolution", "LimitedBandwidth",<br/>
-			  *                      "Advanced450p30", "Advanced720p15", "Advanced720p30")<br/>
+			  *                      "Advanced450p30", "Advanced720p15", "Advanced720p30", "1080p30")<br/>
 			  *  - enableLogging<br/>
 			  *  - enableAutoAnswer<br/>
 			  *  - enableForceProxy<br/>
@@ -2507,10 +2528,6 @@ define(["./vidyo.client.parameters"],
 			  * The passed in parameter object can store the following
 			  * properties:<br/>
 			  *  - requestType ("ListSharingWindows")<br/>
-			  *  - remoteAppUri<br/>
-			  *  - remoteAppName<br/>
-			  *  - numApp<br/>
-			  *  - currApp<br/>
 			  *
 			  * @name vidyoClientMessages.requestGetWindowShares
 			  * @function
@@ -2532,8 +2549,8 @@ define(["./vidyo.client.parameters"],
 			  *
 			  * The passed in parameter object can store the following
 			  * properties:<br/>
-			  *  - requestType ("ChangeSharingWindow",
-			  *                 "ToggleSharingWindow", "StopSharingWindow")<br/>
+			  *  - requestType ("ChangeSharingWindow","ToggleSharingWindow",
+			  *  - "StopSharingWindow","UpdateDisplaySharingWindow","AddSharingWindow")<br/>
 			  *  - remoteAppUri<br/>
 			  *  - remoteAppName<br/>
 			  *  - numApp<br/>
@@ -2849,7 +2866,50 @@ define(["./vidyo.client.parameters"],
 				// return object created by this factory function
 				return that;
 			},
+			/**
+			  * Creates a VidyoClient get participant details at request object.
+			  * Request used to get details for the specified participant
+			  * (by index value) in current conference.
+			  *
+			  * The passed in parameter object can store the following
+			  * properties:<br/>
+			  *  - index<br/>
+			  *  - uri<br/>
+			  *  - name<br/>
+			  *  - participantID<br/>
+			  *  - entityID<br/>
+			  *  - participantType("Guest", "Recorder", "Legacy", "Control", "Undefined")<br/>
+			  *  - participantRole("Owner", "Admin", "Moderator", "None")<br/>
+			  *  - isVideoBlocked<br/>
+			  *  - isAudioBlocked<br/>
+			  *  - isShareBlocked<br/>
+			  *
+			  * @name vidyoClientMessages.requestGetParticipantDetailsAt
+			  * @function
+			  * @param {Object} params Reference to parameter object.
+			  * @return {Object} Reference to created object.
+			  */
+			'requestGetParticipantDetailsAt': function (params) {
+				// object created by this factory function
+				var that = this.request("RequestGetParticipantDetailsAt");
 
+				// public properties for created object,
+				// initial values of which are potentially passed
+				// into this factory function
+				that.index = params && params.index || 0;
+				that.uri = "";
+				that.name = "";
+				that.participantID = "";
+				that.entityID = "";
+				that.participantType = "";
+				that.participantRole = "";
+				that.isVideoBlocked = false;
+				that.isAudioBlocked = false;
+				that.isShareBlocked = false;
+
+				// return object created by this factory function
+				return that;
+			},
 			/**
 			  * Creates a VidyoClient get windows and desktops request object.
 			  * Request used to get list of open application windows and
@@ -2864,6 +2924,7 @@ define(["./vidyo.client.parameters"],
 			  *  - numSystemDesktops<br/>
 			  *  - sysDesktopName<br/>
 			  *  - sysDesktopId<br/>
+			  *  - appSharesDisabled<br/>
 			  *
 			  * @name vidyoClientMessages.requestGetWindowsAndDesktops
 			  * @function
@@ -2884,67 +2945,8 @@ define(["./vidyo.client.parameters"],
 				that.numSystemDesktops = params && params.numSystemDesktops || 0;
 				that.sysDesktopName = params && params.sysDesktopName || [""];
 				that.sysDesktopId = params && params.sysDesktopId || ["0x0000000000000000"];
+				that.appSharesDisabled = params && params.appSharesDisabled || 0;
 
-				// return object created by this factory function
-				return that;
-			},
-			
-			/**
-			  * Creates a VidyoClient get sharable window white list request object.
-			  * Request is used to get list of windows names that are marked as white list
-			  * and all those windows names matches with white list will be available
-			  * in requestGetWindowsAndDesktops even if they are not visible or a tool
-			  * window as per window style.
-			  *
-			  * The passed in parameter object can store the following
-			  * properties:<br/>
-			  *  - numWindows<br/>
-			  *  - windowName<br/>
-			  *
-			  * @name vidyoClientMessages.RequestGetSharableWindowWhiteList
-			  * @function
-			  * @param {Object} params Reference to parameter object.
-			  * @return {Object} Reference to created object.
-			  */
-			'RequestGetSharableWindowWhiteList': function (params) {
-				// object created by this factory function
-				var that = this.request("RequestGetSharableWindowWhiteList");
-
-				// public properties for created object,
-				// initial values of which are potentially passed
-				// into this factory function
-				that.numWindows = params && params.numWindows || 0;
-				that.windowName = params && params.windowName || [""];
-				// return object created by this factory function
-				return that;
-			},
-			
-			/**
-			  * Creates a VidyoClient set sharable window white list request object.
-			  * Request is used to set the list of windows names that has to be marked as white list.
-			  * All those windows names matches with white list will be available
-			  * in requestGetWindowsAndDesktops even if they are not visible or a tool
-			  * window as per window style.
-			  *
-			  * The passed in parameter object can store the following
-			  * properties:<br/>
-			  *  - numWindows<br/>
-			  *  - windowName<br/>
-			  *
-			  * @name vidyoClientMessages.RequestSetSharableWindowWhiteList
-			  * @function
-			  * @param {Object} params Reference to parameter object.
-			  * @return {Object} Reference to created object.
-			  */
-			'RequestSetSharableWindowWhiteList': function (params) {
-				// object created by this factory function
-				var that = this.request("RequestSetSharableWindowWhiteList");
-
-				// public properties for created object,
-				// initial values of which are potentially passed
-				// into this factory function
-				that.numWindows = params && params.numWindows || 0;
-				that.windowName = params && params.windowName || [""];
 				// return object created by this factory function
 				return that;
 			},
@@ -3832,6 +3834,32 @@ define(["./vidyo.client.parameters"],
 			},
 
 			/**
+			  * Creates a VidyoClient enable app share request object.
+			  * Request used to enable/disable app share on windows 8 and above only
+			  *
+			  * The passed in parameter object can store the following
+			  * properties:<br/>
+			  *  - isEnable ("0", "1")<br/>
+			  *
+			  * @name vidyoClientMessages.requestEnableAppShare
+			  * @function
+			  * @param {Object} params Reference to parameter object.
+			  * @return {Object} Reference to created object.
+			  */
+
+			'requestEnableAppShare': function (params) {
+				// object created by this factory function
+				var that = this.request("RequestEnableAppShare");
+
+				// public properties for created object,
+				// initial values of which are potentially passed
+				// into this factory function
+				that.isEnable = params && params.isEnable || false;
+				// return object created by this factory function
+				return that;
+			},
+
+			/**
 			  * Creates a VidyoClient inEventGetWindowsExt  in event object.
 			  * Used to get a full list of windows in the system
 			  * This Event is only currently implemented and returned under windows
@@ -3846,7 +3874,7 @@ define(["./vidyo.client.parameters"],
 			  */
 			'inEventGetWindowsExt': function (params) {
 				// object created by this factory function
-				var that = this.inEvent("inEventGetWindowsExt");
+				var that = this.inEvent("InEventGetWindowsExt");
 				that.requestId = params && params.requestId || "";
 				// return object created by this factory function
 				return that;

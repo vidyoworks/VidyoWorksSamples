@@ -452,7 +452,8 @@ define(["./vidyo.client.messages"],
                           // otherwise, assume method is of string type, invoke it with object as this
                           outEventCallbackObject[outEventCallbackMethods[event.type]](event);
                       }
-                      log("dispatchOutEvent() invoked specific out event callback method.");
+                      // *** log("dispatchOutEvent() invoked specific out event callback method.");
+                      log("dispatchOutEvent() invoked specific callback for event: " + event.type);
                   }
                   else if (defaultOutEventCallbackMethod) {
                       if (typeof defaultOutEventCallbackMethod === 'function') {
@@ -462,7 +463,8 @@ define(["./vidyo.client.messages"],
                           // otherwise, assume method is of string type, invoke it with object as this
                           outEventCallbackObject[defaultOutEventCallbackMethod](event);
                       }
-                      log("dispatchOutEvent() invoked default out event callback method.");
+                      // *** log("dispatchOutEvent() invoked default out event callback method.");
+                      log("dispatchOutEvent() invoked default callback  for event: " + event.type);
                   }
               }
           };

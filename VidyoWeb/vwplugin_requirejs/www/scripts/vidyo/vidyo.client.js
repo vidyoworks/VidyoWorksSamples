@@ -14,7 +14,7 @@
 /**
   * @fileOverview This file defines the module for the VidyoClient wrapper object.
   * @author Vidyo Inc.
-  * @version 1.1.1
+  * @version VIDYOWEB_BUILD_VERSION_NUMBER
   */
 
 define(["./vidyo.client.messages"],
@@ -34,6 +34,7 @@ define(["./vidyo.client.messages"],
 			// initial values of which are potentially passed
 			// into this factory function
 			/** @private */ var plugin = null;
+			/** @private */ var proxy = null;
 			/** @private */ var outEventCallbackObject = null;
 			/** @private */ var defaultOutEventCallbackMethod = "";
 			/** @private */ var logCallback = null;
@@ -79,8 +80,8 @@ define(["./vidyo.client.messages"],
 			  */
 			var getSupportedPluginMimeTypes = function () {
 				var retVal = [
-					"application/x-vidyoweb-1.1.1.00075",
-					"application/x-vidyoweb-1.1.1.99999"
+					"application/x-vidyoweb-VIDYOWEB_BUILD_VERSION_NUMBER.VIDYOWEB_BUILD_BUILD_NUMBER",
+					"application/x-vidyoweb-VIDYOWEB_BUILD_VERSION_NUMBER.99999"
 				];
 				return retVal;
 			};
@@ -94,6 +95,9 @@ define(["./vidyo.client.messages"],
 			  */
 			var setPlugin = function (pluginArg) {
 				plugin = pluginArg;
+			};
+			var setProxy = function (proxyArg) {
+				proxy = proxyArg;
 			};
 
 			/**
@@ -199,6 +203,9 @@ define(["./vidyo.client.messages"],
 			var start = function (config) {
 				var retVal = false;
 				setConfig(config);
+				if (proxyWrapper.isChrome) {
+					return true;
+				}
 				if (!plugin) {
 					log("start() invoked without plugin!");
 					return retVal;
@@ -247,6 +254,8 @@ define(["./vidyo.client.messages"],
 			  * @return {boolean} true if stopping successful, false otherwise.
 			  */
 			var stop = function () {
+				if (proxyWrapper.isChrome) { return true; }
+
 				var retVal = false;
 				if (!plugin) {
 					log("stop() invoked without plugin!");
@@ -281,11 +290,13 @@ define(["./vidyo.client.messages"],
 			  * @param {Object} event Reference to event object to send.
 			  * @return {boolean} true if successful, false otherwise.
 			  */
-			var sendEvent = function (event) {
+			var sendEvent = function (event, callback) { /* Callback is optional */
 				var retVal = false;
+				if (!proxyWrapper.isChrome) {
 				if (!plugin) {
 					log("sendEvent() invoked without plugin!");
 					return retVal;
+				}
 				}
 				if (!event || typeof event !== 'object') {
 					log("sendEvent() invoked without valid event object!");
@@ -297,16 +308,24 @@ define(["./vidyo.client.messages"],
 				}
 				/* DEBUG: retVal = true;*/
 				try {
+					if (proxyWrapper.isChrome) {
+						retVal = proxy.sendEvent(event, function(request) {
+							if (callback) {
+								callback(request);
+							}
+						});
+					} else {
 					retVal = plugin.sendEvent(event);
+						if (callback) {
+							callback(event);
+						}
+					}
 				} catch (e) {
 					log("plugin.sendEvent() threw an exception!");
 					log(e);
-					return retVal;
-				}
-				if (retVal) {
-					log("sendEvent() called plug-in with successful return.");
-				} else {
-					log("sendEvent() called plug-in with return of error!");
+					if (callback) {
+						callback(e)
+					};
 				}
 				return retVal;
 			};
@@ -329,11 +348,13 @@ define(["./vidyo.client.messages"],
 			  *                   "ErrorRequestTypeInvalid" if value of type property not known<br/>
 			  *                   "ErrorRequestFailed" if VidyoClient returns failure for request<br/>
 			  */
-			var sendRequest = function (request) {
+			var sendRequest = function (request, callback) {
 				var retVal = "Error";
+				if (!proxyWrapper.isChrome) {
 				if (!plugin) {
 					log("sendRequest() invoked without plugin!");
 					return "ErrorNoPlugin";
+				}
 				}
 				if (!request || typeof request !== 'object') {
 					log("sendRequest() invoked without valid request object!");
@@ -345,16 +366,24 @@ define(["./vidyo.client.messages"],
 				}
 				/* DEBUG: retVal = true;*/
 				try {
+					if (proxyWrapper.isChrome) {
+						retVal = proxy.sendRequest(request, function(request) {
+							if (callback) {
+								callback(request);
+							}
+						});
+					} else {
 					retVal = plugin.sendRequest(request);
+						if (callback) {
+							callback(request);
+						}
+					}
 				} catch (e) {
 					log("plugin.sendRequest() threw an exception!");
 					log(e);
-					return "ErrorInvalidPlugin";
+					if (callback){
+						callback(e);
 				}
-				if (retVal === "ErrorOk") {
-					log("sendRequest() called plug-in with successful return.");
-				} else {
-					log("sendRequest() called plug-in with return of " + retVal + "!");
 				}
 				return retVal;
 			};
@@ -367,6 +396,8 @@ define(["./vidyo.client.messages"],
 			  * @return {boolean} true if VidyoClient started, false otherwise.
 			 */
 			var isStarted = function () {
+				if (proxyWrapper.isChrome) { return true; }
+
 				var retVal = false;
 				if (!plugin) {
 					log("isStarted() invoked without plugin!");
@@ -392,6 +423,8 @@ define(["./vidyo.client.messages"],
 			  * @return {boolean} true if plug-in object valid, false otherwise.
 			 */
 			var isLoaded = function () {
+				if (proxyWrapper.isChrome) { return true; }
+
 				if (!plugin) {
 					log("isLoaded() invoked without plugin!");
 					return false;
@@ -441,6 +474,7 @@ define(["./vidyo.client.messages"],
 			// bind private functions as methods of created object
 			that.getSupportedPluginMimeTypes = getSupportedPluginMimeTypes;
 			that.setPlugin = setPlugin;
+			that.setProxy = setProxy;
 			that.setOutEventCallbackObject = setOutEventCallbackObject;
 			that.setDefaultOutEventCallbackMethod = setDefaultOutEventCallbackMethod;
 			that.setLogCallback = setLogCallback;

@@ -202,6 +202,21 @@ define(["./vidyo.client.parameters"],
 			'privateOutEventLogType': function () {
 				// return type of event
 				return "PrivateOutEventLog";
+			},
+
+			/**
+			  * Returns type of a VidyoClient private getJoinApproval out event object.
+			  * Event used to let the application know if the user approved joining the call.
+			  *
+			  * The event object can store the following
+			  * properties:
+			  *  - joinStatus
+			  *
+			  * @return {bool} bool value for joinStatus.
+			  */
+			'privateOutEventGetJoinApprovalType': function () {
+				// return type of event
+				return "PrivateOutEventGetJoinApproval";
 			}
 		}
 	}

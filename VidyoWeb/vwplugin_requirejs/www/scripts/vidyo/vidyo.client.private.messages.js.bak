@@ -14,7 +14,7 @@
 /**
   * @fileOverview This file defines the module for the private VidyoClient message objects.
   * @author Vidyo Inc.
-  * @version 1.1.0
+  * @version 1.1.1
   */
 
 define(["./vidyo.client.parameters"],

@@ -17,7 +17,7 @@
   * @version 1.1.1
   */
 
-define(["./vidyo.client-1.1.1", "./vidyo.client.messages-1.1.1", "./vidyo.client.private.messages-1.1.1"],
+define(["./vidyo.client", "./vidyo.client.messages", "./vidyo.client.private.messages"],
 	function (vidyoClient, vidyoClientMessages, vidyoClientPrivateMessages) {
 		return {
 			'config': {},
