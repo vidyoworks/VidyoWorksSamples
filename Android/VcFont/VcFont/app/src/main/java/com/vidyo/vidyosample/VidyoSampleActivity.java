@@ -172,6 +172,9 @@ public class VidyoSampleActivity extends Activity implements
 						break;
 
 					case CALL_STARTED:
+						double density = getResources().getDisplayMetrics().density;
+						app.AppSetPixelDensity(density);
+
 						app.StartConferenceMedia();
 						app.SetPreviewModeON(true);
 						app.SetCameraDevice(usedCamera);
