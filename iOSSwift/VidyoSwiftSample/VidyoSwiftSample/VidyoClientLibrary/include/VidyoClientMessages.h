@@ -203,6 +203,14 @@ typedef enum VidyoClientInEvent_
 	*/
 	VIDYO_CLIENT_IN_EVENT_LAYOUT = 901,
 	/*!
+		Change the background color of the renderer.
+
+		@see Corresponding parameter structure #VidyoClientInEventColor
+
+		@note Only functional for tiles renderer
+	*/
+	VIDYO_CLIENT_IN_EVENT_SET_BACKGROUND_COLOR = 902,
+	/*!
 		Play audio from specified data buffer, using system default audio playback
 		device for wave data, which is useful for ringtones.
 		Useful for playing sound one time when in call
@@ -324,6 +332,13 @@ typedef enum VidyoClientInEvent_
 		@warning For internal use only
 	*/
 	VIDYO_CLIENT_IN_EVENT_RAW_FRAME = 1503,
+	/*!
+		Sets the default network interface.
+		VidyoClient ignores every other network interface in any media negotiation
+
+		@see Corresponding parameter structure #VidyoClientInEventSetNetworkInterface
+	*/
+	VIDYO_CLIENT_IN_EVENT_SET_NETWORK_INTERFACE = 1504,
 	/*!
 		Called by application to login to user to Portal
 
@@ -588,7 +603,7 @@ typedef enum VidyoClientInEvent_
 	/*!
 		Used to send a audio frame.
 
-		@see VidyoClientInEventSendAudioFrame
+		@see VidyoClientAudioFrame
 	*/
 	VIDYO_CLIENT_IN_EVENT_SEND_AUDIO_FRAME = 3232,
 	/*!
@@ -1908,6 +1923,7 @@ typedef enum VidyoClientRequest_
      Does not have a parameter.
 	 */
 	VIDYO_CLIENT_REQUEST_SHOW_STATISTICS = VIDYO_CLIENT_REQUEST_BASE + 2526,
+
 #ifndef DOXYGEN_SHOULD_IGNORE_THIS
 	/*!
 		Reserved for private requests only used by standard Vidyo clients.

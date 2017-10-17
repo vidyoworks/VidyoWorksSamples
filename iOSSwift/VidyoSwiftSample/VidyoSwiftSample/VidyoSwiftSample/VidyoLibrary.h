@@ -23,6 +23,7 @@
 -(void)applicationWillResignActive:(UIApplication *)application;
 -(void)applicationDidBecomeActive:(UIApplication *)application;
 -(BOOL)vidyoClientStarted;
+-(void)LeaveRoom;
 
 
 @end

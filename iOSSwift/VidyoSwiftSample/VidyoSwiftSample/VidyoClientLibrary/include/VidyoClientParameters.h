@@ -804,8 +804,10 @@ typedef enum VidyoClientPortalFeatureNames_
 	VIDYO_CLIENT_PORTAL_FEATURE_NAME_ROUTER_PARTICIPANT_INFORMATION,
 	/*! Support for Moderated Conference information */
 	VIDYO_CLIENT_PORTAL_FEATURE_NAME_MODERATED_CONFERENCE,
-	 /*! None - invalid and should be kept at the end */
-	VIDYO_CLIENT_PORTAL_FEATURE_NAME_MAX, 
+    /*! Support for Opus Audio */
+    VIDYO_CLIENT_PORTAL_FEATURE_NAME_OPUS_AUDIO,
+    /*! None - invalid and should be kept at the end */
+	VIDYO_CLIENT_PORTAL_FEATURE_NAME_MAX
 } VidyoClientPortalFeatureNames;
 
 /*! Identification of setting on conference room.
@@ -1250,6 +1252,21 @@ typedef struct VidyoClientInEventShare_
 } VidyoClientInEventShare;
 
 
+/*! Color structure
+
+	- Used by following in events:
+		+ #VIDYO_CLIENT_IN_EVENT_SET_BACKGROUND_COLOR
+*/
+typedef struct VidyoClientInEventColor_
+{
+	/*!
+		Color parameter
+	*/
+	VidyoColor color;
+} VidyoClientInEventColor;
+
+
+
 /*! Event structure
 
 	- Used by the following in events:
@@ -1639,6 +1656,16 @@ typedef struct VidyoClientInEventRawFrame_
 	/*! Buffer containing a raw RGB frame. */
 	VidyoUint8 samples[1];
 } VidyoClientInEventRawFrame;
+
+/*! Event structure
+	- Used by following in events:
+		+ #VIDYO_CLIENT_IN_EVENT_SET_NETWORK_INTERFACE
+*/
+typedef struct VidyoClientInEventSetNetworkInterface_
+{
+	/*! Name of the network interface */
+	char name[MAX_INTERFACE_LENGTH];
+} VidyoClientInEventSetNetworkInterface;
 
 /*! Event structure
 	- Used by following in events:

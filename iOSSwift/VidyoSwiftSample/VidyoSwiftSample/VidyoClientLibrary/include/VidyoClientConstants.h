@@ -267,6 +267,7 @@
 #define MAX_FONT_PATH_SIZE (255+1)
 #define MAX_PORTAL_PREFIX_SIZE (16+1)
 #define MAX_COMMAND_LEN 4096 // Maximum length of command text
+#define MAX_INTERFACE_LENGTH (256+1)
 
 
 #define MAX_APPROVED_DOMAIN_NAMES 10

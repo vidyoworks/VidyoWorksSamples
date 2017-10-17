@@ -253,6 +253,17 @@ void vidyoClientEvents(VidyoClientOutEvent event,
     }
 
 }
+
+
+
+-(void)LeaveRoom
+{
+    if (VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_LEAVE, NULL, 0) == false)
+    {
+    }
+}
+
+
 -(void)orientationDidChange:(NSNotification *)notification
 {
     NSLog(@"Orientation changed %@", notification);
