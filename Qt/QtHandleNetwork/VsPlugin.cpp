@@ -216,7 +216,13 @@ void VsPlugin::OnOutEvent(VidyoClientOutEvent event, VidyoVoidPtr param, VidyoUi
                     VidyoUint *parm1 = (VidyoUint *)param;
                     unsigned linkedState = *parm1;
                     qDebug() << "......link state = " << linkedState;
-                    m_statusWindow->LinkState(linkedState);
+            }
+            break;
+
+            case VIDYO_CLIENT_OUT_EVENT_IS_PORTAL_AVAILABLE:
+            {
+                    VidyoClientOutEventIsPortalAvailable * portalAvail = (VidyoClientOutEventIsPortalAvailable*)param;
+                    m_statusWindow->IsPortalAvail(portalAvail->isPortalAvailable == VIDYO_TRUE);
             }
             break;
             default:
@@ -368,5 +374,19 @@ bool VsPlugin::VsCallEnd()
              return false;
      }
      return true;
+ }
+
+
+ void VsPlugin::VsCheckPortalAccessible(const QString& portal)
+ {
+     VidyoClientInEventIsPortalAvailable reqIsPortalAvail = {};
+     SAFE_STRING_CPY((char *)reqIsPortalAvail.portalUri, portal.toAscii().data(), sizeof(reqIsPortalAvail.portalUri));
+     if (!VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_IS_PORTAL_AVAILABLE,
+         &reqIsPortalAvail,
+         sizeof(VidyoClientInEventIsPortalAvailable)))
+     {
+
+     }
+     return;
  }
 

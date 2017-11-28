@@ -26,6 +26,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    if(bandwidthMonitorTimer)
+        bandwidthMonitorTimer->stop();
+    if(portalMonitorTimer)
+        portalMonitorTimer->stop();
     delete ui;
 }
 
@@ -82,6 +86,9 @@ void MainWindow::on_pushButtonRoomLink_clicked()
 
     if(roomLink->result.isEmpty())
         return;
+
+    if(roomLink->result.size() >= 1)
+        ui->lineEditPortal->setText(roomLink->result[0]);
     if(!vsPlugin->VsRoomLink(roomLink->result))
     {
         QMessageBox msgBox;
@@ -222,3 +229,49 @@ void MainWindow::LinkState(unsigned value)
 
 }
 
+
+
+void MainWindow::OnMonitorNetworkSlot()
+{
+   vsPlugin->VsCheckPortalAccessible(ui->lineEditPortal->text());
+
+}
+
+void MainWindow::IsPortalAvail(bool value)
+{
+    m_bPortalAvailable = value;
+    QTimer::singleShot(0, this, SLOT(onIsPortalAvail()));
+
+}
+
+void MainWindow::onIsPortalAvail()
+{
+    if(m_bPortalAvailable)
+        ui->label_PortalStatus->setText("Availanle");
+    else
+        ui->label_PortalStatus->setText("Unavailable");
+
+}
+
+void MainWindow::on_pushButtonMonitorNetwork_clicked()
+{
+    if(ui->lineEditPortal->text().size() == 0)
+        return;
+
+    QString textOnButton = ui->pushButtonMonitorNetwork->text();
+           if(textOnButton.compare("StopCheck") == 0)
+           {
+               this->portalMonitorTimer->stop();
+               ui->pushButtonMonitorNetwork->setText("MonitorNetwork");
+               return;
+           }
+
+
+          ui->pushButtonMonitorNetwork->setText("StopCheck");
+          this->portalMonitorTimer = SmartTimer(new QTimer());
+          this->portalMonitorTimer->setInterval(5000);
+          this->portalMonitorTimer->setSingleShot(false);
+          QObject::connect(this->portalMonitorTimer.data(), SIGNAL(timeout()), this, SLOT(OnMonitorNetworkSlot()));
+
+           this->portalMonitorTimer->start();
+}

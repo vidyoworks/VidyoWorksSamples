@@ -154,7 +154,10 @@ typedef struct VidyoClientFeatureControl_
 	VidyoBool disableLocalCamera;           /*!< VIDYO_TRUE to disable using all cameras connected to machine for capturing video. VIDYO_FALSE to enable using local camera */
 	VidyoBool disableAutoLoginAtClientStart;/*!< VIDYO_TRUE to disable automatic login to VidyoPortal as previously logged-in user if available at VidyoClient start. VIDYO_FALSE to enable automatic login */
 	VidyoBool disableVidyoPortalInterface;  /*!< VIDYO_TRUE to disable SOAP interface with VidyoPortal. Clients working by disabling VidyoPortal interface should be using a SOAP client for user login, licensing, search, contact or roster and conference management. VIDYO_FALSE to enable VidyoPortal Interface. */
-    VidyoBool disableUiPinning;             /*!< VIDYO_TRUE to disable the pinning using the user interface (clicing Star with tiles renderer). VIDYO_FALSE to enable (default) */
+	VidyoBool enableVirtualCameraInterface;	/*!< VIDYO_TRUE to enable virtual camera Interface where frames to render will be written to a shared memory created by VidyoClient. */
+	VidyoBool enableOpusAudioCodec;			/*!< VIDYO_TRUE to enable OPUS audio codec (if supported by portal/router). VIDYO_FLASE to disable OPUS audio codec (Default) */
+	VidyoBool disableUiPinning;             /*!< VIDYO_TRUE to disable the pinning using the user interface. Tiles Renderer Only. VIDYO_FALSE to enable (default) */
+    VidyoBool androidForceResolution;             /*!< VIDYO_TRUE to respect the resolution set for advanced resolutions. VIDYO_FALSE implies that bandwidth / cpu adjustments might still change it (default) */
 } VidyoClientFeatureControl;
 
 #if defined(__cplusplus)
@@ -203,6 +206,11 @@ typedef void (WINAPI *VidyoClientOutEventCallback)( VidyoClientOutEvent event,
 */
 DECLSPEC void VidyoClientFeatureControlConstructDefault(VidyoClientFeatureControl *featureControlParam);
 
+/**
+ * * @addtogroup VidyoClientApiModule
+ * * @{
+ * */
+
 /*!
 	@brief Set or configure VidyoClient with optional features.
 
@@ -215,6 +223,7 @@ DECLSPEC void VidyoClientFeatureControlConstructDefault(VidyoClientFeatureContro
 			an inability to accept the requested feature control.
 */
 DECLSPEC VidyoBool VidyoClientSetOptionalFeatures(VidyoClientFeatureControl *featureControlParam);
+/** @} */
 
 /*!
 	@brief Set or configure VidyoClient instance identity. This is required only if multiple instances of vidyoclient are
@@ -387,7 +396,7 @@ DECLSPEC VidyoUint VidyoClientSendRequest(VidyoClientRequest request,
 
 	@see VidyoClientStart()
 */
-DECLSPEC VidyoBool VidyoClientIsStarted();
+DECLSPEC VidyoBool VidyoClientIsStarted(void);
 
     /*!
      @brief To start synchronize the Vidyo Client Library activities using internal mutex.
@@ -395,7 +404,7 @@ DECLSPEC VidyoBool VidyoClientIsStarted();
      
      @see VidyoClientInitialize()
      */
-DECLSPEC VidyoBool VidyoClientSynchronizeStart();
+DECLSPEC VidyoBool VidyoClientSynchronizeStart(void);
     
     /*!
      @brief To end synchronize the Vidyo Client Library activities using internal mutex.
@@ -403,7 +412,7 @@ DECLSPEC VidyoBool VidyoClientSynchronizeStart();
      
      @see VidyoClientInitialize()
      */
-    DECLSPEC VidyoBool VidyoClientSynchronizeEnd();
+    DECLSPEC VidyoBool VidyoClientSynchronizeEnd(void);
  
 /*!
 	@brief Gets the version of VidyoClient.
@@ -446,7 +455,7 @@ DECLSPEC void VidyoClientGetProductTag(char *output, VidyoSizeT size);
 	@warning Do not call before #VidyoClientInitialize is successful or after #VidyoClientUninitialize is executed.
 
 */
-DECLSPEC VidyoClientLogConfidentialityLevel VidyoClientGetLogConfidentialityLevel();
+DECLSPEC VidyoClientLogConfidentialityLevel VidyoClientGetLogConfidentialityLevel(void);
 
 /*!
 	@brief Set the confidentiality level for the log
@@ -571,6 +580,24 @@ DECLSPEC void VidyoClientLogFormatted(VidyoLogLevel level,
 */
 DECLSPEC void VidyoClientNoLog(const char *message);
 
+    /*!
+     @brief Setup license keychain name instead of default.
+     
+     Must be called before VidyoClientStart().
+     
+     @param[in]    keyChain    Set license keychain. Keychain must start with "."
+     @return (Nothing)
+     */
+DECLSPEC void VidyoClientSetKeyChain(char *keyChain);
+    
+    /*!
+     @brief Return license keychain name.
+     
+     @param[in]    (Nothing)
+     
+     @return license keychain name. If license keychain is not change, return default keychain.
+     */
+DECLSPEC const char* VidyoClientGetKeyChain(void);
 
 /*!
 	@brief Log a formatted message to nowhere.

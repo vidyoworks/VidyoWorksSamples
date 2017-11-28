@@ -804,8 +804,10 @@ typedef enum VidyoClientPortalFeatureNames_
 	VIDYO_CLIENT_PORTAL_FEATURE_NAME_ROUTER_PARTICIPANT_INFORMATION,
 	/*! Support for Moderated Conference information */
 	VIDYO_CLIENT_PORTAL_FEATURE_NAME_MODERATED_CONFERENCE,
-	 /*! None - invalid and should be kept at the end */
-	VIDYO_CLIENT_PORTAL_FEATURE_NAME_MAX, 
+    /*! Support for Opus Audio */
+    VIDYO_CLIENT_PORTAL_FEATURE_NAME_OPUS_AUDIO,
+    /*! None - invalid and should be kept at the end */
+	VIDYO_CLIENT_PORTAL_FEATURE_NAME_MAX
 } VidyoClientPortalFeatureNames;
 
 /*! Identification of setting on conference room.
@@ -1250,6 +1252,21 @@ typedef struct VidyoClientInEventShare_
 } VidyoClientInEventShare;
 
 
+/*! Color structure
+
+	- Used by following in events:
+		+ #VIDYO_CLIENT_IN_EVENT_SET_BACKGROUND_COLOR
+*/
+typedef struct VidyoClientInEventColor_
+{
+	/*!
+		Color parameter
+	*/
+	VidyoColor color;
+} VidyoClientInEventColor;
+
+
+
 /*! Event structure
 
 	- Used by the following in events:
@@ -1639,6 +1656,16 @@ typedef struct VidyoClientInEventRawFrame_
 	/*! Buffer containing a raw RGB frame. */
 	VidyoUint8 samples[1];
 } VidyoClientInEventRawFrame;
+
+/*! Event structure
+	- Used by following in events:
+		+ #VIDYO_CLIENT_IN_EVENT_SET_NETWORK_INTERFACE
+*/
+typedef struct VidyoClientInEventSetNetworkInterface_
+{
+	/*! Name of the network interface */
+	char name[MAX_INTERFACE_LENGTH];
+} VidyoClientInEventSetNetworkInterface;
 
 /*! Event structure
 	- Used by following in events:
@@ -2403,6 +2430,18 @@ typedef struct VidyoClientInEventPrivateCommand_
 	/*! Command to be sent */
 	char command[MAX_COMMAND_LEN];
 } VidyoClientInEventPrivateCommand;
+
+/*! Event structure
+ 
+	- Used by following in events:
+    + #VIDYO_CLIENT_IN_EVENT_IS_PORTAL_AVAILABLE
+*/
+typedef struct VidyoClientInEventIsPortalAvailable_
+{
+    /*! A unique request ID to match the in and its corresponding out event - should be a copy of in event */
+    VidyoUint	requestId;
+    char portalUri[URI_LEN];
+} VidyoClientInEventIsPortalAvailable;
 
 /*******************************************************************************
  Parameter structures for events from Vidyo Client Library to GUI
@@ -3669,6 +3708,19 @@ typedef struct VidyoClientOutEventPrivateCommand_
 	char command[MAX_COMMAND_LEN];
 } VidyoClientOutEventPrivateCommand;
 
+/*! Event structure
+ 
+	- Used by following in events:
+    + #VIDYO_CLIENT_OUT_EVENT_IS_PORTAL_AVAILABLE
+*/
+typedef struct VidyoClientOutEventIsPortalAvailable_
+{
+    /*! A unique request ID to match the in and its corresponding out event - should be a copy of in event */
+    VidyoUint	requestId;
+    char portalUri[URI_LEN];
+    VidyoBool isPortalAvailable;
+} VidyoClientOutEventIsPortalAvailable;
+
 
 
 /*******************************************************************************
@@ -3704,6 +3756,8 @@ typedef struct VidyoClientOutEventPrivateCommand_
 		0~UINT_MAX, UINT_MAX designating no current selection.
 	@var VidyoClientRequestConfiguration::cameras [out]
 		Array of values for the names of attached video (capture/camera) devices.
+     @var VidyoClientRequestConfiguration::labels [out]
+         Array of values for the labels(name and id) of attached video (capture/camera) devices.
 	@var VidyoClientRequestConfiguration::numberCameras [out]
 		Number of attached video (capture/camera) devices.  Range of values 0~UINT_MAX.
 	@var VidyoClientRequestConfiguration::currentCamera [in,out]
@@ -3866,6 +3920,8 @@ typedef struct VidyoClientOutEventPrivateCommand_
         is brought to foreground and it goes online.
 	@var VidyoClientRequestConfiguration::allowLetterBoxVideoScaling [in,out]
 		Non-zero value for allow scaling of video in letter box (no cropping), zero value for disallow scaling of video in letter box (will crop and might be zoomed).
+     @var VidyoClientRequestConfiguration::enableTilesToolbars [in,out]
+         Value that indicating whether toolbar and statusbar are enabled in tiles renderer. Only for Tiles renderer.
 */
 typedef struct VidyoClientRequestConfiguration_
 {
@@ -3881,6 +3937,7 @@ typedef struct VidyoClientRequestConfiguration_
 	VidyoUint currentSpeaker;
 
 	VidyoUint8 cameras[MAX_DEVICE_NUMBER][DEVICE_NAME_SIZE];
+    VidyoUint8 cameraLabels[MAX_DEVICE_NUMBER][DEVICE_NAME_SIZE];
 	VidyoUint numberCameras;
 	VidyoUint currentCamera;
 
@@ -3939,6 +3996,7 @@ typedef struct VidyoClientRequestConfiguration_
 	VidyoUint selfViewLoopbackPolicy;
     VidyoUint enableLowBackgroundTimeout;
 	VidyoUint allowLetterBoxVideoScaling;
+    VidyoBool enableTilesToolbars;
 } VidyoClientRequestConfiguration;
 
 /*! Request structure
@@ -5503,6 +5561,28 @@ typedef struct VidyoClientRequestCommunicationStatus_
 	/*! VidyoRouter via. WebProxy */
 	VidyoBool vrCommunicationViaWebProxy;
 } VidyoClientRequestCommunicationStatus;
+
+/*! @struct VidyoClientRequestSetPortalAddress
+	Request structure
+	- Used by following requests:
+ + #VIDYO_CLIENT_REQUEST_SET_PORTAL_ADDRESS
+ */
+typedef struct VidyoClientRequestSetPortalAddress_
+{
+    /*! Contains portal address which will be added to configuration file */
+    char portalAddress[FIELD_SIZE];
+} VidyoClientRequestSetPortalAddress;
+
+/*! @struct VidyoClientRequestSetBandwidthAdjustmentPeriod
+ Request structure
+ - Used by following requests:
+ + #VIDYO_CLIENT_REQUEST_SET_BANDWIDTH_ADJUSTMENT_PERIOD
+ */
+typedef struct VidyoClientRequestSetBandwidthAdjustmentPeriod_
+{
+    /*! Contains bandwidth adjustment period which will be set for tiles renderer */
+    VidyoUint bandwidthAdjustmentPeriod; //seconds
+} VidyoClientRequestSetBandwidthAdjustmentPeriod;
 
 #ifndef DOXYGEN_SHOULD_IGNORE_THIS
 /*! Request structure

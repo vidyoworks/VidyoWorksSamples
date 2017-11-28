@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QAbstractButton>
 #include <QStringList>
+#include <QSharedPointer>
 
 namespace Ui {
 class VsRoomLink;
@@ -21,7 +22,6 @@ public:
 private slots:
 
     void on_buttonBox_accepted();
-
 private:
     Ui::VsRoomLink *ui;
     bool Validate();

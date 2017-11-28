@@ -13,6 +13,7 @@ public:
     virtual void MicMute(bool value) = 0;
     virtual void LectureMode(bool value) = 0;
     virtual void LinkState(unsigned value) = 0;
+    virtual void IsPortalAvail(bool value) = 0;
 };
 typedef QSharedPointer<VsStatus> VsStatusPtr;
 

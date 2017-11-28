@@ -27,6 +27,7 @@ public:
     virtual void MicMute(bool value);
     virtual void LectureMode(bool value);
     virtual void LinkState(unsigned value);
+    virtual void IsPortalAvail(bool value);
 
 private slots:
     void on_pushButtonStart_clicked();
@@ -44,8 +45,13 @@ private slots:
     void onShowConnection();
 
     void OnBandwidthMonitorSlot();
+    void OnMonitorNetworkSlot();
 
     //void on_pushStaticButton_clicked();
+
+    void onIsPortalAvail();
+
+    void on_pushButtonMonitorNetwork_clicked();
 
 private:
     void ShowAfterStart();
@@ -55,6 +61,8 @@ private:
     bool m_bInCall;
     bool m_bNoLinkOn;
     SmartTimer bandwidthMonitorTimer;
+    SmartTimer portalMonitorTimer;
+    bool m_bPortalAvailable;
 };
 
 #endif // MAINWINDOW_H

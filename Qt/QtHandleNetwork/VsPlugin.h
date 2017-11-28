@@ -27,6 +27,7 @@ public:
     void EmitOutEvent(VidyoClientOutEvent event, VidyoVoidPtr param, VidyoUint paramSize, VidyoVoidPtr data);
     void VsResize(const QRect& rect);
     bool VsIsLinkAvailable();
+    void VsCheckPortalAccessible(const QString& portal);
 
 signals:
     void OutEvent(VidyoClientOutEvent event, VidyoVoidPtr param, VidyoUint paramSize, VidyoVoidPtr data);
