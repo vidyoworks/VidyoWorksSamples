@@ -828,11 +828,10 @@ JNIEXPORT jboolean JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_IsL
     VidyoClientRequestBandwidthInfo reqBandwidthInfo = {};
     
     if (VidyoClientSendRequest(VIDYO_CLIENT_REQUEST_GET_BANDWIDTH_INFO, &reqBandwidthInfo, sizeof(reqBandwidthInfo))
-        == VIDYO_CLIENT_ERROR_OK)
-    {
-        if(reqBandwidthInfo.ActualRecvBwMax < 10)
-            return (jboolean)0;
-    }
+        != VIDYO_CLIENT_ERROR_OK)
+        return (jboolean)0;
+    if(reqBandwidthInfo.ActualRecvBwMax < 10)
+        return (jboolean)0;
     return (jboolean)1;
 }
 
