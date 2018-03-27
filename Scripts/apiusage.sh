@@ -71,7 +71,8 @@ ParseUsage "privates" "VIDYO_CLIENT_PRIVATE_"
 
 echo "Web code analysis" >> $LOG_FILE >&1
 ParseUsageWeb "events" "sendEvent" "InEvent"
-ParseUsageWeb "request" "sendRequest" "client.sendRequest"
+ParseUsageWeb "request" "sendRequest" "RequestSet"
+ParseUsageWeb "request" "sendRequest" "RequestGet"
 ParseUsageWeb "notifications" "OutEvent" "OutEvent"
 echo "Web code analysis complete" >> $LOG_FILE >&1
 
