@@ -10,9 +10,25 @@ function ParseUsage
  echo "Unique Occurrences" >> $LOG_FILE >&1
  grep -ohir --include='*.cpp' --include='*.c'  --include='*.m'  --include='*.mm' "\w*$FILTER_VAL\w*" $TARGET_FOLDER  | sort  | uniq  | wc -l >> $LOG_FILE >&1
  echo "Spread across in number of files:" >> $LOG_FILE >&1
- grep -ohir --include='*.cpp' --include='*.c' --include='*.m'  --include='*.mm' -le "\w*$FILTER_VALV\w*" $TARGET_FOLDER  | sort  | uniq | wc -l >> $LOG_FILE >&1
+ grep -ohir --include='*.cpp' --include='*.c' --include='*.m'  --include='*.mm' -le "\w*$FILTER_VAL\w*" $TARGET_FOLDER  | sort  | uniq | wc -l >> $LOG_FILE >&1
  echo "*******All events ******" >> $LOG_FILE >&1
- grep -ohir --include='*.cpp' --include='*.c'  --include='*.m'  --include='*.mm' "\w*$FILTER_VAL\w*" $TARGET_FOLDER >> $LOG_FILE >&1
+ grep -ohir --include='*.cpp' --include='*.c'  --include='*.m'  --include='*.mm' "\w*$FILTER_VAL\w*" $TARGET_FOLDER | sort >> $LOG_FILE >&1
+ echo "*******All $CALLER_TYPE done ******" >> $LOG_FILE >&1
+}
+
+function ParseUsageWeb 
+{
+ CALLER_TYPE=$1
+ FILTER_VAL=$2
+ FILTER_VAL2=$3
+ 
+ echo "***********************Analysing all $CALLER_TYPE***********************" >> $LOG_FILE >&1
+ echo "Unique Occurrences" >> $LOG_FILE >&1
+ grep -ohir --include='*.js' "\w*$FILTER_VAL\w*" $TARGET_FOLDER  | sort  | uniq  | wc -l >> $LOG_FILE >&1
+ echo "Spread across in number of files:" >> $LOG_FILE >&1
+ grep -ohir --include='*.js' -le "\w*$FILTER_VAL\w*" $TARGET_FOLDER  | sort  | uniq | wc -l >> $LOG_FILE >&1
+ echo "*******All events ******" >> $LOG_FILE >&1
+ grep -ohr --include='*.js' "\w*$FILTER_VAL2\w*" $TARGET_FOLDER | sort >> $LOG_FILE >&1
  echo "*******All $CALLER_TYPE done ******" >> $LOG_FILE >&1
 }
 
@@ -52,6 +68,12 @@ ParseUsage "events" "VIDYO_CLIENT_IN_EVENT_"
 ParseUsage "requests" "VIDYO_CLIENT_REQUEST_"
 ParseUsage "notifications" "VIDYO_CLIENT_OUT_EVENT_"
 ParseUsage "privates" "VIDYO_CLIENT_PRIVATE_"
+
+echo "Web code analysis" >> $LOG_FILE >&1
+ParseUsageWeb "events" "sendEvent" "InEvent"
+ParseUsageWeb "request" "sendRequest" "client.sendRequest"
+ParseUsageWeb "notifications" "OutEvent" "OutEvent"
+echo "Web code analysis complete" >> $LOG_FILE >&1
 
 NOWBEGIN=$(date +"%T")
 echo "Completed at $NOWBEGIN" >> $LOG_FILE >&1
