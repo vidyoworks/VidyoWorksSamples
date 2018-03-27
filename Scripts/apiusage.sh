@@ -7,9 +7,9 @@ function ParseUsage
  FILTER_VAL=$2
  
  echo "***********************Analysing all $CALLER_TYPE***********************" >> $LOG_FILE >&1
- echo "Unique Occurrences" >> $LOG_FILE >&1
+ printf "Unique Occurrences: " >> $LOG_FILE >&1
  grep -ohir --include='*.cpp' --include='*.c'  --include='*.m'  --include='*.mm' "\w*$FILTER_VAL\w*" $TARGET_FOLDER  | sort  | uniq  | wc -l >> $LOG_FILE >&1
- echo "Spread across in number of files:" >> $LOG_FILE >&1
+ printf "Spread across in number of files:" >> $LOG_FILE >&1
  grep -ohir --include='*.cpp' --include='*.c' --include='*.m'  --include='*.mm' -le "\w*$FILTER_VAL\w*" $TARGET_FOLDER  | sort  | uniq | wc -l >> $LOG_FILE >&1
  echo "*******All events ******" >> $LOG_FILE >&1
  grep -ohir --include='*.cpp' --include='*.c'  --include='*.m'  --include='*.mm' "\w*$FILTER_VAL\w*" $TARGET_FOLDER | sort >> $LOG_FILE >&1
@@ -23,9 +23,9 @@ function ParseUsageWeb
  FILTER_VAL2=$3
  
  echo "***********************Analysing all $CALLER_TYPE***********************" >> $LOG_FILE >&1
- echo "Unique Occurrences" >> $LOG_FILE >&1
+ printf "Unique Occurrences: " >> $LOG_FILE >&1
  grep -ohir --include='*.js' "\w*$FILTER_VAL\w*" $TARGET_FOLDER  | sort  | uniq  | wc -l >> $LOG_FILE >&1
- echo "Spread across in number of files:" >> $LOG_FILE >&1
+ printf "Spread across in number of files: " >> $LOG_FILE >&1
  grep -ohir --include='*.js' -le "\w*$FILTER_VAL\w*" $TARGET_FOLDER  | sort  | uniq | wc -l >> $LOG_FILE >&1
  echo "*******All events ******" >> $LOG_FILE >&1
  grep -ohr --include='*.js' "\w*$FILTER_VAL2\w*" $TARGET_FOLDER | sort >> $LOG_FILE >&1
