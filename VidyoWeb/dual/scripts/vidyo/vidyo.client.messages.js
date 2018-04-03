@@ -1221,6 +1221,19 @@ const vidyoClientMessages = (function (vidyoClientParameters) {
 			return "OutEventConferenceEnded";
 		},
 
+        /**
+          * Returns type of a VidyoClient initial frame sent out event object.
+          * Event used to signal that first frame of conference was reseived.
+          *
+          * @name vidyoClientMessages.outEventInitialVideoFrameSentType
+          * @function
+          * @return {String} String value for type.
+          */
+        'outEventInitialVideoFrameSentType': function () {
+            // return type of event
+            return "OutEventInitialVideoFrameSent";
+        },
+
 		/**
 		  * Returns type of a VidyoClient participants changed out event object.
 		  * Event used to signal that a participant has joined or left the current
@@ -3132,6 +3145,31 @@ const vidyoClientMessages = (function (vidyoClientParameters) {
 		},
 
 		/**
+		  * Creates a VidyoClient set portal address request object.
+		  * Request used to set portal address.
+		  *
+		  * The passed in parameter object can store the following
+		  * properties:<br/>
+		  *  - portalAddress<br/>
+		  *
+		  * @name vidyoClientMessages.requestSetPortalAddress
+		  * @function
+		  * @param {Object} params Reference to parameter object.
+		  * @return {Object} Reference to created object.
+		  */
+		'requestSetPortalAddress': function (params) {
+			// object created by this factory function
+			var that = this.request("RequestSetPortalAddress");
+
+			// public properties for created object,
+			// initial values of which are potentially passed
+			// into this factory function
+			that.portalAddress = params && params.portalAddress || "";
+			// return object created by this factory function
+			return that;
+		},
+
+		/**
 		  * Creates a VidyoClient get preview mode request object.
 		  * Request used to get preview mode for self-view.
 		  *
@@ -3393,6 +3431,94 @@ const vidyoClientMessages = (function (vidyoClientParameters) {
 			// return object created by this factory function
 			return that;
 		},
+                             
+        /**
+          * Creates a VidyoClient set console log configuration request object.
+          * Request used to set console log configuration parameter.
+          *
+          * The passed in parameter object can store the following
+          * property:<br/>
+          *  - ConsoleLogConfiguration ("None", "Direct", "All", "OutEventOnly", "Reserved")<br/>
+          *
+          * @name vidyoClientMessages.requestSetConsoleLogConfiguration
+          * @function
+          * @param {Object} param Reference to parameter object.
+          * @return {Object} Reference to created object.
+          */
+        'requestSetConsoleLogConfiguration': function (params) {
+            // object created by this factory function
+            var that = this.request("RequestSetConsoleLogConfiguration");
+            that.consoleLogConfiguration = params.consoleLogConfiguration;
+                             
+            // return object created by this factory function
+            return that;
+        },
+
+        /**
+          * Creates a VidyoClient set max log files request object.
+          * Request used to set max log files.
+          *
+          * The passed in parameter object can store the following
+          * property:<br/>
+          *  - maxLogFiles - number<br/>
+          *
+          * @name vidyoClientMessages.requestSetMaxLogFiles
+          * @function
+          * @param {Object} param Reference to parameter object.
+          * @return {Object} Reference to created object.
+          */
+        'requestSetMaxLogFiles': function (params) {
+            // object created by this factory function
+            var that = this.request("RequestSetMaxLogFiles");
+            that.maxLogFiles = params.maxLogFiles;
+
+            // return object created by this factory function
+            return that;
+        },
+
+        /**
+          * Creates a VidyoClient set max log file size request object.
+          * Request used to set max log file size.
+          *
+          * The passed in parameter object can store the following
+          * property:<br/>
+          *  - maxLogSize - number<br/>
+          *
+          * @name vidyoClientMessages.requestSetMaxLogSize
+          * @function
+          * @param {Object} param Reference to parameter object.
+          * @return {Object} Reference to created object.
+          */
+        'requestSetMaxLogSize': function (params) {
+            // object created by this factory function
+            var that = this.request("RequestSetMaxLogSize");
+            that.maxLogSize = params.maxLogSize;
+
+            // return object created by this factory function
+            return that;
+        },
+
+        /**
+          * Creates a VidyoClient enable or disable statistic request object.
+          * Request used to enable or disable statistic.
+          *
+          * The passed in parameter object can store the following
+          * property:<br/>
+          *  - enableStatistic - boolean<br/>
+          *
+          * @name vidyoClientMessages.requestEnableStatistic
+          * @function
+          * @param {Object} param Reference to parameter object.
+          * @return {Object} Reference to created object.
+        */
+        'requestEnableStatistic': function (params) {
+            // object created by this factory function
+            var that = this.request("RequestEnableStatistic");
+            that.enableStatistic = params.enableStatistic;
+
+            // return object created by this factory function
+            return that;
+        },
 
 		/**
 		  * Creates a VidyoClient get current user information request object.

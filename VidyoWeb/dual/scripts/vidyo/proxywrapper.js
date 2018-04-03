@@ -20,11 +20,11 @@ var proxyWrapper = (function() {
 	var supportedVersions = (function() {
 		if (navigator.appVersion.indexOf('Windows') !== -1) {
 			return [
-				'1.3.21_0005'
+				'1.3.25_0001'
 			];
 		} else {
 			return [
-				'1.3.21_0005'
+				'1.3.25_0001'
 			];
 		}
 	})();
@@ -124,6 +124,7 @@ var proxyWrapper = (function() {
 			2860:'VIDYO_CLIENT_OUT_EVENT_NETWORK_INTERFACE_CHANGED',
 			3000:'VIDYO_CLIENT_OUT_EVENT_PORTAL_SERVICE',
 			3100:'VIDYO_CLIENT_OUT_EVENT_LOG',
+            4030:'VIDYO_CLIENT_OUT_EVENT_INITIAL_VIDEO_FRAME_SENT',
 			99999:'VIDYO_CLIENT_OUT_EVENT_MAX'
 		};
 
@@ -551,6 +552,7 @@ var proxyWrapper = (function() {
 
 					var getInitialConstraints = function() {
 						var videoConstraints;
+
 						if (navigator.appVersion.indexOf('Windows') !== -1) {
 							videoConstraints = {deviceId: virtualCameraSource ? {exact: virtualCameraSource.deviceId} : undefined, width: {exact: 1920}, height: {exact: 1080}};
 						} else {
@@ -572,7 +574,7 @@ var proxyWrapper = (function() {
 					return tempCallback('This browser does not support MediaDevices');
 				} else {
 					// First we call this function in order to get access to the devices labels
-					navigator.mediaDevices.getUserMedia({video: true})
+					navigator.mediaDevices.getUserMedia({video: true, audio: true})
 						.then(function(stream) {
 							stream.getTracks().forEach(function(track) {
 								track.stop();

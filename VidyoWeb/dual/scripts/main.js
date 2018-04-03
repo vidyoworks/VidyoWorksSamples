@@ -1,7 +1,7 @@
 <!-- hide script from old browsers
 
 var timer;   
-var npApiPluginVersion = "1.3.21.0002"; 
+var npApiPluginVersion = "1.3.25.0001"; 
 
 //in-call variables to manage display modes, etc
 var fullScreenShare = false;

@@ -440,6 +440,27 @@ define(["./vidyo.client.messages"],
 				return true;
 			};
 
+            /**
+            * Set console log configuration in VC library
+            *
+            * @param {Object} contains one of configuration types: "None", "Direct", "All", "OutEventOnly",
+            * "Reserved"
+            * e.g. {consoleLogConfiguration: 'All'}
+            * @return {string} error message.
+            */
+            var setConsoleLogConfiguration = function (consoleLogConfiguration) {
+                if (proxyWrapper.isChrome)
+                    return true;
+
+                if (!isStarted())
+                    return "ErrorPlugginNotStarted";
+
+                if(consoleLogConfiguration == undefined)
+                    return "ErrorInvalidPropertyName";
+                else
+                    return plugin.setConsoleLogConfiguration(consoleLogConfiguration);
+            };
+
 			// callback and/or event handling functions (only called/triggered by plug-in object)
 			/** @private */ var dispatchOutEvent = function (event) {
 				if (outEventCallbackObject) {
@@ -487,6 +508,7 @@ define(["./vidyo.client.messages"],
 			that.isStarted = isStarted;
 			that.isLoaded = isLoaded;
 			that.dispatchOutEvent = dispatchOutEvent;
+            that.setConsoleLogConfiguration = setConsoleLogConfiguration;
 
 			// return object created by this factory function
 			return that;
