@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B6908B62078FE8100EAB1CA /* VexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6908B52078FE8100EAB1CA /* VexHelper.swift */; };
 		7360249C1E7B13010071C2BF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7360249B1E7B13010071C2BF /* Security.framework */; };
 		7360249E1E7B130C0071C2BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7360249D1E7B130C0071C2BF /* Foundation.framework */; };
 		736024A01E7B13130071C2BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7360249F1E7B13130071C2BF /* CoreGraphics.framework */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		12604AAB8F0E1B5394495300 /* Pods_VidyoSwiftSampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VidyoSwiftSampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B6908B52078FE8100EAB1CA /* VexHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VexHelper.swift; sourceTree = "<group>"; };
 		347CC44C648C6103061F1724 /* Pods_VidyoSwiftSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VidyoSwiftSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		387A120BF4A470E536B22C79 /* Pods-VidyoSwiftSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VidyoSwiftSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VidyoSwiftSample/Pods-VidyoSwiftSample.debug.xcconfig"; sourceTree = "<group>"; };
 		3B43A0C06A9DC0AB71887F9E /* Pods-VidyoSwiftSampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VidyoSwiftSampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VidyoSwiftSampleUITests/Pods-VidyoSwiftSampleUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				7372271D1E79D31700F964C0 /* VidyoLibrary.m */,
 				7372271F1E79D32400F964C0 /* VidyoLibrary.h */,
 				7372271C1E79D31600F964C0 /* VidyoSwiftSample-Bridging-Header.h */,
+				1B6908B52078FE8100EAB1CA /* VexHelper.swift */,
 			);
 			path = VidyoSwiftSample;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				737226E51E79D2F500F964C0 /* Sources */,
 				737226E61E79D2F500F964C0 /* Frameworks */,
 				737226E71E79D2F500F964C0 /* Resources */,
+				EDB5476B3D9D14FFB6C7681E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,7 +326,6 @@
 				737227041E79D2F700F964C0 /* Sources */,
 				737227051E79D2F700F964C0 /* Frameworks */,
 				737227061E79D2F700F964C0 /* Resources */,
-				7CBABAE7885E4B834F07C071 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -446,24 +449,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7CBABAE7885E4B834F07C071 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-VidyoSwiftSampleUITests/Pods-VidyoSwiftSampleUITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VidyoSwiftSampleUITests/Pods-VidyoSwiftSampleUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7DDA124A008CDC26F4AF75E8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -482,6 +467,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		EDB5476B3D9D14FFB6C7681E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VidyoSwiftSample/Pods-VidyoSwiftSample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VidyoSwiftSample/Pods-VidyoSwiftSample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -490,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				737226EF1E79D2F500F964C0 /* ViewController.swift in Sources */,
+				1B6908B62078FE8100EAB1CA /* VexHelper.swift in Sources */,
 				737226ED1E79D2F500F964C0 /* AppDelegate.swift in Sources */,
 				7372271E1E79D31700F964C0 /* VidyoLibrary.m in Sources */,
 			);

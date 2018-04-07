@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 
 class ViewController: UIViewController {
@@ -33,6 +34,7 @@ class ViewController: UIViewController {
         TextPortal.text = "http://Dinesh.sandboxga.vidyo.com"
         TextRoomKey.text = "WiT2hkRozj"
         TextDisplayName.text = "MyDisplayName"
+        VexHelper.connect();
         
        
         //xx.oi("Abc");
