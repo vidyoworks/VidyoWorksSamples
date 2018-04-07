@@ -199,7 +199,7 @@ void vidyoClientEvents(VidyoClientOutEvent event,
     logParams.logSize = 1024 * 1024 * 10;
     logParams.logLevelsAndCategories = "fatal error warning info@App info@AppGui info@AppEmcpClient info@LmiApp info@LmiH264SvcPace info@AppWebProxy";
     
-    
+    VidyoClientConsoleLog((int)VIDYO_CLIENT_CONSOLE_LOG_CONFIGURATION_ALL);
     if (VidyoClientInitialize(vidyoClientEvents, NULL, &logParams) == VIDYO_FALSE)
     {
         NSLog(@"VidyoClientInit() returned failure!\n");

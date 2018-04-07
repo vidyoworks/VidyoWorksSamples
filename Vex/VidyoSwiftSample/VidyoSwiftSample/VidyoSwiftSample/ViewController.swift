@@ -27,9 +27,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         m_lib.initializeVidyo(Abc);
-        TextPortal.text = "http://test.sandboxga.vidyo.com"
-        TextRoomKey.text = "iUC7CrJ822"
-        TextDisplayName.text = "ddd"
+        //TextPortal.text = "http://test.sandboxga.vidyo.com"
+        //TextRoomKey.text = "iUC7CrJ822"
+        //TextDisplayName.text = "ddd"
+        TextPortal.text = "http://Dinesh.sandboxga.vidyo.com"
+        TextRoomKey.text = "WiT2hkRozj"
+        TextDisplayName.text = "MyDisplayName"
         
        
         //xx.oi("Abc");
