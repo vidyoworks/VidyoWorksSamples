@@ -29,6 +29,9 @@
 		737227021E79D2F700F964C0 /* VidyoSwiftSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737227011E79D2F700F964C0 /* VidyoSwiftSampleTests.swift */; };
 		7372270D1E79D2F800F964C0 /* VidyoSwiftSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7372270C1E79D2F800F964C0 /* VidyoSwiftSampleUITests.swift */; };
 		7372271E1E79D31700F964C0 /* VidyoLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 7372271D1E79D31700F964C0 /* VidyoLibrary.m */; };
+		BD6818E486F65A23E24D6E66 /* Pods_VidyoSwiftSampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12604AAB8F0E1B5394495300 /* Pods_VidyoSwiftSampleUITests.framework */; };
+		CF1D5529D2C65B2EF8A256B6 /* Pods_VidyoSwiftSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 347CC44C648C6103061F1724 /* Pods_VidyoSwiftSampleTests.framework */; };
+		F2832CB562F58873D47AE924 /* Pods_VidyoSwiftSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 566E03E6A0F7323E5369E05E /* Pods_VidyoSwiftSample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12604AAB8F0E1B5394495300 /* Pods_VidyoSwiftSampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VidyoSwiftSampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		347CC44C648C6103061F1724 /* Pods_VidyoSwiftSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VidyoSwiftSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		387A120BF4A470E536B22C79 /* Pods-VidyoSwiftSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VidyoSwiftSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VidyoSwiftSample/Pods-VidyoSwiftSample.debug.xcconfig"; sourceTree = "<group>"; };
+		3B43A0C06A9DC0AB71887F9E /* Pods-VidyoSwiftSampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VidyoSwiftSampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VidyoSwiftSampleUITests/Pods-VidyoSwiftSampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		566E03E6A0F7323E5369E05E /* Pods_VidyoSwiftSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VidyoSwiftSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58067172A724908CD114B3ED /* Pods-VidyoSwiftSampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VidyoSwiftSampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VidyoSwiftSampleUITests/Pods-VidyoSwiftSampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		736024911E7B129E0071C2BF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		736024931E7B12A20071C2BF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		736024951E7B12A40071C2BF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -90,6 +99,9 @@
 		7372271C1E79D31600F964C0 /* VidyoSwiftSample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VidyoSwiftSample-Bridging-Header.h"; sourceTree = "<group>"; };
 		7372271D1E79D31700F964C0 /* VidyoLibrary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VidyoLibrary.m; sourceTree = "<group>"; };
 		7372271F1E79D32400F964C0 /* VidyoLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VidyoLibrary.h; sourceTree = "<group>"; };
+		7661A985AF1F23CD9A01A423 /* Pods-VidyoSwiftSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VidyoSwiftSampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VidyoSwiftSampleTests/Pods-VidyoSwiftSampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		7D012054B2A33DF99B3D2C94 /* Pods-VidyoSwiftSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VidyoSwiftSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-VidyoSwiftSample/Pods-VidyoSwiftSample.release.xcconfig"; sourceTree = "<group>"; };
+		97A900D88E41058D59DAC12C /* Pods-VidyoSwiftSampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VidyoSwiftSampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VidyoSwiftSampleTests/Pods-VidyoSwiftSampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +123,7 @@
 				736024A01E7B13130071C2BF /* CoreGraphics.framework in Frameworks */,
 				7360249E1E7B130C0071C2BF /* Foundation.framework in Frameworks */,
 				7360249C1E7B13010071C2BF /* Security.framework in Frameworks */,
+				F2832CB562F58873D47AE924 /* Pods_VidyoSwiftSample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF1D5529D2C65B2EF8A256B6 /* Pods_VidyoSwiftSampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD6818E486F65A23E24D6E66 /* Pods_VidyoSwiftSampleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +185,7 @@
 				7372270B1E79D2F800F964C0 /* VidyoSwiftSampleUITests */,
 				737226EA1E79D2F500F964C0 /* Products */,
 				737227201E79D9F300F964C0 /* Frameworks */,
+				892832A204703AACF2563983 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,8 +254,24 @@
 				736024951E7B12A40071C2BF /* AddressBook.framework */,
 				736024931E7B12A20071C2BF /* Accounts.framework */,
 				736024911E7B129E0071C2BF /* Accelerate.framework */,
+				566E03E6A0F7323E5369E05E /* Pods_VidyoSwiftSample.framework */,
+				347CC44C648C6103061F1724 /* Pods_VidyoSwiftSampleTests.framework */,
+				12604AAB8F0E1B5394495300 /* Pods_VidyoSwiftSampleUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		892832A204703AACF2563983 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				387A120BF4A470E536B22C79 /* Pods-VidyoSwiftSample.debug.xcconfig */,
+				7D012054B2A33DF99B3D2C94 /* Pods-VidyoSwiftSample.release.xcconfig */,
+				97A900D88E41058D59DAC12C /* Pods-VidyoSwiftSampleTests.debug.xcconfig */,
+				7661A985AF1F23CD9A01A423 /* Pods-VidyoSwiftSampleTests.release.xcconfig */,
+				58067172A724908CD114B3ED /* Pods-VidyoSwiftSampleUITests.debug.xcconfig */,
+				3B43A0C06A9DC0AB71887F9E /* Pods-VidyoSwiftSampleUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +281,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 737227111E79D2F800F964C0 /* Build configuration list for PBXNativeTarget "VidyoSwiftSample" */;
 			buildPhases = (
+				7DDA124A008CDC26F4AF75E8 /* [CP] Check Pods Manifest.lock */,
 				737226E51E79D2F500F964C0 /* Sources */,
 				737226E61E79D2F500F964C0 /* Frameworks */,
 				737226E71E79D2F500F964C0 /* Resources */,
@@ -266,6 +299,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 737227141E79D2F800F964C0 /* Build configuration list for PBXNativeTarget "VidyoSwiftSampleTests" */;
 			buildPhases = (
+				0FC8D4A3C8FFBA9174CF5B37 /* [CP] Check Pods Manifest.lock */,
 				737226F91E79D2F600F964C0 /* Sources */,
 				737226FA1E79D2F600F964C0 /* Frameworks */,
 				737226FB1E79D2F600F964C0 /* Resources */,
@@ -284,9 +318,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 737227171E79D2F800F964C0 /* Build configuration list for PBXNativeTarget "VidyoSwiftSampleUITests" */;
 			buildPhases = (
+				71BDB1EA749F1A81E9E0A20B /* [CP] Check Pods Manifest.lock */,
 				737227041E79D2F700F964C0 /* Sources */,
 				737227051E79D2F700F964C0 /* Frameworks */,
 				737227061E79D2F700F964C0 /* Resources */,
+				7CBABAE7885E4B834F07C071 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -372,6 +408,81 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0FC8D4A3C8FFBA9174CF5B37 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VidyoSwiftSampleTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71BDB1EA749F1A81E9E0A20B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VidyoSwiftSampleUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CBABAE7885E4B834F07C071 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VidyoSwiftSampleUITests/Pods-VidyoSwiftSampleUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VidyoSwiftSampleUITests/Pods-VidyoSwiftSampleUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DDA124A008CDC26F4AF75E8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VidyoSwiftSample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		737226E51E79D2F500F964C0 /* Sources */ = {
@@ -530,6 +641,7 @@
 		};
 		737227121E79D2F800F964C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 387A120BF4A470E536B22C79 /* Pods-VidyoSwiftSample.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -557,6 +669,7 @@
 		};
 		737227131E79D2F800F964C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D012054B2A33DF99B3D2C94 /* Pods-VidyoSwiftSample.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -583,6 +696,7 @@
 		};
 		737227151E79D2F800F964C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97A900D88E41058D59DAC12C /* Pods-VidyoSwiftSampleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -597,6 +711,7 @@
 		};
 		737227161E79D2F800F964C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7661A985AF1F23CD9A01A423 /* Pods-VidyoSwiftSampleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -611,6 +726,7 @@
 		};
 		737227181E79D2F800F964C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58067172A724908CD114B3ED /* Pods-VidyoSwiftSampleUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = VidyoSwiftSampleUITests/Info.plist;
@@ -624,6 +740,7 @@
 		};
 		737227191E79D2F800F964C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B43A0C06A9DC0AB71887F9E /* Pods-VidyoSwiftSampleUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = VidyoSwiftSampleUITests/Info.plist;
