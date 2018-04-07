@@ -22,7 +22,34 @@ class VexHelper {
     static let POLL_TIME_TOTAL_IN_SECONDS = 60 * 15 // 60 seconds (1 minute) * 15 = 15 minutes, which is the token life
 	
 	static func joinVexScheduledCall(scheduleLink:String) {
+		/* valid schedule link example:
+		 https://apps.vidyoclouddev.com/vex/vidyo/2/interaction/schedule.html?scheduleString=dG9rZW49ODBIdTFudXYmdGVuYW50SWQ9MTMzJnNlcnZlclVSTD1odHRwczovL3ZleC52aWR5b2Nsb3VkZGV2LmNvbSZhZ2VudElkPWRvY3RvcjEmY05hbWU9U2NoZWR1bGUgQ2FsbCBPbmUmYXBpS2V5PVVwVE5Mc0JmSnh3WnJ3Qmo=
+		*/
 		
+		// 1. Extract schedule string
+		let parts = scheduleLink.components(separatedBy: "?scheduleString=");
+		var scheduleString = "";
+		if (parts.count > 1){
+			scheduleString = parts[1]
+		}
+		
+		// 2. Decode schedule string
+		var decodedStr = "";
+		if (!scheduleString.isEmpty){
+			let decodedData = Data(base64Encoded: scheduleString)!
+			decodedStr = String(data: decodedData, encoding: .utf8)!
+		}
+		
+		// 3. Extract server url, tenant id, agent id and customer name from decodedStr
+		
+		// 4. Add/request interaction based passing in the above values
+		
+		// 5. Start polling for interactions status (checkInteraction, wait while Agent accepts a call)
+		
+		// 6. Receive roomUrl, extract roomKey
+		
+		// 7. Join a call
+
 	}
 	
 	static func connect()
