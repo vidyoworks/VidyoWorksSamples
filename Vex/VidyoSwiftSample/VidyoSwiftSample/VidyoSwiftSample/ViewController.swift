@@ -22,7 +22,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var TextPin: UITextField!
     
-    var m_lib = VidyoLibrary()
+	@IBOutlet weak var TextScheduleLink: UITextField!
+	
+	var m_lib = VidyoLibrary()
     
     
     override func viewDidLoad() {
@@ -34,9 +36,7 @@ class ViewController: UIViewController {
         TextPortal.text = "http://Dinesh.sandboxga.vidyo.com"
         TextRoomKey.text = "WiT2hkRozj"
         TextDisplayName.text = "MyDisplayName"
-        VexHelper.connect();
-        
-       
+		
         //xx.oi("Abc");
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -61,6 +61,10 @@ class ViewController: UIViewController {
         
         m_lib.leaveRoom();
     }
+	
+	@IBAction func StartScheduledCallClicked(_ sender: UIButton) {
+		VexHelper.joinVexScheduledCall(scheduleLink: TextScheduleLink.text!);
+	}
 }
 
 

@@ -20,7 +20,12 @@ class VexHelper {
     
     static let POLL_TIME_INTERVAL_IN_SECONDS = 10
     static let POLL_TIME_TOTAL_IN_SECONDS = 60 * 15 // 60 seconds (1 minute) * 15 = 15 minutes, which is the token life
-    static func connect()
+	
+	static func joinVexScheduledCall(scheduleLink:String) {
+		
+	}
+	
+	static func connect()
     {
         
         Alamofire.request("https://httpbin.org/get").responseJSON { response in
