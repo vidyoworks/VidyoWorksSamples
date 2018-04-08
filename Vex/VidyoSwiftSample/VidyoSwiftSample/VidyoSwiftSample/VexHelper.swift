@@ -22,65 +22,59 @@ class VexHelper {
     static let POLL_TIME_TOTAL_IN_SECONDS = 60 * 15 // 60 seconds (1 minute) * 15 = 15 minutes, which is the token life
 	
 	static func joinVexScheduledCall(scheduleLink:String) {
-		/* valid schedule link example:
-		 https://apps.vidyoclouddev.com/vex/vidyo/2/interaction/schedule.html?scheduleString=dG9rZW49ODBIdTFudXYmdGVuYW50SWQ9MTMzJnNlcnZlclVSTD1odHRwczovL3ZleC52aWR5b2Nsb3VkZGV2LmNvbSZhZ2VudElkPWRvY3RvcjEmY05hbWU9U2NoZWR1bGUgQ2FsbCBPbmUmYXBpS2V5PVVwVE5Mc0JmSnh3WnJ3Qmo=
-		*/
+		// valid schedule link example:
+		let tmpScheduleLink = "https://apps.vidyoclouddev.com/vex/vidyo/2/interaction/schedule.html?scheduleString=dG9rZW49ODBIdTFudXYmdGVuYW50SWQ9MTMzJnNlcnZlclVSTD1odHRwczovL3ZleC52aWR5b2Nsb3VkZGV2LmNvbSZhZ2VudElkPWRvY3RvcjEmY05hbWU9U2NoZWR1bGUgQ2FsbCBPbmUmYXBpS2V5PVVwVE5Mc0JmSnh3WnJ3Qmo="
+		//
 		
-		// 1. Extract schedule string
-		let parts = scheduleLink.components(separatedBy: "?scheduleString=");
+		// 1. Parse schedule string, Extract server url, tenant id, agent id and customer name from decodedStr
+		let parsedUrl = parseScheduleUrl(scheduleUrl: tmpScheduleLink)
+		
+		// 2.
+		GetCustomerProfile(serverUrl: parsedUrl.serverUrl, tenantId: parsedUrl.tenantId)
+		
+		// 3. Add/request interaction based passing in the above values
+		2
+		
+		// 4. Start polling for interactions status (checkInteraction, wait while Agent accepts a call)
+		
+		// 5. Receive roomUrl, extract roomKey
+		
+		// 6. Join a call
+
+	}
+    
+	static func parseScheduleUrl(scheduleUrl:String) -> (serverUrl:String, tenantId:String, agentId:String, customerName:String) {
+		// Extract schedule string
+		let parts = scheduleUrl.components(separatedBy: "?scheduleString=");
 		var scheduleString = "";
 		if (parts.count > 1){
 			scheduleString = parts[1]
 		}
 		
-		// 2. Decode schedule string
+		// Decode schedule string
 		var decodedStr = "";
 		if (!scheduleString.isEmpty){
 			let decodedData = Data(base64Encoded: scheduleString)!
 			decodedStr = String(data: decodedData, encoding: .utf8)!
 		}
 		
-		// 3. Extract server url, tenant id, agent id and customer name from decodedStr
+		// Get return values
+		let arr = decodedStr.split(separator: "=");
 		
-		// 4. Add/request interaction based passing in the above values
+		let tenantId = arr[2].prefix(upTo: arr[2].index(of: "&")!)
+		let serverUrl = arr[3].prefix(upTo: arr[3].index(of: "&")!)
+		let agentId = arr[4].prefix(upTo: arr[4].index(of: "&")!)
+		let customerName = arr[5].prefix(upTo: arr[5].index(of: "&")!)
 		
-		// 5. Start polling for interactions status (checkInteraction, wait while Agent accepts a call)
-		
-		// 6. Receive roomUrl, extract roomKey
-		
-		// 7. Join a call
-
+		return (String(serverUrl), String(tenantId), String(agentId), String(customerName))
 	}
-    
-    
-    
 	
-	static func connect()
-    {
-        
-        
-        /*Alamofire.request("https://vex.vidyoclouddev.com/v2/customerProfile?tenant=64").responseJSON { response in
-            print("Request: \(String(describing: response.request))")   // original url request
-            print("Response: \(String(describing: response.response))") // http url response
-            print("Result: \(response.result)")                         // response serialization result
-            
-            if let json = response.result.value {
-                print("JSON: \(json)") // serialized json response
-            }
-            
-            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                print("Data: \(utf8Text)") // original server data as UTF8 string
-            }
-        }*/
-        GetCustomerProfile();
-    }
-    
-    
-    static func GetCustomerProfile()
+	static func GetCustomerProfile(serverUrl:String, tenantId:String)
     {
         let CUSTOMER_PROFILE = "customerProfile?tenant="
          
-         let url = "\(BASE_URL)\(CUSTOMER_PROFILE)\(TENANT)"
+		//let url = "\(serverUrl)\(CUSTOMER_PROFILE)\(tenantId)"
+		let url = "\(serverUrl)\(CUSTOMER_PROFILE)\(TENANT)"
         Alamofire.request(url).responseJSON { response in
                 print("Request: \(String(describing: response.request))")   // original url request
                 print("Response: \(String(describing: response.response))") // http url response
@@ -98,7 +92,23 @@ class VexHelper {
     
     
     
-   
+	static func connect()
+	{
+		/*Alamofire.request("https://vex.vidyoclouddev.com/v2/customerProfile?tenant=64").responseJSON { response in
+		print("Request: \(String(describing: response.request))")   // original url request
+		print("Response: \(String(describing: response.response))") // http url response
+		print("Result: \(response.result)")                         // response serialization result
+		
+		if let json = response.result.value {
+		print("JSON: \(json)") // serialized json response
+		}
+		
+		if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+		print("Data: \(utf8Text)") // original server data as UTF8 string
+		}
+		}*/
+		//GetCustomerProfile();
+	}
     
     // handles connecting a user to a call
     /*static func connect(user:User, forAppointment appointment:Appointment, onWaitingRoomJoined: @escaping (_ waitingRoomVideo:WaitingRoomVideo?) -> Void, onConnected: @escaping (_ interaction:InteractionStatus) -> Void, onError: @escaping (_ error:String) -> Void){

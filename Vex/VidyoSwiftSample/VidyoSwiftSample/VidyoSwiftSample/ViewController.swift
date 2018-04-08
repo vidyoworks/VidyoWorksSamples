@@ -64,8 +64,8 @@ class ViewController: UIViewController {
     }
 	
 	@IBAction func StartScheduledCallClicked(_ sender: UIButton) {
-		//VexHelper.joinVexScheduledCall(scheduleLink: TextScheduleLink.text!);
-        VexHelper.connect();
+		VexHelper.joinVexScheduledCall(scheduleLink: TextScheduleLink.text!);
+        //VexHelper.connect();
 	}
 }
 
