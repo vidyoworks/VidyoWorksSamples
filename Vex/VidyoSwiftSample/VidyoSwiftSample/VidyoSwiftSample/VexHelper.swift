@@ -33,7 +33,7 @@ class VexHelper {
 		GetCustomerProfile(serverUrl: parsedUrl.serverUrl, tenantId: parsedUrl.tenantId)
 		
 		// 3. Add/request interaction based passing in the above values
-		2
+		
 		
 		// 4. Start polling for interactions status (checkInteraction, wait while Agent accepts a call)
 		
