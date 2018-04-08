@@ -51,11 +51,15 @@ class VexHelper {
 		// 7. Join a call
 
 	}
+    
+    
+    
 	
 	static func connect()
     {
         
-        Alamofire.request("https://httpbin.org/get").responseJSON { response in
+        
+        /*Alamofire.request("https://vex.vidyoclouddev.com/v2/customerProfile?tenant=64").responseJSON { response in
             print("Request: \(String(describing: response.request))")   // original url request
             print("Response: \(String(describing: response.response))") // http url response
             print("Result: \(response.result)")                         // response serialization result
@@ -67,22 +71,31 @@ class VexHelper {
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                 print("Data: \(utf8Text)") // original server data as UTF8 string
             }
-        }
-        
-        /*let CUSTOMER_PROFILE = "customerProfile?tenant="
-        
-        let url = "\(BASE_URL)\(CUSTOMER_PROFILE)\(TENANT)"
-        Alamofire.request(url, method: .get)
-            .responseObject { (response: DataResponse<CustomerProfile>) in
-                var customerProfile = response.result.value
-                guard let token = response.response?.allHeaderFields["Token"] as? String else {
-                    onError("An unexpected error occured, please try again later.")
-                    return
+        }*/
+        GetCustomerProfile();
+    }
+    
+    
+    static func GetCustomerProfile()
+    {
+        let CUSTOMER_PROFILE = "customerProfile?tenant="
+         
+         let url = "\(BASE_URL)\(CUSTOMER_PROFILE)\(TENANT)"
+        Alamofire.request(url).responseJSON { response in
+                print("Request: \(String(describing: response.request))")   // original url request
+                print("Response: \(String(describing: response.response))") // http url response
+                print("Result: \(response.result)")                         // response serialization result
+                
+                if let json = response.result.value {
+                    print("JSON: \(json)") // serialized json response
                 }
                 
-                onSuccess(token, vidyoCredentials)
-        }*/
+                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                    print("Data: \(utf8Text)") // original server data as UTF8 string
+                }
+            }
     }
+    
     
     
    
