@@ -7,6 +7,8 @@ target 'VidyoSwiftSample' do
 
   # Pods for VidyoSwiftSample
  pod 'Alamofire', '~> 4.7'
+ pod 'SwiftyJSON'
+ pod 'AlamofireObjectMapper', '~> 5.0'
 
   target 'VidyoSwiftSampleTests' do
     inherit! :search_paths

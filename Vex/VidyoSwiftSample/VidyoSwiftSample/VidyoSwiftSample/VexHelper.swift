@@ -9,8 +9,8 @@
 import Foundation
 
 import Alamofire
-/*import SwiftyJSON
-import AlamofireObjectMapper*/
+import SwiftyJSON
+import AlamofireObjectMapper
 
 
 class VexHelper {
@@ -111,11 +111,52 @@ class VexHelper {
                 print("JSON: \(token)") // serialized json response
                 
                 VexHelper.m_tokens = (String(daytoken), String(token))
+                
+                AddInteraction(serverUrl: (serverUrl), tenantId: (tenantId))
             }
                 /*if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                     print("Data: \(utf8Text)") // original server data as UTF8 string
                 }*/
             }
+    }
+    
+    
+    static func AddInteraction(serverUrl:String, tenantId:String)
+    {
+        print("token: \(String(describing: m_tokens?.token))")
+        print("daytoken: \(String(describing: m_tokens?.daytoken))")
+        /*let CUSTOMER_PROFILE = "customerProfile?tenant="
+        var daytoken:String = "";
+        var token:String = "";
+        
+        let url = "\(serverUrl)/v2/\(CUSTOMER_PROFILE)\(tenantId)"
+        //let url = "\(serverUrl)/v2/\(CUSTOMER_PROFILE)\(TENANT)"
+        Alamofire.request(url).responseJSON { response in
+            print("Request: \(String(describing: response.request))")
+            print("Response: \(String(describing: response.response))")
+            print("Result: \(response.result)")
+            
+            if let json = response.result.value {
+                print("JSON: \(json)") // serialized json response
+            }
+            
+            print("All headers - \(String(describing: response.response?.allHeaderFields))")
+            
+            
+            if let daytokentmp = response.response?.allHeaderFields["DayToken"] as? String {
+                daytoken = daytokentmp
+                print("JSON: \(daytoken)") // serialized json response
+            }
+            
+            
+            if  let tokentmp = response.response?.allHeaderFields["Token"] as? String {
+                token = tokentmp
+                print("JSON: \(token)") // serialized json response
+                
+                VexHelper.m_tokens = (String(daytoken), String(token))
+            }
+ 
+        }*/
     }
     
     
