@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-//using version TAG_VC_3_4_5_0010
+//using version TAG_VC_3_5_3_0011
 namespace VGUClientLogic
 {
     public class Vidyo32
@@ -93,6 +93,8 @@ namespace VGUClientLogic
         public int DEF_HELP_PORT = 63457;
         const string DEF_LOG_BASE_FILENAME = "VidyoDesktop_";
         const int MAX_IPADDRESS_LEN = 48;
+
+        const int MAX_INTERFACE_LENGTH = (256+1);
 
         // uint VidyoSizeT;
 
@@ -240,6 +242,14 @@ namespace VGUClientLogic
             */
             VIDYO_CLIENT_IN_EVENT_LAYOUT = 901,
             /*!
+               Change the background color of the renderer.
+
+		        @see Corresponding parameter structure #VidyoClientInEventColor
+
+		        @note Only functional for tiles renderer
+            */
+            VIDYO_CLIENT_IN_EVENT_SET_BACKGROUND_COLOR = 902,
+            /*!
                 Play audio from specified data buffer, using system default audio playback
                 device for wave data, which is useful for ringtones.
                 Useful for playing sound one time when in call
@@ -361,6 +371,13 @@ namespace VGUClientLogic
                 @warning For internal use only
             */
             VIDYO_CLIENT_IN_EVENT_RAW_FRAME = 1503,
+             /*!
+                	Sets the default network interface.
+		            VidyoClient ignores every other network interface in any media negotiation
+
+		            @see Corresponding parameter structure #VidyoClientInEventSetNetworkInterface
+            */
+            VIDYO_CLIENT_IN_EVENT_SET_NETWORK_INTERFACE = 1504,
             /*!
                 Called by application to login to user to Portal
 
@@ -625,7 +642,7 @@ namespace VGUClientLogic
             /*!
                 Used to send a audio frame.
 
-                @see VidyoClientInEventSendAudioFrame
+                @see VidyoClientAudioFrame
             */
             VIDYO_CLIENT_IN_EVENT_SEND_AUDIO_FRAME = 3232,
             /*!
@@ -2114,6 +2131,14 @@ namespace VGUClientLogic
             public int yPos;    /*!< y position */
             public UInt32 width;  /*!< width */
             public UInt32 height; /*!< height */
+        };
+
+        [StructLayout(LayoutKind.Sequential)]
+        public unsafe struct VidyoColor
+        {
+            public UInt32 red;
+            public UInt32 green;
+            public UInt32 blue;
         };
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
@@ -3675,6 +3700,23 @@ namespace VGUClientLogic
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = VIDYO_CLIENT_SCREEN_ID_SIZE)]
             public string desktopId;
             public VidyoRect windowSize; // c# / NOTE: not yet support
+        };
+
+         // VIDYO_CLIENT_IN_EVENT_SET_BACKGROUND_COLOR:
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientInEventColor
+        {
+            // public VidyoWindowCapturerWindowId window;
+            public VidyoColor color;
+        };
+
+
+         // VIDYO_CLIENT_IN_EVENT_SET_NETWORK_INTERFACE:
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientInEventSetNetworkInterface
+        {
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MAX_INTERFACE_LENGTH)]
+            public string name;
         };
 
 
