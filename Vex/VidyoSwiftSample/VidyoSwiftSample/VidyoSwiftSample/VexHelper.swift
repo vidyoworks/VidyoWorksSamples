@@ -20,17 +20,20 @@ class VexHelper {
     
     static let POLL_TIME_INTERVAL_IN_SECONDS = 10
     static let POLL_TIME_TOTAL_IN_SECONDS = 60 * 15 // 60 seconds (1 minute) * 15 = 15 minutes, which is the token life
-	
+	static var m_tokens: (daytoken:String, token:String)?
+    static var m_ScheduleParams: (serverUrl:String, tenantId:String, agentId:String, customerName:String)?
 	static func joinVexScheduledCall(scheduleLink:String) {
 		// valid schedule link example:
 		let tmpScheduleLink = "https://apps.vidyoclouddev.com/vex/vidyo/2/interaction/schedule.html?scheduleString=dG9rZW49ODBIdTFudXYmdGVuYW50SWQ9MTMzJnNlcnZlclVSTD1odHRwczovL3ZleC52aWR5b2Nsb3VkZGV2LmNvbSZhZ2VudElkPWRvY3RvcjEmY05hbWU9U2NoZWR1bGUgQ2FsbCBPbmUmYXBpS2V5PVVwVE5Mc0JmSnh3WnJ3Qmo="
 		//
 		
 		// 1. Parse schedule string, Extract server url, tenant id, agent id and customer name from decodedStr
-		let parsedUrl = parseScheduleUrl(scheduleUrl: tmpScheduleLink)
+		m_ScheduleParams = parseScheduleUrl(scheduleUrl: tmpScheduleLink)
 		
 		// 2.
-		GetCustomerProfile(serverUrl: parsedUrl.serverUrl, tenantId: parsedUrl.tenantId)
+        GetCustomerProfile(serverUrl: (m_ScheduleParams?.serverUrl)!, tenantId: (m_ScheduleParams?.tenantId)!)
+       
+        
 		
 		// 3. Add/request interaction based passing in the above values
 		
@@ -59,34 +62,59 @@ class VexHelper {
 		}
 		
 		// Get return values
-		let arr = decodedStr.split(separator: "=");
+		let arr = decodedStr.split(separator: "&");
+        
+        var params = [String : String]()
+        for arrobject in arr {
+            let arrProperty = arrobject.split(separator: "=")
+            if(arrProperty.count < 2)
+            {
+                continue
+            }
+            let entry = String(describing: arrProperty[0])
+            let value = String(describing: arrProperty[1])
+            params[entry] = value
+        }
+        
 		
-		let tenantId = arr[2].prefix(upTo: arr[2].index(of: "&")!)
-		let serverUrl = arr[3].prefix(upTo: arr[3].index(of: "&")!)
-		let agentId = arr[4].prefix(upTo: arr[4].index(of: "&")!)
-		let customerName = arr[5].prefix(upTo: arr[5].index(of: "&")!)
-		
-		return (String(serverUrl), String(tenantId), String(agentId), String(customerName))
+		return (params["serverURL"]!, params["tenantId"]!, params["agentId"]!, params["cName"]!)
 	}
 	
 	static func GetCustomerProfile(serverUrl:String, tenantId:String)
     {
         let CUSTOMER_PROFILE = "customerProfile?tenant="
+        var daytoken:String = "";
+        var token:String = "";
          
-		//let url = "\(serverUrl)\(CUSTOMER_PROFILE)\(tenantId)"
-		let url = "\(serverUrl)\(CUSTOMER_PROFILE)\(TENANT)"
+		let url = "\(serverUrl)/v2/\(CUSTOMER_PROFILE)\(tenantId)"
+		//let url = "\(serverUrl)/v2/\(CUSTOMER_PROFILE)\(TENANT)"
         Alamofire.request(url).responseJSON { response in
-                print("Request: \(String(describing: response.request))")   // original url request
-                print("Response: \(String(describing: response.response))") // http url response
-                print("Result: \(response.result)")                         // response serialization result
+                print("Request: \(String(describing: response.request))")
+                print("Response: \(String(describing: response.response))")
+                print("Result: \(response.result)")
+            
+            if let json = response.result.value {
+                print("JSON: \(json)") // serialized json response
+            }
+            
+            print("All headers - \(String(describing: response.response?.allHeaderFields))")
+            
+            
+            if let daytokentmp = response.response?.allHeaderFields["DayToken"] as? String {
+                daytoken = daytokentmp
+                print("JSON: \(daytoken)") // serialized json response
+            }
+            
+            
+            if  let tokentmp = response.response?.allHeaderFields["Token"] as? String {
+                token = tokentmp
+                print("JSON: \(token)") // serialized json response
                 
-                if let json = response.result.value {
-                    print("JSON: \(json)") // serialized json response
-                }
-                
-                if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                VexHelper.m_tokens = (String(daytoken), String(token))
+            }
+                /*if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
                     print("Data: \(utf8Text)") // original server data as UTF8 string
-                }
+                }*/
             }
     }
     
