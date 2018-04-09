@@ -177,6 +177,16 @@ typedef struct
 	VidyoUint height;   /*!< height */
 } VidyoRect;
 
+/*! @brief color structure */
+typedef struct
+{
+	VidyoUint8 red;		/*!< red */
+	VidyoUint8 green;	/*!< green */
+	VidyoUint8 blue;	/*!< blue */
+} VidyoColor;
+
+
+
 #if defined(VIDYO_WIN32) && !defined(BUILD_VIDYO_DESKTOP_QMAKE)
 typedef HWND VidyoWindowId;
 typedef HWND VidyoWindowCapturerWindowId;

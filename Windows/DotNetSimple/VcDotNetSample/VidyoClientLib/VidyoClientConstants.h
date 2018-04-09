@@ -95,6 +95,8 @@
 #define VIDYO_CLIENT_ERROR_INVALID_AEC_VALUE (1<<24)
 /*! Disable AGC is not allowed for the selected Mic */
 #define VIDYO_CLIENT_ERROR_INVALID_AGC_VALUE (1<<25)
+/*! Called unsupportet function */
+#define VIDYO_CLIENT_ERROR_UNSUPPORTED_FUNCTION (1<<26)
 //@}
 
 /** @name Participant
@@ -267,9 +269,10 @@
 #define MAX_FONT_PATH_SIZE (255+1)
 #define MAX_PORTAL_PREFIX_SIZE (16+1)
 #define MAX_COMMAND_LEN 4096 // Maximum length of command text
+#define MAX_INTERFACE_LENGTH (256+1)
 
 
-#define MAX_APPROVED_DOMAIN_NAMES 10
+#define MAX_APPROVED_DOMAIN_NAMES 50
 
 #define DEF_PROGFILES_DIR "\\Vidyo\\Vidyo Desktop\\"
 #define DEF_CONFIG_KEY_PATH "SOFTWARE\\Vidyo\\Vidyo Desktop\\"

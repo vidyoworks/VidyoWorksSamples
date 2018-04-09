@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-//using version TAG_VC_3_5_3_0011
+//using version TAG_VC_3_5_10_0007
 namespace VGUClientLogic
 {
     public class Vidyo32
@@ -190,6 +190,13 @@ namespace VGUClientLogic
             */
             VIDYO_CLIENT_IN_EVENT_MUTE_DEFAULT_RENDERING = 503,
             /*!
+                Disable or enable sending selfview frames while joining.
+                Is using only if default rendering in tiles library is muted
+     
+                @see Corresponding parameter structure #VidyoClientInEventShowSelfViewWhileJoining
+               */
+            VIDYO_CLIENT_IN_EVENT_SHOW_SELFVIEW_WHILE_JOINING = 510,
+            /*!
                 Share local application window in conference.
 
                 @see Corresponding parameter structure #VidyoClientInEventShare
@@ -249,6 +256,12 @@ namespace VGUClientLogic
 		        @note Only functional for tiles renderer
             */
             VIDYO_CLIENT_IN_EVENT_SET_BACKGROUND_COLOR = 902,
+            /*!
+                Set minimum number of viewable remote participants in video layout to specified value.
+     
+                @see Corresponding parameter structure #VidyoClientInEventParticipantsLimit
+            */
+            VIDYO_CLIENT_IN_EVENT_SET_MIN_PARTICIPANTS_LIMIT = 903,
             /*!
                 Play audio from specified data buffer, using system default audio playback
                 device for wave data, which is useful for ringtones.
@@ -733,6 +746,12 @@ namespace VGUClientLogic
 				@see VidyoClientInEventPrivateCommand
 			*/
 			VIDYO_CLIENT_IN_EVENT_PRIVATE_COMMAND = 5010,
+            /*!
+                Event used to check viability of portal
+     
+                @see VidyoClientInEventIsPortalAvailable.
+            */
+            VIDYO_CLIENT_IN_EVENT_IS_PORTAL_AVAILABLE = 5020,
             /*!
                 Maximum value for the enumeration.
 
@@ -1250,6 +1269,13 @@ namespace VGUClientLogic
 
             /*!
                 One or more of alarms raised earlier have been cleared
+     
+                Does not have a parameter.
+            */
+            VIDYO_CLIENT_OUT_EVENT_ALARMS_UPDATED = 2702,
+
+            /*!
+                All alarms have been cleared
 
                 Does not have a parameter.
              */
@@ -1389,6 +1415,18 @@ namespace VGUClientLogic
 				Does not have a parameter.
 			*/
 			VIDYO_CLIENT_OUT_EVENT_COMMAND_SEND_ERROR = 4010,
+            /*!
+                Used to send a response about viability of portal
+     
+                @see Corresponding parameter structure #VidyoClientOutEventIsPortalAvailable
+            */
+            VIDYO_CLIENT_OUT_EVENT_IS_PORTAL_AVAILABLE = 4020,
+            /*!
+             Used to notify application that frames received
+     
+             Does not have a parameter.
+             */
+            VIDYO_CLIENT_OUT_EVENT_INITIAL_VIDEO_FRAME_SENT = 4030,
             /*!
                 Maximum value for the enumeration.
 
@@ -1958,6 +1996,25 @@ namespace VGUClientLogic
 			Does not have a parameter.
 			*/
 			VIDYO_CLIENT_REQUEST_SHOW_STATISTICS = VIDYO_CLIENT_REQUEST_BASE + 2526,
+
+            /*!
+            Set the portal address to configuration file.
+     
+            @see Corresponding parameter structure #VidyoClientRequestSetPortalAddress
+            */
+            VIDYO_CLIENT_REQUEST_SET_PORTAL_ADDRESS = VIDYO_CLIENT_REQUEST_BASE + 2600,
+            /*!
+             Set the bandwidth adjustment period for tiles renderer.
+     
+             @see Corresponding parameter structure #VidyoClientRequestSetBandwidthAdjustmentPeriod
+             */
+            VIDYO_CLIENT_REQUEST_SET_BANDWIDTH_ADJUSTMENT_PERIOD = VIDYO_CLIENT_REQUEST_BASE + 2610,
+            /*!
+             Get general CPU usage of system.
+     
+             @see Corresponding parameter structure #VidyoClientRequestGetCPUUsage
+             */
+            VIDYO_CLIENT_REQUEST_GET_CPU_USAGE = VIDYO_CLIENT_REQUEST_BASE + 2620,
 
             /*!
                 Reserved for private requests only used by standard Vidyo clients.
@@ -3058,6 +3115,28 @@ namespace VGUClientLogic
             public VidyoClientEndpointStatus endPointStatus;
         };
 
+        //VIDYO_CLIENT_REQUEST_SET_PORTAL_ADDRESS
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientRequestSetPortalAddress
+        {
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = FIELD_SIZE)]
+            public string portalAddress;
+        };
+
+        //VIDYO_CLIENT_REQUEST_SET_BANDWIDTH_ADJUSTMENT_PERIOD
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientRequestSetBandwidthAdjustmentPeriod
+        {
+            public uint bandwidthAdjustmentPeriod;
+        };
+
+        //VIDYO_CLIENT_REQUEST_GET_CPU_USAGE
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientRequestGetCPUUsage
+        {
+            public uint cpuUsage;
+        };
+
 
         public enum VidyoClientEndpointStatus
         {
@@ -3493,7 +3572,7 @@ namespace VGUClientLogic
         public struct VidyoClientOutEventCallState
         {
             public VidyoClientCallState callState;
-        }
+        };
 
         public enum VidyoClientCallState
         {
@@ -3507,6 +3586,18 @@ namespace VGUClientLogic
             VIDYO_CLIENT_CALL_STATE_DISCONNECTING,  /*!< Client is in the process of disconnecting
 											   from a conference or a call. */
         }
+
+        // VIDYO_CLIENT_OUT_EVENT_IS_PORTAL_AVAILABLE
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientOutEventIsPortalAvailable
+        {
+            public uint requestId;
+
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = URI_LEN)]
+            public string portalUri;
+
+            public VidyoBool isPortalAvailable;
+        };
 
         // VidyoClientOutEventParticipantsChanged 
         // VidyoClientOutEventIncomingCall
@@ -3548,6 +3639,8 @@ namespace VGUClientLogic
             public VidyoClientPreviewMode PreviewMode;
             public VidyoBool primaryDisplay; // Only applies to Room system mode
         };
+
+       
 
         // VIDYO_CLIENT_IN_EVENT_SET_PARTICIPANT_VIDEO_MODE
         [StructLayout(LayoutKind.Sequential)]
@@ -3750,6 +3843,29 @@ namespace VGUClientLogic
         public struct VidyoClientInEventLayout
         {
             public uint layout_num;
+        };
+
+        //  VIDYO_CLIENT_IN_EVENT_SHOW_SELFVIEW_WHILE_JOINING
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientInEventShowSelfViewWhileJoining
+        {
+            public VidyoBool showSelfViewWhileJoining;
+        };
+
+        //  VIDYO_CLIENT_IN_EVENT_IS_PORTAL_AVAILABLE
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VIDYO_CLIENT_IN_EVENT_IS_PORTAL_AVAILABLE
+        {
+            public uint minNumParticipants;
+        };
+
+        //  VIDYO_CLIENT_IN_EVENT_SET_MIN_PARTICIPANTS_LIMIT
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientInEventIsPortalAvailable
+        {
+            public uint requestId;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = URI_LEN)]
+            public string portalUri;
         };
         //Marina 
 

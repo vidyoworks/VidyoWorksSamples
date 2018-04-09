@@ -150,6 +150,13 @@ typedef enum VidyoClientInEvent_
 		@see Corresponding parameter structure #VidyoClientInEventMute
 	*/
 	VIDYO_CLIENT_IN_EVENT_MUTE_DEFAULT_RENDERING = 503,
+    /*!
+     Disable or enable sending selfview frames while joining.
+     Is using only if default rendering in tiles library is muted
+     
+     @see Corresponding parameter structure #VidyoClientInEventShowSelfViewWhileJoining
+     */
+    VIDYO_CLIENT_IN_EVENT_SHOW_SELFVIEW_WHILE_JOINING = 510,
 	/*!
 		Share local application window in conference.
 
@@ -210,6 +217,12 @@ typedef enum VidyoClientInEvent_
 		@note Only functional for tiles renderer
 	*/
 	VIDYO_CLIENT_IN_EVENT_SET_BACKGROUND_COLOR = 902,
+    /*!
+         Set minimum number of viewable remote participants in video layout to specified value.
+     
+         @see Corresponding parameter structure #VidyoClientInEventParticipantsLimit
+     */
+    VIDYO_CLIENT_IN_EVENT_SET_MIN_PARTICIPANTS_LIMIT = 903,
 	/*!
 		Play audio from specified data buffer, using system default audio playback
 		device for wave data, which is useful for ringtones.
@@ -694,6 +707,12 @@ typedef enum VidyoClientInEvent_
 		@see VidyoClientInEventPrivateCommand
 	*/
 	VIDYO_CLIENT_IN_EVENT_PRIVATE_COMMAND = 5010,
+    /*!
+     Event used to check viability of portal
+     
+     @see VidyoClientInEventIsPortalAvailable.
+     */
+    VIDYO_CLIENT_IN_EVENT_IS_PORTAL_AVAILABLE = 5020,
 	/*!
 		Maximum value for the enumeration.
 
@@ -1212,11 +1231,17 @@ typedef enum  VidyoClientOutEvent_
 	*/
 	VIDYO_CLIENT_OUT_EVENT_ALARMS_RAISED = 2700,
 	/*!
-		One or more of alarms raised earlier have been cleared
+		All alarms have been cleared
 
 		Does not have a parameter.
 	*/
 	VIDYO_CLIENT_OUT_EVENT_ALARMS_CLEARED = 2701,
+    /*!
+     One or more of alarms raised earlier have been cleared
+     
+     Does not have a parameter.
+     */
+    VIDYO_CLIENT_OUT_EVENT_ALARMS_UPDATED = 2702,
 	/*!
 		To report the retrieved portal prefix
 
@@ -1348,6 +1373,18 @@ typedef enum  VidyoClientOutEvent_
 		Does not have a parameter.
 	*/
 	VIDYO_CLIENT_OUT_EVENT_COMMAND_SEND_ERROR = 4010,
+    /*!
+     Used to send a response about viability of portal
+     
+     @see Corresponding parameter structure #VidyoClientOutEventIsPortalAvailable
+     */
+    VIDYO_CLIENT_OUT_EVENT_IS_PORTAL_AVAILABLE = 4020,
+    /*!
+     Used to notify application that frames received
+     
+     Does not have a parameter.
+     */
+    VIDYO_CLIENT_OUT_EVENT_INITIAL_VIDEO_FRAME_SENT = 4030,
 	/*!
 		Maximum value for the enumeration.
 
@@ -1922,7 +1959,25 @@ typedef enum VidyoClientRequest_
      
      Does not have a parameter.
 	 */
-	VIDYO_CLIENT_REQUEST_SHOW_STATISTICS = VIDYO_CLIENT_REQUEST_BASE + 2526,
+    VIDYO_CLIENT_REQUEST_SHOW_STATISTICS = VIDYO_CLIENT_REQUEST_BASE + 2526,
+    /*!
+     Set the portal address to configuration file.
+     
+     @see Corresponding parameter structure #VidyoClientRequestSetPortalAddress
+     */
+    VIDYO_CLIENT_REQUEST_SET_PORTAL_ADDRESS = VIDYO_CLIENT_REQUEST_BASE + 2600,
+    /*!
+     Set the bandwidth adjustment period for tiles renderer.
+     
+     @see Corresponding parameter structure #VidyoClientRequestSetBandwidthAdjustmentPeriod
+     */
+    VIDYO_CLIENT_REQUEST_SET_BANDWIDTH_ADJUSTMENT_PERIOD = VIDYO_CLIENT_REQUEST_BASE + 2610,
+    /*!
+     Get general CPU usage of system.
+     
+     @see Corresponding parameter structure #VidyoClientRequestGetCPUUsage
+     */
+    VIDYO_CLIENT_REQUEST_GET_CPU_USAGE = VIDYO_CLIENT_REQUEST_BASE + 2620,
 
 #ifndef DOXYGEN_SHOULD_IGNORE_THIS
 	/*!
