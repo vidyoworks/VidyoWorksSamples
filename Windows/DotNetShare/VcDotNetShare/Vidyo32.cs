@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-//using version TAG_VC_3_4_5_0010
+//using version TAG_VC_3_5_3_0011
 namespace VGUClientLogic
 {
     public class Vidyo32
@@ -93,6 +93,8 @@ namespace VGUClientLogic
         public int DEF_HELP_PORT = 63457;
         const string DEF_LOG_BASE_FILENAME = "VidyoDesktop_";
         const int MAX_IPADDRESS_LEN = 48;
+
+        const int MAX_INTERFACE_LENGTH = (256+1);
 
         // uint VidyoSizeT;
 
@@ -240,6 +242,14 @@ namespace VGUClientLogic
             */
             VIDYO_CLIENT_IN_EVENT_LAYOUT = 901,
             /*!
+               Change the background color of the renderer.
+
+		        @see Corresponding parameter structure #VidyoClientInEventColor
+
+		        @note Only functional for tiles renderer
+            */
+            VIDYO_CLIENT_IN_EVENT_SET_BACKGROUND_COLOR = 902,
+            /*!
                 Play audio from specified data buffer, using system default audio playback
                 device for wave data, which is useful for ringtones.
                 Useful for playing sound one time when in call
@@ -361,6 +371,13 @@ namespace VGUClientLogic
                 @warning For internal use only
             */
             VIDYO_CLIENT_IN_EVENT_RAW_FRAME = 1503,
+             /*!
+                	Sets the default network interface.
+		            VidyoClient ignores every other network interface in any media negotiation
+
+		            @see Corresponding parameter structure #VidyoClientInEventSetNetworkInterface
+            */
+            VIDYO_CLIENT_IN_EVENT_SET_NETWORK_INTERFACE = 1504,
             /*!
                 Called by application to login to user to Portal
 
@@ -625,7 +642,7 @@ namespace VGUClientLogic
             /*!
                 Used to send a audio frame.
 
-                @see VidyoClientInEventSendAudioFrame
+                @see VidyoClientAudioFrame
             */
             VIDYO_CLIENT_IN_EVENT_SEND_AUDIO_FRAME = 3232,
             /*!
@@ -2116,6 +2133,14 @@ namespace VGUClientLogic
             public UInt32 height; /*!< height */
         };
 
+        [StructLayout(LayoutKind.Sequential)]
+        public unsafe struct VidyoColor
+        {
+            public UInt32 red;
+            public UInt32 green;
+            public UInt32 blue;
+        };
+
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
         public struct VidyoClientLogParams
         {
@@ -2780,7 +2805,7 @@ namespace VGUClientLogic
             public UriStringSize[] sysDesktopName;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = MAX_SHARE_DISPLAY_DEVICE)]
-            public ShareId[] sysDesktopId;
+            public IntPtr[] sysDesktopId;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = MAX_SHARE_DISPLAY_DEVICE)]
             public VidyoRect[] sysDesktopRect;
@@ -2820,28 +2845,6 @@ namespace VGUClientLogic
                 }
             }
 
-            [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-            public struct ShareId
-            {
-                [MarshalAs(UnmanagedType.ByValTStr, SizeConst = VIDYO_CLIENT_SCREEN_ID_SIZE)]
-                public string _theStr;
-
-                public static implicit operator string(ShareId aInStr)
-                {
-                    return aInStr._theStr;
-                }
-
-                public static implicit operator ShareId(string aInStr)
-                {
-                    // Note that longer strings would be silently truncated
-                    //  if we didn't explicitly check this.
-                    if (aInStr.Length >= VIDYO_CLIENT_SCREEN_ID_SIZE)
-                        throw new Exception("ShareId: <copy operator> - String too large for field: " + aInStr);
-
-                    return new ShareId { _theStr = aInStr };
-                }
-            }
-
             public void Init()
             {
                 this.appWindowName = new UriStringSize[MAX_NUM_APP_WINDOWS];
@@ -2849,7 +2852,7 @@ namespace VGUClientLogic
                 this.appWindowId = new IntPtr[MAX_NUM_APP_WINDOWS];
                 this.appWindowRect = new VidyoRect[MAX_NUM_APP_WINDOWS];
                 this.sysDesktopName = new UriStringSize[MAX_SHARE_DISPLAY_DEVICE];
-                this.sysDesktopId = new ShareId[MAX_SHARE_DISPLAY_DEVICE];
+                this.sysDesktopId = new IntPtr[MAX_SHARE_DISPLAY_DEVICE];
                 this.sysDesktopRect = new VidyoRect[MAX_SHARE_DISPLAY_DEVICE];
                 this.sysDesktopWorkArea = new VidyoRect[MAX_SHARE_DISPLAY_DEVICE];
                 this.sysDesktopInfo = new VidyoClientScreenInfo[MAX_SHARE_DISPLAY_DEVICE];
@@ -3482,7 +3485,7 @@ namespace VGUClientLogic
         [StructLayout(LayoutKind.Sequential)]
         public struct VidyoClientOutEventMuted
         {
-            public byte isMuted;
+            public VidyoBool isMuted;
             public uint errorCode;
         };
 
@@ -3698,35 +3701,23 @@ namespace VGUClientLogic
             public string desktopId;
             public VidyoRect windowSize; // c# / NOTE: not yet support
         };
-		
-		
-		public enum VidyoClientPrecallDeviceTestAction
-        {
-           /*! Start testing the device */
-			VIDYO_CLIENT_DEVICE_TEST_START=1,
-			/*! Stop testing the device */
-			VIDYO_CLIENT_DEVICE_TEST_STOP,
-        };
-		
-		// VIDYO_CLIENT_IN_EVENT_PRECALL_TEST_CAMERA:
-        // Used to test self-view using selected camera when not joined in a call or conference (pre-call self-view).
-		//This is used to start or stop self-view.
+
+         // VIDYO_CLIENT_IN_EVENT_SET_BACKGROUND_COLOR:
         [StructLayout(LayoutKind.Sequential)]
-        public struct VidyoClientInEventPrecallTestCamera
+        public struct VidyoClientInEventColor
         {
-			public VidyoClientPrecallDeviceTestAction action;
+            // public VidyoWindowCapturerWindowId window;
+            public VidyoColor color;
         };
-		
-		// VIDYO_CLIENT_IN_EVENT_PRECALL_TEST_MICROPHONE:
-        // Used to control selected microphone when not joined in a call or conference (pre-call microphone test).
-		//This is used to start or stop microphone.
+
+
+         // VIDYO_CLIENT_IN_EVENT_SET_NETWORK_INTERFACE:
         [StructLayout(LayoutKind.Sequential)]
-        public struct VidyoClientInEventPrecallTestMicrophone
+        public struct VidyoClientInEventSetNetworkInterface
         {
-            public VidyoClientPrecallDeviceTestAction action;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MAX_INTERFACE_LENGTH)]
+            public string name;
         };
-		
-		
 
 
         // Code for sharing windows locally
