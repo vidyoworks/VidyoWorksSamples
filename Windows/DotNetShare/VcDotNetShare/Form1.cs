@@ -94,7 +94,7 @@ namespace VidyoClientCS
                 //log path must exist before running (this is done by Visual Studio build steps here)
                 logParams.setpathToLogDir(".\\logs\\");
                 logParams.setlogBaseFileName("VidyoSampleApplication");
-                logParams.setLogLevelsAndCategories("warning all@App debug@AppEvents");
+                logParams.setLogLevelsAndCategories("+warning all@App all@AppEvents all@LmiApp");
                 logParams.setPathToDumpDir(".\\logs\\");
 
 
@@ -150,7 +150,7 @@ namespace VidyoClientCS
                 case Vidyo32.VidyoClientOutEvent.VIDYO_CLIENT_OUT_EVENT_MUTED_VIDEO:
                     {
                         Vidyo32.VidyoClientOutEventMuted muteInfo = (Vidyo32.VidyoClientOutEventMuted)Marshal.PtrToStructure(param, typeof(Vidyo32.VidyoClientOutEventMuted));
-                        if (muteInfo.isMuted == (byte)Vidyo32.VidyoBool.VIDYO_TRUE)
+                        if (muteInfo.isMuted == Vidyo32.VidyoBool.VIDYO_TRUE)
                             SetFlag(cVideoMuted);
                         else
                             ClearFlag(cVideoMuted);
@@ -160,7 +160,7 @@ namespace VidyoClientCS
                 case Vidyo32.VidyoClientOutEvent.VIDYO_CLIENT_OUT_EVENT_MUTED_SERVER_AUDIO_IN:                
                     {
                         Vidyo32.VidyoClientOutEventMuted muteInfo = (Vidyo32.VidyoClientOutEventMuted)Marshal.PtrToStructure(param, typeof(Vidyo32.VidyoClientOutEventMuted));
-                        if (muteInfo.isMuted == (byte)Vidyo32.VidyoBool.VIDYO_TRUE)
+                        if (muteInfo.isMuted == Vidyo32.VidyoBool.VIDYO_TRUE)
                             SetFlag(cMicMuted);
                         else
                             ClearFlag(cMicMuted);
@@ -332,7 +332,7 @@ namespace VidyoClientCS
                 //log path must exist before running (this is done by Visual Studio build steps here)
                 logParams.setpathToLogDir(".\\logs\\");
                 logParams.setlogBaseFileName("VidyoSampleApplication");
-                logParams.setLogLevelsAndCategories("warning all@App debug@AppEvents");
+                logParams.setLogLevelsAndCategories("warning all@App all@AppEvents all@LmiApp");
                 logParams.setPathToDumpDir(".\\logs\\");
 
 
@@ -386,6 +386,7 @@ namespace VidyoClientCS
         {
             Vidyo32.VidyoClientSendEvent(Vidyo32.VidyoClientInEvent.VIDYO_CLIENT_IN_EVENT_LEAVE, (IntPtr)0, 0);
         }
+
 
         private void buttonJoin_Click(object sender, EventArgs e)
         {
@@ -460,6 +461,8 @@ namespace VidyoClientCS
                        
                         IntPtr ptrShares = Marshal.AllocCoTaskMem(szShares);
                         Marshal.StructureToPtr(shares, ptrShares, true);
+                        int szShares2 = Marshal.SizeOf(ptrShares);
+
 			uint error = Vidyo32.VidyoClientSendRequest(Vidyo32.VidyoClientRequest.VIDYO_CLIENT_REQUEST_GET_WINDOWS_AND_DESKTOPS, 
                         ptrShares, szShares);
             if (error != 0)
@@ -472,7 +475,6 @@ namespace VidyoClientCS
           
             if (currentShares.numSystemDesktops > 0)
             {
-               // string firstDesktopId = Marshal.PtrToStringAuto(currentShares.sysDesktopId[0]);
                 string firstDesktopId = currentShares.sysDesktopId[0];
                 Vidyo32.VidyoClientInEventShare sharePara = new Vidyo32.VidyoClientInEventShare();
                 sharePara.shareType = Vidyo32.VidyoClientContentsShareType.VIDYO_CLIENT_CONTENTS_SHARE_TYPE_DESKTOP_WINDOW;
