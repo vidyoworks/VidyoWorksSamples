@@ -2862,7 +2862,7 @@ namespace VGUClientLogic
             public UriStringSize[] sysDesktopName;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = MAX_SHARE_DISPLAY_DEVICE)]
-            public IntPtr[] sysDesktopId;
+            public UriStringScreenSize[] sysDesktopId;
 
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = MAX_SHARE_DISPLAY_DEVICE)]
             public VidyoRect[] sysDesktopRect;
@@ -2902,6 +2902,28 @@ namespace VGUClientLogic
                 }
             }
 
+            [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+            public struct UriStringScreenSize
+            {
+                [MarshalAs(UnmanagedType.ByValTStr, SizeConst = VIDYO_CLIENT_SCREEN_ID_SIZE)]
+                public string _theStr;
+
+                public static implicit operator string(UriStringScreenSize aInStr)
+                {
+                    return aInStr._theStr;
+                }
+
+                public static implicit operator UriStringScreenSize(string aInStr)
+                {
+                    // Note that longer strings would be silently truncated
+                    //  if we didn't explicitly check this.
+                    if (aInStr.Length >= VIDYO_CLIENT_SCREEN_ID_SIZE)
+                        throw new Exception("UriStringSize: <copy operator> - String too large for field: " + aInStr);
+
+                    return new UriStringScreenSize { _theStr = aInStr };
+                }
+            }
+
             public void Init()
             {
                 this.appWindowName = new UriStringSize[MAX_NUM_APP_WINDOWS];
@@ -2909,7 +2931,7 @@ namespace VGUClientLogic
                 this.appWindowId = new IntPtr[MAX_NUM_APP_WINDOWS];
                 this.appWindowRect = new VidyoRect[MAX_NUM_APP_WINDOWS];
                 this.sysDesktopName = new UriStringSize[MAX_SHARE_DISPLAY_DEVICE];
-                this.sysDesktopId = new IntPtr[MAX_SHARE_DISPLAY_DEVICE];
+                this.sysDesktopId = new UriStringScreenSize[MAX_SHARE_DISPLAY_DEVICE];
                 this.sysDesktopRect = new VidyoRect[MAX_SHARE_DISPLAY_DEVICE];
                 this.sysDesktopWorkArea = new VidyoRect[MAX_SHARE_DISPLAY_DEVICE];
                 this.sysDesktopInfo = new VidyoClientScreenInfo[MAX_SHARE_DISPLAY_DEVICE];
