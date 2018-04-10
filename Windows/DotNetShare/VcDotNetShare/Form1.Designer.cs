@@ -38,6 +38,7 @@
             this.buttonMuteCamera = new System.Windows.Forms.Button();
             this.buttonMuteMic = new System.Windows.Forms.Button();
             this.buttonShare = new System.Windows.Forms.Button();
+            this.buttonShareWnd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlVideoArea
@@ -117,15 +118,26 @@
             this.buttonShare.Name = "buttonShare";
             this.buttonShare.Size = new System.Drawing.Size(99, 23);
             this.buttonShare.TabIndex = 11;
-            this.buttonShare.Text = "ShareScreen";
+            this.buttonShare.Text = "ShareFirstScreen";
             this.buttonShare.UseVisualStyleBackColor = true;
             this.buttonShare.Click += new System.EventHandler(this.buttonShare_Click);
+            // 
+            // buttonShareWnd
+            // 
+            this.buttonShareWnd.Location = new System.Drawing.Point(498, 613);
+            this.buttonShareWnd.Name = "buttonShareWnd";
+            this.buttonShareWnd.Size = new System.Drawing.Size(99, 23);
+            this.buttonShareWnd.TabIndex = 12;
+            this.buttonShareWnd.Text = "ShareFirstWindow";
+            this.buttonShareWnd.UseVisualStyleBackColor = true;
+            this.buttonShareWnd.Click += new System.EventHandler(this.buttonShareWnd_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1235, 661);
+            this.Controls.Add(this.buttonShareWnd);
             this.Controls.Add(this.buttonShare);
             this.Controls.Add(this.buttonMuteMic);
             this.Controls.Add(this.buttonMuteCamera);
@@ -153,6 +165,7 @@
         private System.Windows.Forms.Button buttonMuteCamera;
         private System.Windows.Forms.Button buttonMuteMic;
         private System.Windows.Forms.Button buttonShare;
+        private System.Windows.Forms.Button buttonShareWnd;
     }
 }
 

@@ -25,6 +25,7 @@ namespace VidyoClientCS
         public const int cApplicationClosing = 4;
         public const int cVideoMuted = 8;
         public const int cMicMuted = 16;
+        int m_indexWindow = 0;
 
         public void  UpdateUi_()
         {
@@ -439,21 +440,6 @@ namespace VidyoClientCS
 
         private void buttonShare_Click(object sender, EventArgs e)
         {
-
-            Vidyo32.VidyoClientRequestGetAlarms Alarm = new Vidyo32.VidyoClientRequestGetAlarms();
-
-            int szAlarm = Marshal.SizeOf(Alarm);
-            IntPtr ptrAlarm = Marshal.AllocCoTaskMem(szAlarm);
-            Marshal.StructureToPtr(Alarm, ptrAlarm, true);
-            uint errAlarm = Vidyo32.VidyoClientSendRequest(Vidyo32.VidyoClientRequest.VIDYO_CLIENT_REQUEST_GET_ALARMS, ptrAlarm, szAlarm);
-            if (errAlarm == 0)
-            {
-                Vidyo32.VidyoClientRequestGetAlarms CurrentAlarm = (Vidyo32.VidyoClientRequestGetAlarms)Marshal.PtrToStructure(ptrAlarm, typeof(Vidyo32.VidyoClientRequestGetAlarms));
-
-               
-            }
-
-
              Vidyo32.VidyoClientRequestGetWindowsAndDesktops shares = new Vidyo32.VidyoClientRequestGetWindowsAndDesktops();
              shares.Init();
 
@@ -491,6 +477,49 @@ namespace VidyoClientCS
 
             }
         }
+
+        private void buttonShareWnd_Click(object sender, EventArgs e)
+        {
+
+            Vidyo32.VidyoClientRequestGetWindowsAndDesktops shares = new Vidyo32.VidyoClientRequestGetWindowsAndDesktops();
+            shares.Init();
+
+            int szShares = Marshal.SizeOf(shares);
+
+            IntPtr ptrShares = Marshal.AllocCoTaskMem(szShares);
+            Marshal.StructureToPtr(shares, ptrShares, true);
+            int szShares2 = Marshal.SizeOf(ptrShares);
+
+            uint error = Vidyo32.VidyoClientSendRequest(Vidyo32.VidyoClientRequest.VIDYO_CLIENT_REQUEST_GET_WINDOWS_AND_DESKTOPS,
+                        ptrShares, szShares);
+            if (error != 0)
+            {
+                return;
+            }
+
+            Vidyo32.VidyoClientRequestGetWindowsAndDesktops currentShares = (Vidyo32.VidyoClientRequestGetWindowsAndDesktops)Marshal.PtrToStructure(ptrShares, typeof(Vidyo32.VidyoClientRequestGetWindowsAndDesktops));
+            if (currentShares.numApplicationWindows <= m_indexWindow)
+                m_indexWindow = 0;
+
+            if (currentShares.numApplicationWindows > m_indexWindow)
+            {
+                Vidyo32.VidyoClientInEventShare sharePara = new Vidyo32.VidyoClientInEventShare();
+                sharePara.shareType = Vidyo32.VidyoClientContentsShareType.VIDYO_CLIENT_CONTENTS_SHARE_TYPE_APPLICATION_WINDOW;
+                sharePara.window = (IntPtr)currentShares.appWindowId[m_indexWindow++];
+
+                int sizeOfShareEvent = Marshal.SizeOf(sharePara);
+                IntPtr sharePtr = Marshal.AllocCoTaskMem(sizeOfShareEvent);
+                Marshal.StructureToPtr(sharePara, sharePtr, false);
+
+                Int32 returnValue = Vidyo32.VidyoClientSendEvent(Vidyo32.VidyoClientInEvent.VIDYO_CLIENT_IN_EVENT_SHARE, sharePtr, sizeOfShareEvent);
+
+                return;
+
+            }
+
+        }
+
+      
 
     }
 
