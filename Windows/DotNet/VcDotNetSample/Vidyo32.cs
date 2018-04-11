@@ -25,6 +25,26 @@ namespace VGUClientLogic
 
         #region Vidyo Client Dll - Data Type definitions
 
+        public const int PROXY_VIDYO_AUTO = (1<<1);                     /*!< Automatic use of VidyoProxy */
+        public const int PROXY_VIDYO_MANUAL = (1<<2);                   /*!< Manual use of VidyoProxy */
+        public const int PROXY_VIDYO_FORCE = (1);                       /*!< Force use of VidyoProxy towards VidyoManager and VidyoRouter */
+        public const int PROXY_WEB_ENABLE = (1<<3);                    /*!< Enable web proxy */
+        public const int PROXY_WEB_IE = (1<<4);                         /*!< Means get and follow Internet Explorer LAN Settings */
+        public const int PROXY_WEB_LOCAL = (1<<5);                      /*!< Means web proxy details are configured directly on Client Application */
+        public const int PROXY_WEB_IE_AUTO_DETECT = (1<<6);             /*!< IE LAN setting is "Automatically Detect".
+														 This means use WPAD to detect web proxy */
+        public const int PROXY_WEB_IE_AUTO_CONFIG_SCRIPT = (1<<7);      /*!< IE LAN setting is "Use Automatic Configuration Script".
+														 This means download given PAC script using WPAD and find web proxy */
+        public const int PROXY_WEB_IE_MANUAL = (1<<8);                  /*!< IE LAN setting is "Use configured proxy server" */
+        public const int PROXY_WEB_LOCAL_AUTO_DETECT = (1<<9);          /*!< Client Application setting is "Automatically Detect".
+													 Client Application is configured to use WPAD to detect web proxy */
+        public const int PROXY_WEB_LOCAL_AUTO_CONFIG_SCRIPT = (1<<10);  /*!< Client Application setting is "Use Automatic Configuration Script".
+														This means download given PAC script using WPAD and find web proxy */
+        public const int PROXY_WEB_LOCAL_MANUAL = (1<<11);              /*!< Client Application setting is "Use configured proxy server" */
+        public const int PROXY_VIDYO_FORCE_TO_VM = (1<<12);             /*!< Force use of VidyoProxy towards VidyoManager only */
+        public const int PROXY_VIDYO_DO_NOT_USE_TO_VR = (1 << 13);        /*!< Do not retry by using VidyoProxy for connection to VidyoRouter when direct connection is failed */
+
+
         public const int MAX_PRIVATE_EVENT_DATA_SIZE = 35 * 1024;//16384
         public const int MAX_USER_MESSAGE_STRING_SIZE = (256 + 1);
         public const int NUM_USER_MESSAGE_CODES = 3;
@@ -3160,6 +3180,7 @@ namespace VGUClientLogic
         };
 
 
+
         public enum VidyoClientEndpointStatus
         {
             VIDYO_CLIENT_ENDPOINT_STATUS_INACTIVE,  /*!< Client not registered to server */
@@ -3621,6 +3642,22 @@ namespace VGUClientLogic
             public VidyoBool isPortalAvailable;
         };
 
+        // VIDYO_CLIENT_OUT_EVENT_PARTICIPANTS_CHANGED
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientOutEventParticipantsChanged
+        {
+            public uint participantCount;
+        };
+
+        // VIDYO_CLIENT_OUT_EVENT_FLOATING_WINDOW
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientOutEventFloatingWindow
+        {
+            public IntPtr window;
+        };
+
+
+
         // VidyoClientOutEventParticipantsChanged 
         // VidyoClientOutEventIncomingCall
         // VidyoClientOutEventPreview
@@ -3832,6 +3869,13 @@ namespace VGUClientLogic
         {
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MAX_INTERFACE_LENGTH)]
             public string name;
+        };
+
+        // VIDYO_CLIENT_IN_EVENT_PARTICIPANTS_LIMIT:
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientInEventParticipantsLimit
+        {
+            public uint maxNumParticipants;
         };
 
 
