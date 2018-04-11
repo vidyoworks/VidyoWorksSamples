@@ -981,7 +981,7 @@ namespace VGUClientLogic
 
                 Does not have a parameter.
             */
-            VidyoClientOutEventParticipantsChanged = 1204,
+            VIDYO_CLIENT_OUT_EVENT_CONFERENCE_ACTIVE_AFTER_RETRY = 1204,
             /*!
                 Signal that a remote source is added in the conference.
 
