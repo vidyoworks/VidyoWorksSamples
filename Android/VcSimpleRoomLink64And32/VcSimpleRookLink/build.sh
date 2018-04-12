@@ -10,6 +10,7 @@ find app/src/main/jniLibs -iname "*.so" -exec rm -R {} \;
 rm -rf obj
 rm -rf build
 rm -rf app/build
+cp -rf app/src/main/jni/lib/$VIDYO_TYPE_OF_PROCESSOR/libVidyoClientApp.so app/src/main/jni/lib/libVidyoClientApp.so
 ndk-build NDK_PROJECT_PATH=. NDK_LIBS_OUT=./app/src/main/jniLibs NDK_APPLICATION_MK=app/src/main/jni/Application.mk APP_BUILD_SCRIPT=app/src/main/jni/Android.mk
 
 export VIDYO_TYPE_OF_PROCESSOR=arm64-v8a
@@ -18,4 +19,5 @@ echo "step 2 VIDYO_TYPE_OF_PROCESSOR  = $VIDYO_TYPE_OF_PROCESSOR"
 rm -rf obj
 rm -rf build
 rm -rf app/build
+cp -rf app/src/main/jni/lib/$VIDYO_TYPE_OF_PROCESSOR/libVidyoClientApp.so app/src/main/jni/lib/libVidyoClientApp.so
 ndk-build NDK_PROJECT_PATH=. NDK_LIBS_OUT=./app/src/main/jniLibs NDK_APPLICATION_MK=app/src/main/jni/Application.mk APP_BUILD_SCRIPT=app/src/main/jni/Android.mk

@@ -346,8 +346,8 @@ public class VidyoSampleActivity extends Activity implements
 	{
 		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 
-		serverString   = new StringBuffer(settings.getString("ServerString", "http://vvp5.vidyoqa.com"));
-		keyString = new StringBuffer(settings.getString("KeyString", "S2Elcic9k1PR"));
+		serverString   = new StringBuffer(settings.getString("ServerString", "http://test.sandboxga.vidyo.com"));
+		keyString = new StringBuffer(settings.getString("KeyString", "iUC7CrJ822"));
 		displayNameString = new StringBuffer(settings.getString("DisplayNameString", "Android user"));
 		pinString = new StringBuffer(settings.getString("PinString", ""));
 	}
