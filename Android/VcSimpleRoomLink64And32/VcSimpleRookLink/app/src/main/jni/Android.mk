@@ -7,7 +7,7 @@ include $(CLEAR_VARS)
 # Here we give our module name and source file(s)
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/include/ $(LOCAL_PATH)/lib/include
 LOCAL_SRC_FILES := ndkVidyoSample.c
-LOCAL_SHARED_LIBRARIES := VidyoClientApp
+LOCAL_SHARED_LIBRARIES := $(VIDYO_TYPE_OF_PROCESSOR)/VidyoClientApp
 LOCAL_LDLIBS = -llog 
 LOCAL_MODULE    := ndkVidyoSample
  
