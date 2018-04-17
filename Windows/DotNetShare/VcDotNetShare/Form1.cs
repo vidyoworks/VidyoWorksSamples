@@ -368,6 +368,23 @@ namespace VidyoClientCS
                                                         ptrProfile,//profileParams,
                                                         false); //reserved
                 SetFlag(cVcStarted);
+
+                //Enable window share feature
+                Vidyo32.VidyoClientRequestEnableAppShare enableShare = new Vidyo32.VidyoClientRequestEnableAppShare();
+                enableShare.isEnable = Vidyo32.VidyoBool.VIDYO_TRUE;
+                int nEnableSize = Marshal.SizeOf(enableShare);
+
+                IntPtr ptrEnableShares = Marshal.AllocCoTaskMem(nEnableSize);
+                Marshal.StructureToPtr(enableShare, ptrEnableShares, true);
+                int szShares2 = Marshal.SizeOf(ptrEnableShares);
+
+                uint error = Vidyo32.VidyoClientSendRequest(Vidyo32.VidyoClientRequest.VIDYO_CLIENT_REQUEST_ENABLE_APP_SHARE,
+                            ptrEnableShares, nEnableSize);
+                if (error != 0)
+                {
+                    return;
+                }
+
             }
 
             catch (Exception ex)

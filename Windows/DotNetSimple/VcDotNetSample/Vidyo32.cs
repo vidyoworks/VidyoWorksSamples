@@ -3179,6 +3179,20 @@ namespace VGUClientLogic
             public uint cpuUsage;
         };
 
+        //VIDYO_CLIENT_REQUEST_ENABLE_APP_SHARE
+        [StructLayout(LayoutKind.Sequential)]
+        public struct VidyoClientRequestEnableAppShare
+        {
+
+            /*!
+            VIDYO_TRUE to enable the Application share
+            VIDYO_FALSE to disable the Application share
+            Use VIDYO_CLIENT_REQUEST_ENABLE_APP_SHARE to enable/disable the application share
+            device.
+            */
+            public VidyoBool isEnable;
+        };
+
 
 
         public enum VidyoClientEndpointStatus
