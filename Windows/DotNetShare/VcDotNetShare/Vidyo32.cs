@@ -3855,6 +3855,40 @@ namespace VGUClientLogic
             public VidyoBool muteSpeaker;
         };
 
+
+        // VIDYO_CLIENT_IN_EVENT_ROOM_LINK_EX
+        [Serializable]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+        unsafe public struct VidyoClientInEventRoomLinkEx
+        {
+
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = URI_LEN)]
+            public string portalUri;
+
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = ROOMKEY_SIZE)]
+            public string roomKey;
+
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = USERID_SIZE)]
+            public string displayName;
+
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = PIN_SIZE)]
+            public string pin;
+
+            public VidyoClientClientType clientType;
+
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = VIDYO_CLIENT_REFERENCE_NUMBER_LEN)]
+            public string referenceNumber;
+
+            public VidyoBool muteCamera;
+
+            public VidyoBool muteMicrophone;
+
+            public VidyoBool muteSpeaker;
+
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = ENDPOINT_LOCATION_TAG_SIZE)]
+            public string locationTag;
+        };
+
         // VIDYO_CLIENT_IN_EVENT_SHARE:
         // Share local application window in conference
         [StructLayout(LayoutKind.Sequential)]
