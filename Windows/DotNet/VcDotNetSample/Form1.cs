@@ -551,11 +551,11 @@ namespace VidyoClientCS
             Vidyo32.VidyoClientRequestVolume vlmParam = new Vidyo32.VidyoClientRequestVolume();
             if (chkMuteSpeaker.Checked)
             {
-                //nn vlmParam.isMuted = Vidyo32.VidyoBool.VIDYO_TRUE  ;
+                //nn vlmParam.isMuted = Vidyo32.VIDYO_TRUE  ;
             }
             else
             {
-                //nn vlmParam.isMuted = Vidyo32.VidyoBool.VIDYO_FALSE ;
+                //nn vlmParam.isMuted = Vidyo32.VIDYO_FALSE ;
                 vlmParam.volume = 32000;
             }
             int size = Marshal.SizeOf(vlmParam);
@@ -712,11 +712,11 @@ namespace VidyoClientCS
 
             if (MuteMic.Checked)
             {
-                muteAudio.isMuted = Vidyo32.VidyoBool.VIDYO_TRUE;
+                muteAudio.isMuted = Vidyo32.VIDYO_TRUE;
             }
             else
             {
-                muteAudio.isMuted = Vidyo32.VidyoBool.VIDYO_FALSE;
+                muteAudio.isMuted = Vidyo32.VIDYO_FALSE;
             }
 
             int size1 = Marshal.SizeOf(muteAudio);
@@ -735,7 +735,7 @@ namespace VidyoClientCS
                 Vidyo32.VidyoClientRequestGetMuted OutVideoVul = (Vidyo32.VidyoClientRequestGetMuted)Marshal.PtrToStructure(MuteMicrophoneptr, typeof(Vidyo32.VidyoClientRequestGetMuted));
             }
 
-            if (ReqGetMuted.isMuted == Vidyo32.VidyoBool.VIDYO_TRUE)
+            if (ReqGetMuted.isMuted == Vidyo32.VIDYO_TRUE)
             {
                 message = "Vidyo Is Muted" + ReqGetMuted.isMuted;
             }
@@ -753,11 +753,11 @@ namespace VidyoClientCS
             Vidyo32.VidyoClientInEventMute muteVideo = new Vidyo32.VidyoClientInEventMute();
             if (chkMuteVideo.Checked)
             {
-                muteVideo.isMuted = Vidyo32.VidyoBool.VIDYO_TRUE;
+                muteVideo.isMuted = Vidyo32.VIDYO_TRUE;
             }
             else
             {
-                muteVideo.isMuted = Vidyo32.VidyoBool.VIDYO_FALSE;
+                muteVideo.isMuted = Vidyo32.VIDYO_FALSE;
             }
 
             int size1 = Marshal.SizeOf(muteVideo);
@@ -776,7 +776,7 @@ namespace VidyoClientCS
                 Vidyo32.VidyoClientRequestGetMuted OutVideoVul = (Vidyo32.VidyoClientRequestGetMuted)Marshal.PtrToStructure(MuteVideoptr, typeof(Vidyo32.VidyoClientRequestGetMuted));
             }
 
-            if (ReqGetMuted.isMuted == Vidyo32.VidyoBool.VIDYO_TRUE)
+            if (ReqGetMuted.isMuted == Vidyo32.VIDYO_TRUE)
             {
                 message = "Vidyo Is Muted" + ReqGetMuted.isMuted;
             }
@@ -864,9 +864,9 @@ namespace VidyoClientCS
             GuestLogin.displayName = txtBxGuestNm.Text;
             GuestLogin.pin = txtBxRoomPin.Text;
             GuestLogin.clientType = VGUClientLogic.Vidyo32.VidyoClientClientType.VIDYO_CLIENT_CLIENTTYPE_W;
-            GuestLogin.muteCamera = Vidyo32.VidyoBool.VIDYO_FALSE;
-            GuestLogin.muteMicrophone = Vidyo32.VidyoBool.VIDYO_FALSE;
-            GuestLogin.muteSpeaker = Vidyo32.VidyoBool.VIDYO_FALSE;
+            GuestLogin.muteCamera = Vidyo32.VIDYO_FALSE;
+            GuestLogin.muteMicrophone = Vidyo32.VIDYO_FALSE;
+            GuestLogin.muteSpeaker = Vidyo32.VIDYO_FALSE;
 
             int Gsize = Marshal.SizeOf(GuestLogin);
             IntPtr Gptr = Marshal.AllocCoTaskMem(Gsize);
@@ -1381,7 +1381,7 @@ namespace VidyoClientCS
 
             for (int j = 0; j < lNumDesktops; j++)
             {
-                aWinShareData.sysDesktopId[j] = lholdWinDesktopsStruct.sysDesktopId[j];
+                //aWinShareData.sysDesktopId[j] = lholdWinDesktopsStruct.sysDesktopId[j];
                 aWinShareData.sysDesktopName[j] = lholdWinDesktopsStruct.sysDesktopName[j];
                 aWinShareData.sysDesktopRect[j].height = lholdWinDesktopsStruct.sysDesktopRect[j].height;
                 aWinShareData.sysDesktopRect[j].width = lholdWinDesktopsStruct.sysDesktopRect[j].width;
