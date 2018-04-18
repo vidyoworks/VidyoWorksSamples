@@ -2,12 +2,19 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using System.Text;
 //using version TAG_VC_3_5_10_0007
 namespace VGUClientLogic
 {
+
+    using VidyoBool = Byte;
     public class Vidyo32
     {
+        
+        public const  VidyoBool VIDYO_FALSE = 0;
+        public const  VidyoBool VIDYO_TRUE = 1;
+        
         static public string UnicodeStringFromUtf8Array(byte[] bytUTF8)
         {
             byte[] bytUnicode = Encoding.Convert(Encoding.UTF8, Encoding.Unicode, bytUTF8);
@@ -117,12 +124,6 @@ namespace VGUClientLogic
         const int MAX_INTERFACE_LENGTH = (256+1);
 
         // uint VidyoSizeT;
-
-        public enum VidyoBool
-        {
-            VIDYO_FALSE = 0,
-            VIDYO_TRUE = 1
-        }
 
         /********************************************************************/
         /* Events from GUI to Vidyo Client Library                          */

@@ -151,7 +151,7 @@ namespace VidyoClientCS
                 case Vidyo32.VidyoClientOutEvent.VIDYO_CLIENT_OUT_EVENT_MUTED_VIDEO:
                     {
                         Vidyo32.VidyoClientOutEventMuted muteInfo = (Vidyo32.VidyoClientOutEventMuted)Marshal.PtrToStructure(param, typeof(Vidyo32.VidyoClientOutEventMuted));
-                        if (muteInfo.isMuted == Vidyo32.VidyoBool.VIDYO_TRUE)
+                        if (muteInfo.isMuted == Vidyo32.VIDYO_TRUE)
                             SetFlag(cVideoMuted);
                         else
                             ClearFlag(cVideoMuted);
@@ -161,7 +161,7 @@ namespace VidyoClientCS
                 case Vidyo32.VidyoClientOutEvent.VIDYO_CLIENT_OUT_EVENT_MUTED_SERVER_AUDIO_IN:                
                     {
                         Vidyo32.VidyoClientOutEventMuted muteInfo = (Vidyo32.VidyoClientOutEventMuted)Marshal.PtrToStructure(param, typeof(Vidyo32.VidyoClientOutEventMuted));
-                        if (muteInfo.isMuted == Vidyo32.VidyoBool.VIDYO_TRUE)
+                        if (muteInfo.isMuted == Vidyo32.VIDYO_TRUE)
                             SetFlag(cMicMuted);
                         else
                             ClearFlag(cMicMuted);
@@ -371,7 +371,7 @@ namespace VidyoClientCS
 
                 //Enable window share feature
                 Vidyo32.VidyoClientRequestEnableAppShare enableShare = new Vidyo32.VidyoClientRequestEnableAppShare();
-                enableShare.isEnable = Vidyo32.VidyoBool.VIDYO_TRUE;
+                enableShare.isEnable = Vidyo32.VIDYO_TRUE;
                 int nEnableSize = Marshal.SizeOf(enableShare);
 
                 IntPtr ptrEnableShares = Marshal.AllocCoTaskMem(nEnableSize);
@@ -413,29 +413,30 @@ namespace VidyoClientCS
             if (!roomLink.m_bMakeCall)
                 return;
 
-            Vidyo32.VidyoClientInEventRoomLink guestJoin = new Vidyo32.VidyoClientInEventRoomLink();
+            Vidyo32.VidyoClientInEventRoomLinkEx guestJoin = new Vidyo32.VidyoClientInEventRoomLinkEx();
 
             guestJoin.portalUri = roomLink.m_strPortal;
             guestJoin.roomKey = roomLink.m_strRoomKey;
             guestJoin.displayName = roomLink.m_strDisplayName;
             guestJoin.pin = roomLink.m_strPin;
             guestJoin.clientType = VGUClientLogic.Vidyo32.VidyoClientClientType.VIDYO_CLIENT_CLIENTTYPE_W;
-            guestJoin.muteCamera = Vidyo32.VidyoBool.VIDYO_FALSE;
-            guestJoin.muteMicrophone = Vidyo32.VidyoBool.VIDYO_FALSE;
-            guestJoin.muteSpeaker = Vidyo32.VidyoBool.VIDYO_FALSE;
+            guestJoin.muteCamera = Vidyo32.VIDYO_FALSE;
+            guestJoin.muteMicrophone = Vidyo32.VIDYO_FALSE;
+            guestJoin.muteSpeaker = Vidyo32.VIDYO_FALSE;
+            guestJoin.locationTag = "EMEA-NL";
 
             int Gsize = Marshal.SizeOf(guestJoin);
             IntPtr Gptr = Marshal.AllocCoTaskMem(Gsize);
             Marshal.StructureToPtr(guestJoin, Gptr, false);
 
-            Int32 Guest = Vidyo32.VidyoClientSendEvent(Vidyo32.VidyoClientInEvent.VIDYO_CLIENT_IN_EVENT_ROOM_LINK, Gptr, Gsize);
+            Int32 Guest = Vidyo32.VidyoClientSendEvent(Vidyo32.VidyoClientInEvent.VIDYO_CLIENT_IN_EVENT_ROOM_LINK_EX, Gptr, Gsize);
         }
 
         private void buttonMuteCamera_Click(object sender, EventArgs e)
         {
 
             Vidyo32.VidyoClientInEventMute mute = new Vidyo32.VidyoClientInEventMute();
-            mute.isMuted = (IsFlagSet(cVideoMuted)) ? Vidyo32.VidyoBool.VIDYO_TRUE : Vidyo32.VidyoBool.VIDYO_FALSE;
+            mute.isMuted = (IsFlagSet(cVideoMuted)) ? Vidyo32.VIDYO_TRUE : Vidyo32.VIDYO_FALSE;
             int Gsize = Marshal.SizeOf(mute);
             IntPtr Gptr = Marshal.AllocCoTaskMem(Gsize);
             Marshal.StructureToPtr(mute, Gptr, false);
@@ -446,7 +447,7 @@ namespace VidyoClientCS
         private void buttonMuteMic_Click(object sender, EventArgs e)
         {
             Vidyo32.VidyoClientInEventMute mute = new Vidyo32.VidyoClientInEventMute();
-            mute.isMuted = (IsFlagSet(cMicMuted)) ? Vidyo32.VidyoBool.VIDYO_FALSE : Vidyo32.VidyoBool.VIDYO_TRUE;
+            mute.isMuted = (IsFlagSet(cMicMuted)) ? Vidyo32.VIDYO_FALSE : Vidyo32.VIDYO_TRUE;
             int Gsize = Marshal.SizeOf(mute);
             IntPtr Gptr = Marshal.AllocCoTaskMem(Gsize);
             Marshal.StructureToPtr(mute, Gptr, false);
