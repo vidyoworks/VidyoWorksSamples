@@ -78,19 +78,21 @@ function XmlKeyValue(input, key) {
 }
 
 
-formScheduleStringWithParas = function (scheduleToken, tenantId, serverURL, agentId, cName, apiKey, appLocation) {
+formScheduleStringWithParas = function (scheduleToken, tenantId, serverURL, agentId, skill, cName, apiKey, appLocation) {
 
     try {
-
-        var total = "token={scheduleToken}&tenantId={tenantId}&serverURL={serverURL}&agentId={agentId}&cName={cName}&apiKey={apiKey}"
+        var total = "";
+        if(agentId)
+            total = "token={scheduleToken}&tenantId={tenantId}&serverURL={serverURL}&agentId={agentId}&cName={cName}&apiKey={apiKey}"
             .format({ scheduleToken: scheduleToken, tenantId: tenantId, serverURL: serverURL, agentId: agentId, cName: cName, apiKey: apiKey });
+        else
+            total = "token={scheduleToken}&tenantId={tenantId}&serverURL={serverURL}&skill={skill}&cName={cName}&apiKey={apiKey}"
+            .format({ scheduleToken: scheduleToken, tenantId: tenantId, serverURL: serverURL, skill: skill, cName: cName, apiKey: apiKey });
 
         var encTotal = b64EncodeUnicode(total);
         //encTotal += "=";
 
         var scheduleLink = appLocation + encTotal;
-
-        console.log("...dinesh...., link = ", scheduleLink);
         var message = "Complete link : " + scheduleLink;
 
         var result = message.link(scheduleLink);
@@ -108,8 +110,8 @@ getSchedule = function (token) {
     try {
 
         var scheduleToken = document.getElementById("scheduleToken").value;
-        var url = "https://vex.vidyoclouddev.com/v2/schedule?tenant=64&scheduleToken={scheduleToken}"
-            .format({ scheduleToken: scheduleToken });
+        var url = "{defServerURL}/v2/schedule?tenant={defTenantId}&scheduleToken={scheduleToken}"
+            .format({ defServerURL:defServerURL, defTenantId:defTenantId, scheduleToken: scheduleToken });
 
         $.ajaxSetup({
             headers: {
@@ -126,12 +128,18 @@ getSchedule = function (token) {
                 var scheduleTokenInResponse = data.scheduleToken;
                 var tenantId = document.getElementById("tenantId").value;
                 var serverURL = document.getElementById("serverURL").value;
-                var agentId = data.agentId;
+                
+                var agentId =null;
+                var skill = null;
+                if(data.agentId)
+                    agentId = data.agentId;
+                else
+                    skill = data.skillCategory[0].skill;
                 var cName = XmlKeyValue(data.xmlBlob, "customerName");
                 var apiKey = document.getElementById("apiKey").value;
                 var appLocation = document.getElementById("appLocation").value;
 
-                formScheduleStringWithParas(scheduleToken, tenantId, serverURL, agentId, cName, apiKey, appLocation);
+                formScheduleStringWithParas(scheduleToken, tenantId, serverURL, agentId, skill, cName, apiKey, appLocation);
 
             });
 
@@ -143,12 +151,19 @@ getSchedule = function (token) {
     }
 }
 
-
-
-
 formScheduleString = function () {
+    var scheduleToken = document.getElementById("scheduleToken").value;
+    if(scheduleToken.length == 0)
+    {
+        window.alert("Schedule token is empty. Please fill it before starting");
+        return;
+    }
     try {
-        $.getJSON("https://vex.vidyoclouddev.com/v2/customerProfile?tenant=64",
+
+        var url = "{defServerURL}/v2/customerProfile?tenant={defTenantId}"
+            .format({ defServerURL:defServerURL, defTenantId:defTenantId });
+
+        $.getJSON(url,
             {
 
             },
@@ -173,6 +188,17 @@ formScheduleString = function () {
     }
 
 }
+
+
+
+var bodyLoaded = function () 
+{
+    document.getElementById("tenantId").value = defTenantId;
+    document.getElementById("serverURL").value = defServerURL;
+    document.getElementById("apiKey").value = defApiKey;
+    document.getElementById("appLocation").value = defAppLocation;
+}
+
 
 
 
