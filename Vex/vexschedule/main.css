@@ -2,3 +2,8 @@
     max-width: 500px;
     height: 30px;
 }
+
+#hiddensubmit
+{    
+    visibility: hidden;
+}

@@ -12,7 +12,7 @@
     <h1>Enter Vex strings!</h1>
     
     <p id="completeLink"></p>
-    <form onsubmit="formScheduleString_()">
+    <form onsubmit="formScheduleString()">
         Schedule token:<br>
         <input type="text" name="scheduleToken" class="vextextbox" id= "scheduleToken">
 
@@ -33,10 +33,10 @@
         <input type="text" name="appLocation"  class="vextextbox" id= "appLocation">
 
         <br><br><br>
-        <input type="submit" class="vextextbox"  value="Form Schedule String">
+        <input type="submit" id = "hiddensubmit" value="Form Schedule String">
       </form> 
-
-      <button class="vextextbox" onclick="formScheduleString()">Click me</button>
+      <br><br><br>
+      <button class="vextextbox"  onclick="formScheduleString()">Form Schedule String</button>
 </body>
 
 </html>
