@@ -2404,6 +2404,7 @@ namespace VGUClientLogic
 
 
             unsafe fixed byte cameras[(int)MAX_DEVICE_NUMBER * DEVICE_NAME_SIZE];//read only
+            unsafe fixed byte cameraLabels[(int)MAX_DEVICE_NUMBER * DEVICE_NAME_SIZE];
             public uint numberCameras;
             public uint currentCamera;
 
@@ -2462,6 +2463,7 @@ namespace VGUClientLogic
             public uint selfViewLoopbackPolicy;
             public uint enableLowBackgroundTimeout;
             public uint allowLetterBoxVideoScaling;
+            public VidyoBool enableTilesToolbars;
 
 
 
