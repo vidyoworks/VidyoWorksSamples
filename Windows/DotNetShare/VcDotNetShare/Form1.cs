@@ -123,6 +123,19 @@ namespace VidyoClientCS
             string message = now + "Out Event from Vidyoclient: " + actionType;
             switch (actionType)
             {
+                case Vidyo32.VidyoClientOutEvent.VIDYO_CLIENT_OUT_EVENT_SIGN_IN:
+                    {
+                         Vidyo32.VidyoClientOutEventSignIn eventSignIn = (Vidyo32.VidyoClientOutEventSignIn)Marshal.PtrToStructure(param, typeof(Vidyo32.VidyoClientOutEventSignIn));
+
+                       if(eventSignIn.activeEid == 0)
+                        {
+                            //we need to consume a license
+                            //As VidyoClient just informed that we never consume a license
+                           Vidyo32.VidyoClientSendEvent(Vidyo32.VidyoClientInEvent.VIDYO_CLIENT_IN_EVENT_LICENSE, (IntPtr)0, 0);
+                        }
+
+                    }
+                break;
                 case Vidyo32.VidyoClientOutEvent.VIDYO_CLIENT_OUT_EVENT_ROOM_LINK:
                     {
                         Vidyo32.VidyoClientOutEventRoomLink guestLink = (Vidyo32.VidyoClientOutEventRoomLink)Marshal.PtrToStructure(param, typeof(Vidyo32.VidyoClientOutEventRoomLink));
@@ -384,6 +397,23 @@ namespace VidyoClientCS
                 {
                     return;
                 }
+
+
+                Vidyo32.VidyoClientRequestConfiguration config = new Vidyo32.VidyoClientRequestConfiguration();
+                int nconfigSize = Marshal.SizeOf(config);
+
+                IntPtr ptrConfig = Marshal.AllocCoTaskMem(nconfigSize);
+                Marshal.StructureToPtr(config, ptrConfig, true);
+                int nconfigSize2 = Marshal.SizeOf(ptrConfig);
+
+                uint error2 = Vidyo32.VidyoClientSendRequest(Vidyo32.VidyoClientRequest.VIDYO_CLIENT_REQUEST_GET_CONFIGURATION,
+                            ptrConfig, nconfigSize);
+                if (error2 != 0)
+                {
+                    return;
+                }
+
+              
 
             }
 
