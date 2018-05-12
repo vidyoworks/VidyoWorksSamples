@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/build/intermediates/res/merged/debug/layout/main.xml",
+        "source": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/src/main/res/layout/main.xml"
+    },
+    {
+        "merged": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/build/intermediates/res/merged/debug/layout/joinconference.xml",
+        "source": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/src/main/res/layout/joinconference.xml"
+    },
+    {
+        "merged": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/build/intermediates/res/merged/debug/layout/conference.xml",
+        "source": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/src/main/res/layout/conference.xml"
+    },
+    {
+        "merged": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/build/intermediates/res/merged/debug/layout/custom_dialog.xml",
+        "source": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/src/main/res/layout/custom_dialog.xml"
+    }
+]

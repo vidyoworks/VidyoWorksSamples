@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png",
+        "source": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/src/main/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/vidyologo.png",
+        "source": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/src/main/res/drawable-hdpi/vidyologo.png"
+    },
+    {
+        "merged": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/build/intermediates/res/merged/debug/drawable-hdpi-v4/vidyo.png",
+        "source": "/Users/dinesh/src/TAGS/github/VidyoWorksSamples/Android/VcAudioSettings/VcAudioSettings/app/src/main/res/drawable-hdpi/vidyo.png"
+    }
+]
