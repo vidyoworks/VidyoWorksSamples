@@ -1,12 +1,15 @@
-<!-- hide script from old browsers
+// <!-- hide script from old browsers
 
-   var vidyoClientObj = null;
+var vidyoClientObj = null;
 
 // configuration of behavior for this code
 var useConsoleForLogging = true;
 var useAlertsForLogging = false;
 var useWebRTC = true;
-var sessionManager = 'webrtcapi.vidyo.com';
+
+// var sessionManager = 'webrtcapi.vidyo.com'; * Deprecated *
+var sessionManager = 'vwebrtc.vidyocloud.com';
+
 if (useWebRTC) {
     var pluginType = 'VidyoWebRTC';
 } else {
@@ -282,6 +285,15 @@ function toggleCameraIcon()
             portalRes = portalUri.split("\/flex.html\?roomdirect.html");
             portalUri = portalRes[0];
             var roomKey = getUrlVars()["key"];
+        }
+
+        var joinPath = "\/join\/";
+        /* Room key undefined. Check VidyoConnect room link type. */
+        if (!roomKey && portalUri.search(joinPath) != -1) {
+            portalRes = portalUri.split(joinPath);
+
+            portalUri = portalRes[0];
+            roomKey = portalRes[1];
         }
 
         var guestName = getUrlVars()["guestName"];
