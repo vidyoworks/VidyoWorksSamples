@@ -7,8 +7,7 @@ var useConsoleForLogging = true;
 var useAlertsForLogging = false;
 var useWebRTC = true;
 
-// var sessionManager = 'webrtcapi.vidyo.com'; * Deprecated *
-var sessionManager = 'vwebrtc.vidyocloud.com';
+var sessionManager = 'webrtc.sandboxga.vidyo.com';
 
 if (useWebRTC) {
     var pluginType = 'VidyoWebRTC';
