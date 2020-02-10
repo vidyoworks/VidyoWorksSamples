@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1963ECAB23CF2A3700250714 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55ACA12617E10CC000AD8DC1 /* Security.framework */; };
+		1963ECAD23CF2A6600250714 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1963ECAC23CF2A6600250714 /* MessageUI.framework */; };
+		19AC275523F157090055FB03 /* ca-certificates-base.crt in Resources */ = {isa = PBXBuildFile; fileRef = 94F244001A5C223200850B88 /* ca-certificates-base.crt */; };
+		19AC275B23F1588B0055FB03 /* SSZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19AC275A23F1588B0055FB03 /* SSZipArchive.framework */; };
 		1A5A6F091298BEA9004DA40B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5A6F081298BEA9004DA40B /* OpenGLES.framework */; };
 		1A5A6F111298BF87004DA40B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5A6F101298BF87004DA40B /* AudioToolbox.framework */; };
 		1A5A6FE81298CD85004DA40B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5A6FE71298CD85004DA40B /* QuartzCore.framework */; };
@@ -18,12 +22,10 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		55263678174BCC89007219D6 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55263677174BCC89007219D6 /* ReleaseNotes.txt */; };
-		55563F1C174A9C28002416B3 /* VidyoClientLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55563F1B174A9C28002416B3 /* VidyoClientLib.a */; };
+		55563F1C174A9C28002416B3 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		55563F1E174A9DCE002416B3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 55563F1D174A9DCE002416B3 /* Default-568h@2x.png */; };
-		55ACA12717E10CC000AD8DC1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55ACA12617E10CC000AD8DC1 /* Security.framework */; };
 		55C58F9515AE17C8002AB90A /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C58F9415AE17C8002AB90A /* NSString+Base64.m */; };
-		94F244011A5C223200850B88 /* ca-certificates-base.crt in Resources */ = {isa = PBXBuildFile; fileRef = 94F244001A5C223200850B88 /* ca-certificates-base.crt */; };
+		E9C705FB9DA528CFF2A0F2A8 /* Pods_VidyoClientSample_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F26004F230210CB21B85AFDC /* Pods_VidyoClientSample_iOS.framework */; };
 		F47F22C713FF0518006471AD /* main_ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = F47F22C613FF0518006471AD /* main_ios.mm */; };
 		F47F237413FF064B006471AD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F47F237313FF064B006471AD /* MainWindow.xib */; };
 		F47F242913FF11B9006471AD /* VidyoClientSample_iOS_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F47F242813FF11B9006471AD /* VidyoClientSample_iOS_AppDelegate.m */; };
@@ -34,6 +36,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1903564B23CF2C4100D30139 /* SSZipArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SSZipArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1963ECAC23CF2A6600250714 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		1963ECAE23CF2A6C00250714 /* SSZipArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SSZipArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19AC275623F157FA0055FB03 /* SSZipArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SSZipArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19AC275A23F1588B0055FB03 /* SSZipArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SSZipArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5A6F081298BEA9004DA40B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1A5A6F101298BF87004DA40B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1A5A6FE71298CD85004DA40B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -46,19 +53,14 @@
 		1D6058910D05DD3D006BFB54 /* VidyoClientSample_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VidyoClientSample_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		55263677174BCC89007219D6 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = SOURCE_ROOT; };
-		55563F16174A9BF6002416B3 /* VidyoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidyoClient.h; path = VidyoClientLibrary/include/VidyoClient.h; sourceTree = "<group>"; };
-		55563F17174A9BF6002416B3 /* VidyoClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidyoClientConstants.h; path = VidyoClientLibrary/include/VidyoClientConstants.h; sourceTree = "<group>"; };
-		55563F18174A9BF6002416B3 /* VidyoClientMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidyoClientMessages.h; path = VidyoClientLibrary/include/VidyoClientMessages.h; sourceTree = "<group>"; };
-		55563F19174A9BF6002416B3 /* VidyoClientParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidyoClientParameters.h; path = VidyoClientLibrary/include/VidyoClientParameters.h; sourceTree = "<group>"; };
-		55563F1A174A9BF6002416B3 /* VidyoTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidyoTypes.h; path = VidyoClientLibrary/include/VidyoTypes.h; sourceTree = "<group>"; };
-		55563F1B174A9C28002416B3 /* VidyoClientLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = VidyoClientLib.a; path = VidyoClientLibrary/lib/VidyoClientLib.a; sourceTree = "<group>"; };
+		2FB3005E37AF35BBF18A063C /* Pods-VidyoClientSample_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VidyoClientSample_iOS.debug.xcconfig"; path = "Target Support Files/Pods-VidyoClientSample_iOS/Pods-VidyoClientSample_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		34D256633F9D70A95196A2D7 /* Pods-VidyoClientSample_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VidyoClientSample_iOS.release.xcconfig"; path = "Target Support Files/Pods-VidyoClientSample_iOS/Pods-VidyoClientSample_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		55563F1D174A9DCE002416B3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		55AC5B6D18084AFA001C72D8 /* VidyoClientSample_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VidyoClientSample_iOS.entitlements; sourceTree = "<group>"; };
 		55ACA12617E10CC000AD8DC1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		55C58F9315AE17C8002AB90A /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
 		55C58F9415AE17C8002AB90A /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		94F244001A5C223200850B88 /* ca-certificates-base.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "ca-certificates-base.crt"; path = "VidyoClientLibrary/certificate/ca-certificates-base.crt"; sourceTree = "<group>"; };
+		F26004F230210CB21B85AFDC /* Pods_VidyoClientSample_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VidyoClientSample_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F47F22C113FF04F1006471AD /* VidyoClientSample_iOS.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientSample_iOS.pch; sourceTree = "<group>"; };
 		F47F22C613FF0518006471AD /* main_ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main_ios.mm; sourceTree = "<group>"; };
 		F47F237113FF0642006471AD /* VidyoClientSample_iOS_Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = VidyoClientSample_iOS_Info.plist; path = sample/VidyoClientSample_iOS_Info.plist; sourceTree = "<group>"; };
@@ -78,8 +80,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55ACA12717E10CC000AD8DC1 /* Security.framework in Frameworks */,
+				19AC275B23F1588B0055FB03 /* SSZipArchive.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1963ECAB23CF2A3700250714 /* Security.framework in Frameworks */,
+				1963ECAD23CF2A6600250714 /* MessageUI.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				1A5A6F091298BEA9004DA40B /* OpenGLES.framework in Frameworks */,
@@ -90,13 +94,30 @@
 				1AB3C8A512A43B53007B03C5 /* AVFoundation.framework in Frameworks */,
 				1AD9C1DB12D8FB28009E04DC /* CFNetwork.framework in Frameworks */,
 				1A96AFBD1316070200993678 /* SystemConfiguration.framework in Frameworks */,
-				55563F1C174A9C28002416B3 /* VidyoClientLib.a in Frameworks */,
+				55563F1C174A9C28002416B3 /* (null) in Frameworks */,
+				E9C705FB9DA528CFF2A0F2A8 /* Pods_VidyoClientSample_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1963ECA123CF29F600250714 /* include */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = include;
+			path = VidyoClientLibrary/include;
+			sourceTree = "<group>";
+		};
+		1963ECA823CF2A1C00250714 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = lib;
+			path = VidyoClientLibrary/lib;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +134,7 @@
 				F48DEEDF1438062500733D64 /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				BE6A7940D4BF8BBFD496D62E /* Pods */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -120,6 +142,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19AC275A23F1588B0055FB03 /* SSZipArchive.framework */,
+				19AC275623F157FA0055FB03 /* SSZipArchive.framework */,
+				1903564B23CF2C4100D30139 /* SSZipArchive.framework */,
+				1963ECAE23CF2A6C00250714 /* SSZipArchive.framework */,
+				1963ECAC23CF2A6600250714 /* MessageUI.framework */,
 				55ACA12617E10CC000AD8DC1 /* Security.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -132,6 +159,7 @@
 				1AB3C8A412A43B53007B03C5 /* AVFoundation.framework */,
 				1AD9C1DA12D8FB28009E04DC /* CFNetwork.framework */,
 				1A96AFBC1316070200993678 /* SystemConfiguration.framework */,
+				F26004F230210CB21B85AFDC /* Pods_VidyoClientSample_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,47 +175,25 @@
 		55563F13174A9BD2002416B3 /* VidyoClientLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				1963ECA823CF2A1C00250714 /* lib */,
+				1963ECA123CF29F600250714 /* include */,
 				55263676174BCA4D007219D6 /* certificates */,
-				55563F15174A9BE2002416B3 /* include */,
-				55563F14174A9BDD002416B3 /* lib */,
 			);
 			name = VidyoClientLibrary;
 			sourceTree = "<group>";
 		};
-		55563F14174A9BDD002416B3 /* lib */ = {
+		BE6A7940D4BF8BBFD496D62E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				55563F1B174A9C28002416B3 /* VidyoClientLib.a */,
+				2FB3005E37AF35BBF18A063C /* Pods-VidyoClientSample_iOS.debug.xcconfig */,
+				34D256633F9D70A95196A2D7 /* Pods-VidyoClientSample_iOS.release.xcconfig */,
 			);
-			name = lib;
-			sourceTree = "<group>";
-		};
-		55563F15174A9BE2002416B3 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				55563F16174A9BF6002416B3 /* VidyoClient.h */,
-				55563F17174A9BF6002416B3 /* VidyoClientConstants.h */,
-				55563F18174A9BF6002416B3 /* VidyoClientMessages.h */,
-				55563F19174A9BF6002416B3 /* VidyoClientParameters.h */,
-				55563F1A174A9BF6002416B3 /* VidyoTypes.h */,
-			);
-			name = include;
-			sourceTree = "<group>";
-		};
-		55AC5B6A18084AB6001C72D8 /* entitlements */ = {
-			isa = PBXGroup;
-			children = (
-				55AC5B6D18084AFA001C72D8 /* VidyoClientSample_iOS.entitlements */,
-			);
-			name = entitlements;
-			path = ..;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		F47F22BA13FF04F1006471AD /* sample */ = {
 			isa = PBXGroup;
 			children = (
-				55AC5B6A18084AB6001C72D8 /* entitlements */,
-				55263677174BCC89007219D6 /* ReleaseNotes.txt */,
 				F47F245513FF1376006471AD /* VidyoClientSample.m */,
 				F47F245613FF1376006471AD /* VidyoClientSample.h */,
 				F47F242713FF11B9006471AD /* VidyoClientSample_iOS_AppDelegate.h */,
@@ -221,9 +227,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "VidyoClientSample_iOS" */;
 			buildPhases = (
+				059C9CB1645947DDC7FB83F7 /* [CP] Check Pods Manifest.lock */,
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				4027912B93BC28A5DD74B15A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -240,10 +248,11 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = 6888NB32SR;
+						DevelopmentTeam = 3P422WBA2F;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -258,11 +267,9 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
-				Japanese,
-				French,
-				German,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -276,16 +283,58 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19AC275523F157090055FB03 /* ca-certificates-base.crt in Resources */,
 				F47F237413FF064B006471AD /* MainWindow.xib in Resources */,
 				F48DEF051438082600733D64 /* LoginWindow.xib in Resources */,
-				94F244011A5C223200850B88 /* ca-certificates-base.crt in Resources */,
 				F483C315159E72C700F03FDD /* Icon.png in Resources */,
 				55563F1E174A9DCE002416B3 /* Default-568h@2x.png in Resources */,
-				55263678174BCC89007219D6 /* ReleaseNotes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		059C9CB1645947DDC7FB83F7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VidyoClientSample_iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4027912B93BC28A5DD74B15A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VidyoClientSample_iOS/Pods-VidyoClientSample_iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SSZipArchive/SSZipArchive.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VidyoClientSample_iOS/Pods-VidyoClientSample_iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
@@ -305,12 +354,14 @@
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FB3005E37AF35BBF18A063C /* Pods-VidyoClientSample_iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = VidyoClientSample_iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 3P422WBA2F;
 				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -319,17 +370,18 @@
 				GCC_PREPROCESSOR_DEFINITIONS = VIDYO_MACOS;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = sample/VidyoClientSample_iOS_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/VidyoClientLibrary/lib\"",
+					"$(PROJECT_DIR)/VidyoClientLibrary/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vidyo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vidyo.VidyoClientSample-iOS.Taras";
 				PRODUCT_NAME = VidyoClientSample_iOS;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -337,29 +389,32 @@
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34D256633F9D70A95196A2D7 /* Pods-VidyoClientSample_iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = VidyoClientSample_iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 3P422WBA2F;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = sample/VidyoClientSample_iOS.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = VIDYO_MACOS;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = sample/VidyoClientSample_iOS_Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/VidyoClientLibrary/lib\"",
+					"$(PROJECT_DIR)/VidyoClientLibrary/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vidyo.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vidyo.VidyoClientSample-iOS.Taras";
 				PRODUCT_NAME = VidyoClientSample_iOS;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -368,7 +423,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT) ";
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)  ";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_TESTABILITY = YES;
@@ -387,7 +442,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT) ";
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)  ";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
