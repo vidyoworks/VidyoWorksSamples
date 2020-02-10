@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 28
 
     sourceSets.main {
         jni.srcDirs = []
@@ -12,8 +11,8 @@ android {
 
     defaultConfig {
         applicationId "com.vidyo.vidyosample"
-        minSdkVersion 10
-        targetSdkVersion 17
+        minSdkVersion 19
+        targetSdkVersion 28
 
         ndk {
             moduleName "ndkVidyoSample"
@@ -29,6 +28,6 @@ android {
 }
 
 dependencies {
-    compile 'com.google.code.gson:gson:2.1'
+    implementation 'com.google.code.gson:gson:2.1'
 }
 

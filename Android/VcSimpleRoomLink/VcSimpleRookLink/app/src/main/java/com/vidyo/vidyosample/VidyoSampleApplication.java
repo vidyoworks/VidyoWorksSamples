@@ -179,6 +179,7 @@ public class VidyoSampleApplication extends android.app.Application {
 	public native void SetEchoCancellation (boolean aecenable);
 	public native void SetSpeakerVolume (int volume);
 	public native void DisableShareEvents();
+	public native void SetPixelDensity(double density);
 	// load the library - name matches jni/Android.mk
 	static {
 	    System.loadLibrary("VidyoClientApp");

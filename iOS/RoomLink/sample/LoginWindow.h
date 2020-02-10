@@ -8,9 +8,10 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
+#import "SSZipArchive/SSZipArchive.h"
 
-
-@interface LoginWindow : UIViewController <NSXMLParserDelegate, UITextFieldDelegate>
+@interface LoginWindow : UIViewController <NSXMLParserDelegate, UITextFieldDelegate, MFMailComposeViewControllerDelegate>
 {
 
 	IBOutlet UILabel *myStatus;
@@ -69,4 +70,5 @@
 
 -(void)setGuestCredentials;
 
+- (IBAction)sendLogs:(UIButton *)sender;
 @end
