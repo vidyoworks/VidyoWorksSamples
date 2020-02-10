@@ -41,8 +41,6 @@
     [roomPinField setText:@""];
 }
 
-
-
 -(void) viewDidLoad
 {
     [super viewDidLoad];
