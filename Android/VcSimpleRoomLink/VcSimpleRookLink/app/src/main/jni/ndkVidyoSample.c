@@ -1,7 +1,11 @@
 #include <jni.h>
 #include <stdio.h>
 #include <string.h>
+
 #include "VidyoClient.h"
+#include "VidyoClientPrivate.h"
+#include "VidyoClientParameters.h"
+
 #include "include/AndroidDebug.h"
 #include <pthread.h>
 #include <unistd.h>
@@ -812,4 +816,24 @@ JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_Disable
 	VidyoClientSendEvent (VIDYO_CLIENT_IN_EVENT_DISABLE_SHARE_EVENTS, 0, 0);
 	LOGI("Disable Shares Called - Vimal");
 	FUNCTION_EXIT;
+}
+
+void SendPrivateRequest(VidyoClientPrivateRequest request, void *param1, size_t param1Size, size_t param2){
+    VidyoClientRequestPrivate requestPrivate = {0};
+    requestPrivate.requestType = (VidyoUint)request;
+    requestPrivate.requestData = param1;
+    requestPrivate.requestDataSize = param1Size;
+    requestPrivate.reserved = param2;
+
+    VidyoClientSendRequest(VIDYO_CLIENT_REQUEST_PRIVATE, &requestPrivate, sizeof(VidyoClientRequestPrivate));
+}
+
+JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SetPixelDensity(JNIEnv *env, jobject javaThisj, jdouble density)
+{
+    FUNCTION_ENTRY
+    VidyoClientPrivateRequestSetPixelDensity req  = {0};
+    req.density = density;
+    SendPrivateRequest(VIDYO_CLIENT_PRIVATE_REQUEST_SET_PIXEL_DENSITY, &req, sizeof(VidyoClientPrivateRequestSetPixelDensity), 0);
+
+    FUNCTION_EXIT;
 }
