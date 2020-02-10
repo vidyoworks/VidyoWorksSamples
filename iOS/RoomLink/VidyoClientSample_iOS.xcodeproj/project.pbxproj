@@ -11,6 +11,7 @@
 		1963ECAD23CF2A6600250714 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1963ECAC23CF2A6600250714 /* MessageUI.framework */; };
 		19AC275523F157090055FB03 /* ca-certificates-base.crt in Resources */ = {isa = PBXBuildFile; fileRef = 94F244001A5C223200850B88 /* ca-certificates-base.crt */; };
 		19AC275B23F1588B0055FB03 /* SSZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19AC275A23F1588B0055FB03 /* SSZipArchive.framework */; };
+		19AC276523F15F830055FB03 /* VidyoClientLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19AC275D23F15F830055FB03 /* VidyoClientLib.a */; };
 		1A5A6F091298BEA9004DA40B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5A6F081298BEA9004DA40B /* OpenGLES.framework */; };
 		1A5A6F111298BF87004DA40B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5A6F101298BF87004DA40B /* AudioToolbox.framework */; };
 		1A5A6FE81298CD85004DA40B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5A6FE71298CD85004DA40B /* QuartzCore.framework */; };
@@ -41,6 +42,13 @@
 		1963ECAE23CF2A6C00250714 /* SSZipArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SSZipArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AC275623F157FA0055FB03 /* SSZipArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SSZipArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		19AC275A23F1588B0055FB03 /* SSZipArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SSZipArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19AC275D23F15F830055FB03 /* VidyoClientLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = VidyoClientLib.a; sourceTree = "<group>"; };
+		19AC275F23F15F830055FB03 /* VidyoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClient.h; sourceTree = "<group>"; };
+		19AC276023F15F830055FB03 /* VidyoClientParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientParameters.h; sourceTree = "<group>"; };
+		19AC276123F15F830055FB03 /* VidyoClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientConstants.h; sourceTree = "<group>"; };
+		19AC276223F15F830055FB03 /* VidyoClientMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientMessages.h; sourceTree = "<group>"; };
+		19AC276323F15F830055FB03 /* VidyoTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoTypes.h; sourceTree = "<group>"; };
+		19AC276423F15F830055FB03 /* VidyoClientPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientPrivate.h; sourceTree = "<group>"; };
 		1A5A6F081298BEA9004DA40B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		1A5A6F101298BF87004DA40B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1A5A6FE71298CD85004DA40B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -93,6 +101,7 @@
 				1AB3C89F12A43AFC007B03C5 /* CoreMedia.framework in Frameworks */,
 				1AB3C8A512A43B53007B03C5 /* AVFoundation.framework in Frameworks */,
 				1AD9C1DB12D8FB28009E04DC /* CFNetwork.framework in Frameworks */,
+				19AC276523F15F830055FB03 /* VidyoClientLib.a in Frameworks */,
 				1A96AFBD1316070200993678 /* SystemConfiguration.framework in Frameworks */,
 				55563F1C174A9C28002416B3 /* (null) in Frameworks */,
 				E9C705FB9DA528CFF2A0F2A8 /* Pods_VidyoClientSample_iOS.framework in Frameworks */,
@@ -102,20 +111,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1963ECA123CF29F600250714 /* include */ = {
+		19AC275C23F15F830055FB03 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			name = include;
-			path = VidyoClientLibrary/include;
-			sourceTree = "<group>";
-		};
-		1963ECA823CF2A1C00250714 /* lib */ = {
-			isa = PBXGroup;
-			children = (
+				19AC275D23F15F830055FB03 /* VidyoClientLib.a */,
 			);
 			name = lib;
 			path = VidyoClientLibrary/lib;
+			sourceTree = "<group>";
+		};
+		19AC275E23F15F830055FB03 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				19AC275F23F15F830055FB03 /* VidyoClient.h */,
+				19AC276023F15F830055FB03 /* VidyoClientParameters.h */,
+				19AC276123F15F830055FB03 /* VidyoClientConstants.h */,
+				19AC276223F15F830055FB03 /* VidyoClientMessages.h */,
+				19AC276323F15F830055FB03 /* VidyoTypes.h */,
+				19AC276423F15F830055FB03 /* VidyoClientPrivate.h */,
+			);
+			name = include;
+			path = VidyoClientLibrary/include;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -175,8 +191,8 @@
 		55563F13174A9BD2002416B3 /* VidyoClientLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				1963ECA823CF2A1C00250714 /* lib */,
-				1963ECA123CF29F600250714 /* include */,
+				19AC275E23F15F830055FB03 /* include */,
+				19AC275C23F15F830055FB03 /* lib */,
 				55263676174BCA4D007219D6 /* certificates */,
 			);
 			name = VidyoClientLibrary;

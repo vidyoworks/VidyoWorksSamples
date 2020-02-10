@@ -7,7 +7,6 @@
  */
 
 #import "VidyoClientSample_iOS_AppDelegate.h"
-
 #include "VidyoClientSample.h"
 
 // Constants
@@ -39,6 +38,12 @@
 											 selector:@selector(orientationDidChange:)
 												 name:@"UIDeviceOrientationDidChangeNotification"
 											   object:nil];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(handleRouteChange:)
+//                                                 name:@"AVAudioSessionRouteChange"
+//                                               object:nil];
+    
 	[viewController.vidyoPortal becomeFirstResponder];
     
     //[[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationMaskPortrait] forKey:@"orientation"];
@@ -176,7 +181,7 @@
 // Perform client initialization, including startup of VidyoClient library
 - (void)clientInit
 {
-	VidyoBool ret;
+    VidyoBool ret;
 	// check if this method already previously entered
 	if (_vidyoClientStarted)
 		return;
@@ -185,45 +190,48 @@
 	VidyoClientConsoleLogConfigure(VIDYO_CLIENT_CONSOLE_LOG_CONFIGURATION_ALL);
 	
 	// determine video rectangle, from geometry of main window, assuming portrait right-side up orientation
-	VidyoRect videoRect
-	= {(VidyoInt)(window.frame.origin.x), (VidyoInt)(window.frame.origin.y),
+	VidyoRect videoRect = {(VidyoInt)(window.frame.origin.x), (VidyoInt)(window.frame.origin.y),
 		(VidyoUint)(window.frame.size.width), (VidyoUint)(window.frame.size.height)};
 
-
-
-
 	// determine path, default base filename, and levels and categories, used for logging
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	
+    VidyoClientLogParams logParams = {0};
+	
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSLog(@"paths = %@", paths);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *documentsDirectory = [paths objectAtIndex:0];
     NSLog(@"documentsDirectory = %@", documentsDirectory);
-	documentsDirectory = [documentsDirectory stringByAppendingString:@"/"];
+    documentsDirectory = [documentsDirectory stringByAppendingString:@"/"];
     NSLog(@"documentsDirectory = %@", documentsDirectory);
-	const char *pathToLogDir = [documentsDirectory cStringUsingEncoding:NSUTF8StringEncoding];
+    const char *pathToLogDir = [documentsDirectory cStringUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"pathToLogDir = %s", pathToLogDir);
     
-    /*NSString *cacheDirectory = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSLog(@"cacheDirectory = %@", cacheDirectory);
-    NSString *logDirectory = [NSString stringWithFormat:@"%@/Logs/VideoConference", cacheDirectory];
-    NSLog(@"logDirectory = %@", logDirectory);
-    const char *pathToLogDir = [logDirectory cStringUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"pathToLogDir = %s", pathToLogDir);*/
-	
-	VidyoClientLogParams logParams = {0};
-	
 	logParams.logBaseFileName = "VidyoSample_";
-	logParams.pathToLogDir = pathToLogDir;
-    logParams.logSize = 1024 * 1024 * 10;
-	logParams.logLevelsAndCategories = "fatal error warning info@App info@AppGui info@AppEmcpClient info@LmiApp info@LmiH264SvcPace info@AppWebProxy";
-	
-	
+    logParams.pathToLogDir = pathToLogDir;
+    logParams.logSize = 1024 * 1024 * 100;
+    
+    logParams.logLevelsAndCategories = "All@All fatal error warning all@AppVcsoapClient debug@App info@AppEmcpClient debug@AppGui info@AppGui";
+
+//    logParams.logLevelsAndCategories = "FATAL ERROR WARNING DEBUG All@AppGui info@AppEmcpClient All@App All@AppGuiUser INFO@AppWebProxy all@AppVcsoapClient";
+    
 	if (VidyoClientInitialize(vidyoClientSampleOnVidyoClientEvent, self, &logParams) == VIDYO_FALSE)
 	{
 		NSLog(@"VidyoClientInit() returned failure!\n");
 		goto FAIL;
 	}
+    
+    VidyoClientFeatureControl featureControl = {0};
+    VidyoClientFeatureControlConstructDefault(&featureControl);
+    // featureControl.disableLocalCamera = VIDYO_FALSE;
+    // featureControl.disableUiPinning = VIDYO_TRUE;
+    if (VidyoClientSetOptionalFeatures(&featureControl) == VIDYO_FALSE)
+    {
+        NSLog(@"VidyoClientSetOptionalFeatures() returned failure!\n");
+    }
 	
 	VidyoClientProfileParams profileParams = {0};
+    
+    // profileParams.CERT_FILE_DIR = [documentsDirectory cStringUsingEncoding:NSUTF8StringEncoding];
 	
 	// startup VidyoClient library
 	ret = VidyoClientStart(vidyoClientSampleOnVidyoClientEvent,
@@ -245,11 +253,16 @@
 		NSLog(@"VidyoClientStart() returned success!\n");
 	}
 	[self bootstrap];
-	return;
+    return;
 
 	// cleanup on failure, exiting program
 FAIL: /*[[UIApplication sharedApplication] terminate:self]*/;
 }
+//
+//- (void)handleRouteChange:(NSNotification *)notification
+//{
+//    NSLog(@"Route changed %@", notification);
+//}
 
 // Notification handler for device orientation changes
 - (void)orientationDidChange:(NSNotification *)notification
@@ -369,14 +382,18 @@ FAIL: /*[[UIApplication sharedApplication] terminate:self]*/;
 		[[UIApplication sharedApplication] setStatusBarOrientation:[[UIDevice currentDevice] orientation]];
 		/* Default configuration */
 		conf.enableShowConfParticipantName = VIDYO_TRUE;
-		conf.enableHideCameraOnJoin = VIDYO_FALSE;
+        // conf.enableHideCameraOnJoin = VIDYO_TRUE;
 		conf.enableBackgrounding = VIDYO_TRUE;
 		/* Disable autologin */
 		conf.userID[0] = '\0';
 		conf.portalAddress[0] = '\0';
 		conf.serverAddress[0] = '\0';
 		conf.password[0] = '\0';
+        
 		conf.selfViewLoopbackPolicy = 2;
+        
+        // conf.enableForceProxy = VIDYO_TRUE;
+        
 		if (VidyoClientSendRequest(VIDYO_CLIENT_REQUEST_SET_CONFIGURATION, &conf, sizeof(VidyoClientRequestConfiguration)) != VIDYO_CLIENT_ERROR_OK) {
 			NSLog(@"Failed to set configuration");
 		}

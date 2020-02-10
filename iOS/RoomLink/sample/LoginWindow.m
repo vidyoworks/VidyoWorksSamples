@@ -113,6 +113,24 @@
     
 }
 
+- (IBAction)singOutPressed:(id)sender {
+    // hide keyboard
+    [self.view endEditing:TRUE];
+    
+    if (VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_SIGNOFF, NULL, 0) == false)
+    {
+        [signingInAlert dismissWithClickedButtonIndex:0 animated:YES];
+        
+        NSString *alertMsg = [NSString stringWithFormat:@"Failed to sign out."];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:alertMsg message:@"" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+    else
+    {
+        isSigningIn = FALSE;
+    }
+}
 
 - (IBAction)buttonPressed:(id)sender {
 	
@@ -485,6 +503,72 @@
     return UIInterfaceOrientationMaskPortrait;
 }*/
 
+- (void)sendLogs:(UIButton *)sender {
+    if (![MFMailComposeViewController canSendMail]) {
+        [[[UIAlertView alloc] initWithTitle:nil
+                                    message: @"Send Logs"
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+        return;
+    }
+    MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
+    NSData *zipFileData = [self zipLogs];
 
+    mailComposer.mailComposeDelegate = self;
+
+    [mailComposer setSubject:@"Sample Logs"];
+    NSString *infoDev = @"TEST INFO";
+    [mailComposer setMessageBody:infoDev isHTML:NO];
+    [mailComposer addAttachmentData:zipFileData
+                           mimeType:@"application/zip"
+                           fileName:@"VidyoMobileLogs.zip"];
+
+    [self presentViewController:mailComposer animated:YES completion:nil];
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (NSData *) zipLogs
+{
+    NSString *logsDir = [self logsDirectory];
+    NSError *error;
+    NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:logsDir error:&error];
+    NSPredicate *textFilePredicate = [NSPredicate predicateWithFormat:@"self ENDSWITH '.txt' OR self ENDSWITH '.log'"];
+    files = [files filteredArrayUsingPredicate:textFilePredicate];
+    
+    NSString *logZipPath = [logsDir stringByAppendingPathComponent:@"VidyoMobileLogs.zip"];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:logZipPath]) {
+        [[NSFileManager defaultManager] removeItemAtPath:logZipPath error:nil];
+    }
+    
+    NSMutableArray *inputFiles = [NSMutableArray array];
+    for (NSString *file in files) {
+        [inputFiles addObject:[logsDir stringByAppendingPathComponent:file]];
+    }
+    
+    [SSZipArchive createZipFileAtPath:logZipPath withFilesAtPaths:inputFiles];
+    NSData *zipData = [NSData dataWithContentsOfFile:logZipPath];
+    [[NSFileManager defaultManager] removeItemAtPath:logZipPath error:nil];
+    return zipData;
+}
+
+- (NSString *)logsDirectory
+{
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory /*NSCachesDirectory*/, NSUserDomainMask, YES)[0];
+    BOOL isDir;
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir];
+    if (!exists || !isDir) {
+        NSError *error = nil;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            //DDLogError(@"ERROR creating Logs dir: %@. Error: %@", path, error);
+        }
+    }
+    return path;
+}
 
 @end
