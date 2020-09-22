@@ -158,6 +158,7 @@ typedef struct VidyoClientFeatureControl_
 	VidyoBool enableOpusAudioCodec;			/*!< VIDYO_TRUE to enable OPUS audio codec (if supported by portal/router). VIDYO_FLASE to disable OPUS audio codec (Default) */
 	VidyoBool disableUiPinning;             /*!< VIDYO_TRUE to disable the pinning using the user interface. Tiles Renderer Only. VIDYO_FALSE to enable (default) */
     VidyoBool androidForceResolution;             /*!< VIDYO_TRUE to respect the resolution set for advanced resolutions. VIDYO_FALSE implies that bandwidth / cpu adjustments might still change it (default) */
+    VidyoBool androidForgetCamera;             /*!< VIDYO_TRUE to join with automatically selected camera*/
 } VidyoClientFeatureControl;
 
 #if defined(__cplusplus)
@@ -319,7 +320,7 @@ DECLSPEC VidyoBool VidyoClientStart(VidyoClientOutEventCallback eventCb,
 									VidyoRect *videoRect,
 									VidyoClientAppStringsInfo *appStringsInfo,
 									VidyoClientProfileParams *profileParams,
-									VidyoBool reserved2);
+                                    VidyoBool roomSystemFlag);
 
 
 /*!
@@ -396,7 +397,7 @@ DECLSPEC VidyoUint VidyoClientSendRequest(VidyoClientRequest request,
 
 	@see VidyoClientStart()
 */
-DECLSPEC VidyoBool VidyoClientIsStarted();
+DECLSPEC VidyoBool VidyoClientIsStarted(void);
 
     /*!
      @brief To start synchronize the Vidyo Client Library activities using internal mutex.
@@ -404,7 +405,7 @@ DECLSPEC VidyoBool VidyoClientIsStarted();
      
      @see VidyoClientInitialize()
      */
-DECLSPEC VidyoBool VidyoClientSynchronizeStart();
+DECLSPEC VidyoBool VidyoClientSynchronizeStart(void);
     
     /*!
      @brief To end synchronize the Vidyo Client Library activities using internal mutex.
@@ -412,7 +413,7 @@ DECLSPEC VidyoBool VidyoClientSynchronizeStart();
      
      @see VidyoClientInitialize()
      */
-    DECLSPEC VidyoBool VidyoClientSynchronizeEnd();
+    DECLSPEC VidyoBool VidyoClientSynchronizeEnd(void);
  
 /*!
 	@brief Gets the version of VidyoClient.
@@ -436,6 +437,16 @@ DECLSPEC void VidyoClientGetVersion(char *output, VidyoSizeT size);
 
 */
 DECLSPEC void VidyoClientGetProductName(char *output, VidyoSizeT size);
+    
+/*!
+ @brief Set the name of product for which VidyoClient is used.
+ 
+ @param[in] input       The product name which will set for the VidyoClient.
+ @param[in] size        Size of input in bytes. Size should be not more than #VIDYO_CLIENT_APPLICATION_NAME_LEN.
+ @warning Do not call before #VIDYO_CLIENT_OUT_EVENT_LOGIC_STARTED was received
+ 
+ */
+DECLSPEC void VidyoClientSetProductName(const char *input, VidyoSizeT size);
 
 /*!
 	@brief Get the tag or vertion of product set to VidyoClient by application
@@ -455,7 +466,7 @@ DECLSPEC void VidyoClientGetProductTag(char *output, VidyoSizeT size);
 	@warning Do not call before #VidyoClientInitialize is successful or after #VidyoClientUninitialize is executed.
 
 */
-DECLSPEC VidyoClientLogConfidentialityLevel VidyoClientGetLogConfidentialityLevel();
+DECLSPEC VidyoClientLogConfidentialityLevel VidyoClientGetLogConfidentialityLevel(void);
 
 /*!
 	@brief Set the confidentiality level for the log
@@ -597,7 +608,7 @@ DECLSPEC void VidyoClientSetKeyChain(char *keyChain);
      
      @return license keychain name. If license keychain is not change, return default keychain.
      */
-DECLSPEC const char* VidyoClientGetKeyChain();
+DECLSPEC const char* VidyoClientGetKeyChain(void);
 
 /*!
 	@brief Log a formatted message to nowhere.

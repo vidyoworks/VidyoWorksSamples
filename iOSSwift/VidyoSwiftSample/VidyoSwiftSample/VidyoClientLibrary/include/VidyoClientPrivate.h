@@ -160,6 +160,7 @@ typedef enum VidyoClientPrivateOutEvent_
 	VIDYO_CLIENT_PRIVATE_OUT_EVENT_SHARED_APP_REM = VIDYO_CLIENT_PRIVATE_EVENT_BASE + 201,
 	VIDYO_CLIENT_PRIVATE_OUT_EVENT_ALARMS_RAISED = VIDYO_CLIENT_PRIVATE_EVENT_BASE + 300,
 	VIDYO_CLIENT_PRIVATE_OUT_EVENT_ALARMS_CLEARED = VIDYO_CLIENT_PRIVATE_EVENT_BASE + 301,
+    VIDYO_CLIENT_PRIVATE_OUT_EVENT_ALARMS_UPDATED = VIDYO_CLIENT_PRIVATE_EVENT_BASE + 302,
 	VIDYO_CLIENT_PRIVATE_OUT_EVENT_PARTICIPANTS_LIMIT_BANDW = VIDYO_CLIENT_PRIVATE_EVENT_BASE + 400,
 	VIDYO_CLIENT_PRIVATE_OUT_EVENT_PARTICIPANTS_LIMIT_SAFE = VIDYO_CLIENT_PRIVATE_EVENT_BASE + 401,
 	VIDYO_CLIENT_PRIVATE_OUT_EVENT_PARTICIPANTS_CHANGED = VIDYO_CLIENT_PRIVATE_EVENT_BASE + 600, // Use VIDYO_CLIENT_OUT_EVENT_PARTICIPANTS_CHANGED instead of this
@@ -424,6 +425,10 @@ typedef enum VidyoClientPrivateRequest_
 	*/
 	VIDYO_CLIENT_PRIVATE_REQUEST_SAVE_APPROVED_DOMAIN = VIDYO_CLIENT_PRIVATE_REQUEST_VWEB_BASE + 2,
 
+	 /*! Set the resolution for Virtual Camera's memory buffer
+	 @see Corresponding parameter structure #VidyoClientPrivateVirtualCameraBuffer */
+	 VIDYO_CLIENT_PRIVATE_REQUEST_SET_VIRTUAL_CAMERA_BUFFER = VIDYO_CLIENT_PRIVATE_REQUEST_VWEB_BASE + 3,
+	
 	/* End of messages for VidyoWeb only */
 
 	/* Start of messages for VidyoRoom only */
@@ -446,6 +451,13 @@ typedef enum VidyoClientPrivateRequest_
 
 	VIDYO_CLIENT_PRIVATE_REQUEST_MAX = VIDYO_CLIENT_PRIVATE_REQUEST_BASE + 99999,
 } VidyoClientPrivateRequest;
+
+/* Used by VIDYO_CLIENT_PRIVATE_REQUEST_SET_VIRTUAL_CAMERA_BUFFER */
+typedef struct VidyoClientPrivateVirtualCameraBuffer_
+{
+	VidyoUint width;
+	VidyoUint height;
+} VidyoClientPrivateVirtualCameraBuffer; 
 
 /* Used for VIDYO_CLIENT_PRIVATE_IN_EVENT_LAYOUT */
 typedef struct VidyoClientPrivateInEventLayout_
@@ -1277,6 +1289,7 @@ typedef enum VidyoClientPrivateSoapPortalFeaturesNames_
 	VIDYO_CLIENT_PRIVATE_SOAP_PORTAL_FEATURE_NAME_HTML_CHANGE_PASSWORD = VIDYO_CLIENT_PORTAL_FEATURE_NAME_HTML_CHANGE_PASSWORD,	// Support for HTML change password
 	VIDYO_CLIENT_PRIVATE_SOAP_PORTAL_FEATURE_NAME_ROUTER_PARTICIPANT_INFORMATION = VIDYO_CLIENT_PORTAL_FEATURE_NAME_ROUTER_PARTICIPANT_INFORMATION,	// Support for router participant information
 	VIDYO_CLIENT_PRIVATE_SOAP_PORTAL_FEATURE_NAME_MODERATED_CONFERENCE = VIDYO_CLIENT_PORTAL_FEATURE_NAME_MODERATED_CONFERENCE, // Support for Moderated Conference
+    VIDYO_CLIENT_PRIVATE_SOAP_PORTAL_FEATURE_NAME_OPUS_AUDIO = VIDYO_CLIENT_PORTAL_FEATURE_NAME_OPUS_AUDIO, // Support for Opus Audio
 	VIDYO_CLIENT_PRIVATE_SOAP_PORTAL_FEATURE_NAME_MAX = VIDYO_CLIENT_PORTAL_FEATURE_NAME_MAX,					     // None - invalid
 } VidyoClientPrivateSoapPortalFeaturesNames;
 
@@ -1795,7 +1808,6 @@ typedef struct VidyoClientPrivateSoapInEventGetEntityByEntityId_
 } VidyoClientPrivateSoapInEventGetEntityByEntityId;
 
 // Response to VidyoClientPrivateSoapInEventSearchByEntityId is VidyoClientPrivateSoapOutEventSearch
-
 typedef VidyoClientPortalServiceInviteToConferenceRequest VidyoClientPrivateSoapInEventInviteToConference;
 
 typedef struct VidyoClientPrivateSoapOutEventInviteToConference_
@@ -3544,15 +3556,19 @@ typedef struct VidyoClientPrivateControlResourceMonitoring_
 	VidyoBool disableRxBwResourceMonitoring;
 } VidyoClientPrivateControlResourceMonitoring;
 
-VidyoBool VidyoClientIsCurrentlyRunning();
-void* VidyoClientGetAppLogic();
+void VidyoClientPrivateSetDeviceSelectionPreference(VidyoClientPrivateDeviceSelectionPreference *deviceSelectionPreferences);
+VidyoBool VidyoClientIsCurrentlyRunning(void);
+void* VidyoClientGetAppLogic(void);
 
 #if defined(__cplusplus)
 extern "C" {
 #endif
 
-DECLSPEC void VidyoClientPrivateSetDeviceSelectionPreference(VidyoClientPrivateDeviceSelectionPreference *deviceSelectionPreferences);
 DECLSPEC void VidyoClientPrivateSetMaxLogFiles(VidyoUint numberOfLogFiles);
+DECLSPEC void VidyoClientPrivateSetMaxLogSize(VidyoUint logSize);
+/*!< VIDYO_TRUE to enable OPUS audio codec and use it as the highest priority codec. 
+This is 1. Experimental and 2. Should be enabled only after explicit permission from Vidyo 
+authorized personal to avoid unexpected result */
 
 #if defined(__cplusplus)
 }

@@ -1222,6 +1222,17 @@ typedef struct VidyoClientInEventMute_
 	VidyoBool willMute;
 } VidyoClientInEventMute;
 
+/*! VidyoClientInEventShowSelfViewWhileJoining structure
+ 
+ - Used by VIDYO_CLIENT_IN_EVENT_SHOW_SELFVIEW_WHILE_JOINING
+ */
+typedef struct VidyoClientInEventShowSelfViewWhileJoining_
+{
+    /*! VIDYO_TRUE to show selfview while joining, VIDYO_FALSE to dont show selfview while joining.
+     */
+    VidyoBool showSelfViewWhileJoining;
+} VidyoClientInEventShowSelfViewWhileJoining;
+
 /*! Event structure
 
 	- Used by following in events:
@@ -1338,6 +1349,16 @@ typedef struct VidyoClientInEventParticipantsLimit_
 	*/
 	VidyoUint maxNumParticipants;
 } VidyoClientInEventParticipantsLimit;
+
+/*! Event structure
+ 
+ - Used by following in events:
+ + #VIDYO_CLIENT_IN_EVENT_SET_MIN_PARTICIPANTS_LIMIT
+ */
+typedef struct VidyoClientInEventSetMinParticipantsLimit_
+{
+    VidyoUint minNumParticipants;
+} VidyoClientInEventSetMinParticipantsLimit;
 
 /*! Event structure
 
@@ -2430,6 +2451,18 @@ typedef struct VidyoClientInEventPrivateCommand_
 	/*! Command to be sent */
 	char command[MAX_COMMAND_LEN];
 } VidyoClientInEventPrivateCommand;
+
+/*! Event structure
+ 
+	- Used by following in events:
+    + #VIDYO_CLIENT_IN_EVENT_IS_PORTAL_AVAILABLE
+*/
+typedef struct VidyoClientInEventIsPortalAvailable_
+{
+    /*! A unique request ID to match the in and its corresponding out event - should be a copy of in event */
+    VidyoUint	requestId;
+    char portalUri[URI_LEN];
+} VidyoClientInEventIsPortalAvailable;
 
 /*******************************************************************************
  Parameter structures for events from Vidyo Client Library to GUI
@@ -3696,6 +3729,19 @@ typedef struct VidyoClientOutEventPrivateCommand_
 	char command[MAX_COMMAND_LEN];
 } VidyoClientOutEventPrivateCommand;
 
+/*! Event structure
+ 
+	- Used by following in events:
+    + #VIDYO_CLIENT_OUT_EVENT_IS_PORTAL_AVAILABLE
+*/
+typedef struct VidyoClientOutEventIsPortalAvailable_
+{
+    /*! A unique request ID to match the in and its corresponding out event - should be a copy of in event */
+    VidyoUint	requestId;
+    char portalUri[URI_LEN];
+    VidyoBool isPortalAvailable;
+} VidyoClientOutEventIsPortalAvailable;
+
 
 
 /*******************************************************************************
@@ -3731,6 +3777,8 @@ typedef struct VidyoClientOutEventPrivateCommand_
 		0~UINT_MAX, UINT_MAX designating no current selection.
 	@var VidyoClientRequestConfiguration::cameras [out]
 		Array of values for the names of attached video (capture/camera) devices.
+     @var VidyoClientRequestConfiguration::labels [out]
+         Array of values for the labels(name and id) of attached video (capture/camera) devices.
 	@var VidyoClientRequestConfiguration::numberCameras [out]
 		Number of attached video (capture/camera) devices.  Range of values 0~UINT_MAX.
 	@var VidyoClientRequestConfiguration::currentCamera [in,out]
@@ -3893,6 +3941,20 @@ typedef struct VidyoClientOutEventPrivateCommand_
         is brought to foreground and it goes online.
 	@var VidyoClientRequestConfiguration::allowLetterBoxVideoScaling [in,out]
 		Non-zero value for allow scaling of video in letter box (no cropping), zero value for disallow scaling of video in letter box (will crop and might be zoomed).
+    @var VidyoClientRequestConfiguration::enableTilesToolbars [in,out]
+         Value that indicating whether toolbar and statusbar are enabled in tiles renderer. Only for Tiles renderer.
+    @var VidyoClientRequestConfiguration::maxFullSendBandwidth [in,out]
+         Maximum send bandwidth for all media.
+    @var VidyoClientRequestConfiguration::maxFullRecvBandwidth [in,out]
+         Maximum receive bandwidth for all media.
+     @var VidyoClientRequestConfiguration::enableRetryJoinWithProxy [in,out]
+         Value indicating whether need to use a proxy when retry to join.
+     @var VidyoClientRequestConfiguration::enableWebProxyDiscovering [in,out]
+         Value indicating whether web proxy discovering is enabled.
+     @var VidyoClientRequestConfiguration::aspectRatioWidth [in,out]
+         The aspect ratio of the rectangular partitions that will be created - width.
+     @var VidyoClientRequestConfiguration::aspectRatioHeight [in,out]
+         The aspect ratio of the rectangular partitions that will be created - height.
 */
 typedef struct VidyoClientRequestConfiguration_
 {
@@ -3908,6 +3970,7 @@ typedef struct VidyoClientRequestConfiguration_
 	VidyoUint currentSpeaker;
 
 	VidyoUint8 cameras[MAX_DEVICE_NUMBER][DEVICE_NAME_SIZE];
+    VidyoUint8 cameraLabels[MAX_DEVICE_NUMBER][DEVICE_NAME_SIZE];
 	VidyoUint numberCameras;
 	VidyoUint currentCamera;
 
@@ -3966,6 +4029,13 @@ typedef struct VidyoClientRequestConfiguration_
 	VidyoUint selfViewLoopbackPolicy;
     VidyoUint enableLowBackgroundTimeout;
 	VidyoUint allowLetterBoxVideoScaling;
+    VidyoBool enableTilesToolbars;
+    VidyoBool enableRetryJoinWithProxy;
+	VidyoBool enableWebProxyDiscovering;
+    VidyoUint maxFullSendBandwidth;
+    VidyoUint maxFullRecvBandwidth;
+    VidyoUint aspectRatioWidth;
+    VidyoUint aspectRatioHeight;
 } VidyoClientRequestConfiguration;
 
 /*! Request structure
@@ -5530,6 +5600,39 @@ typedef struct VidyoClientRequestCommunicationStatus_
 	/*! VidyoRouter via. WebProxy */
 	VidyoBool vrCommunicationViaWebProxy;
 } VidyoClientRequestCommunicationStatus;
+
+/*! @struct VidyoClientRequestSetPortalAddress
+	Request structure
+	- Used by following requests:
+ + #VIDYO_CLIENT_REQUEST_SET_PORTAL_ADDRESS
+ */
+typedef struct VidyoClientRequestSetPortalAddress_
+{
+    /*! Contains portal address which will be added to configuration file */
+    char portalAddress[FIELD_SIZE];
+} VidyoClientRequestSetPortalAddress;
+
+/*! @struct VidyoClientRequestSetBandwidthAdjustmentPeriod
+ Request structure
+ - Used by following requests:
+ + #VIDYO_CLIENT_REQUEST_SET_BANDWIDTH_ADJUSTMENT_PERIOD
+ */
+typedef struct VidyoClientRequestSetBandwidthAdjustmentPeriod_
+{
+    /*! Contains bandwidth adjustment period which will be set for tiles renderer */
+    VidyoUint bandwidthAdjustmentPeriod; //seconds
+} VidyoClientRequestSetBandwidthAdjustmentPeriod;
+
+/*! @struct VidyoClientRequestGetCPUUsage
+ Request structure
+ - Used by following requests:
+ + #VIDYO_CLIENT_REQUEST_GET_CPU_USAGE
+ */
+typedef struct VidyoClientRequestGetCPUUsage_
+{
+    /*! Contains general CPU usage of system  */
+    VidyoUint cpuUsage; //percents
+} VidyoClientRequestGetCPUUsage;
 
 #ifndef DOXYGEN_SHOULD_IGNORE_THIS
 /*! Request structure

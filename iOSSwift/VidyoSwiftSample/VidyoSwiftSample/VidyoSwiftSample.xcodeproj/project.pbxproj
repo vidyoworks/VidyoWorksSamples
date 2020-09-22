@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		197C78EF251A0CAE00FD675F /* ca-certificates-base.crt in Resources */ = {isa = PBXBuildFile; fileRef = 197C78E3251A0CAE00FD675F /* ca-certificates-base.crt */; };
+		197C78F0251A0CAE00FD675F /* VidyoClientLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 197C78EE251A0CAE00FD675F /* VidyoClientLib.a */; };
 		7360249C1E7B13010071C2BF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7360249B1E7B13010071C2BF /* Security.framework */; };
 		7360249E1E7B130C0071C2BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7360249D1E7B130C0071C2BF /* Foundation.framework */; };
 		736024A01E7B13130071C2BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7360249F1E7B13130071C2BF /* CoreGraphics.framework */; };
@@ -20,7 +22,6 @@
 		736024B01E7B13580071C2BF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736024AF1E7B13570071C2BF /* CFNetwork.framework */; };
 		736024B21E7B135E0071C2BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 736024B11E7B135E0071C2BF /* SystemConfiguration.framework */; };
 		736024B71E7B15030071C2BF /* libc++.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 736024B61E7B15030071C2BF /* libc++.1.dylib */; };
-		736024C31E7B278E0071C2BF /* VidyoClientLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 736024C11E7B27710071C2BF /* VidyoClientLib.a */; };
 		737226ED1E79D2F500F964C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737226EC1E79D2F500F964C0 /* AppDelegate.swift */; };
 		737226EF1E79D2F500F964C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737226EE1E79D2F500F964C0 /* ViewController.swift */; };
 		737226F21E79D2F600F964C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 737226F01E79D2F600F964C0 /* Main.storyboard */; };
@@ -49,6 +50,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		197C78BA251A034E00FD675F /* VidyoSwiftSample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VidyoSwiftSample.entitlements; sourceTree = "<group>"; };
+		197C78E3251A0CAE00FD675F /* ca-certificates-base.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ca-certificates-base.crt"; sourceTree = "<group>"; };
+		197C78E5251A0CAE00FD675F /* VidyoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClient.h; sourceTree = "<group>"; };
+		197C78E6251A0CAE00FD675F /* VidyoClientParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientParameters.h; sourceTree = "<group>"; };
+		197C78E7251A0CAE00FD675F /* VidyoClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientConstants.h; sourceTree = "<group>"; };
+		197C78E8251A0CAE00FD675F /* VidyoClientMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientMessages.h; sourceTree = "<group>"; };
+		197C78E9251A0CAE00FD675F /* VidyoTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoTypes.h; sourceTree = "<group>"; };
+		197C78EA251A0CAE00FD675F /* VidyoClientPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientPrivate.h; sourceTree = "<group>"; };
+		197C78EB251A0CAE00FD675F /* VidyoClientDllPluginSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientDllPluginSupport.h; sourceTree = "<group>"; };
+		197C78EC251A0CAE00FD675F /* VidyoClientPluginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientPluginApi.h; sourceTree = "<group>"; };
+		197C78EE251A0CAE00FD675F /* VidyoClientLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = VidyoClientLib.a; sourceTree = "<group>"; };
 		736024911E7B129E0071C2BF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		736024931E7B12A20071C2BF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		736024951E7B12A40071C2BF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -67,13 +79,6 @@
 		736024AF1E7B13570071C2BF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		736024B11E7B135E0071C2BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		736024B61E7B15030071C2BF /* libc++.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.1.dylib"; path = "../../../../../usr/lib/libc++.1.dylib"; sourceTree = "<absolute>"; };
-		736024BA1E7B27710071C2BF /* VidyoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClient.h; sourceTree = "<group>"; };
-		736024BB1E7B27710071C2BF /* VidyoClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientConstants.h; sourceTree = "<group>"; };
-		736024BC1E7B27710071C2BF /* VidyoClientMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientMessages.h; sourceTree = "<group>"; };
-		736024BD1E7B27710071C2BF /* VidyoClientParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientParameters.h; sourceTree = "<group>"; };
-		736024BE1E7B27710071C2BF /* VidyoClientPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoClientPrivate.h; sourceTree = "<group>"; };
-		736024BF1E7B27710071C2BF /* VidyoTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VidyoTypes.h; sourceTree = "<group>"; };
-		736024C11E7B27710071C2BF /* VidyoClientLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = VidyoClientLib.a; sourceTree = "<group>"; };
 		737226E91E79D2F500F964C0 /* VidyoSwiftSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VidyoSwiftSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		737226EC1E79D2F500F964C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		737226EE1E79D2F500F964C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +102,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				736024C31E7B278E0071C2BF /* VidyoClientLib.a in Frameworks */,
 				736024B71E7B15030071C2BF /* libc++.1.dylib in Frameworks */,
 				736024B21E7B135E0071C2BF /* SystemConfiguration.framework in Frameworks */,
 				736024B01E7B13580071C2BF /* CFNetwork.framework in Frameworks */,
@@ -106,6 +110,7 @@
 				736024AA1E7B13440071C2BF /* CoreVideo.framework in Frameworks */,
 				736024A81E7B133C0071C2BF /* QuartzCore.framework in Frameworks */,
 				736024A61E7B13360071C2BF /* AudioToolbox.framework in Frameworks */,
+				197C78F0251A0CAE00FD675F /* VidyoClientLib.a in Frameworks */,
 				736024A41E7B132B0071C2BF /* OpenGLES.framework in Frameworks */,
 				736024A21E7B131D0071C2BF /* UIKit.framework in Frameworks */,
 				736024A01E7B13130071C2BF /* CoreGraphics.framework in Frameworks */,
@@ -131,32 +136,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		736024B81E7B27710071C2BF /* VidyoClientLibrary */ = {
+		197C78E1251A0CAE00FD675F /* VidyoClientLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				736024B91E7B27710071C2BF /* include */,
-				736024C01E7B27710071C2BF /* lib */,
+				197C78E2251A0CAE00FD675F /* certificate */,
+				197C78E4251A0CAE00FD675F /* include */,
+				197C78ED251A0CAE00FD675F /* lib */,
 			);
 			path = VidyoClientLibrary;
 			sourceTree = "<group>";
 		};
-		736024B91E7B27710071C2BF /* include */ = {
+		197C78E2251A0CAE00FD675F /* certificate */ = {
 			isa = PBXGroup;
 			children = (
-				736024BA1E7B27710071C2BF /* VidyoClient.h */,
-				736024BB1E7B27710071C2BF /* VidyoClientConstants.h */,
-				736024BC1E7B27710071C2BF /* VidyoClientMessages.h */,
-				736024BD1E7B27710071C2BF /* VidyoClientParameters.h */,
-				736024BE1E7B27710071C2BF /* VidyoClientPrivate.h */,
-				736024BF1E7B27710071C2BF /* VidyoTypes.h */,
+				197C78E3251A0CAE00FD675F /* ca-certificates-base.crt */,
+			);
+			path = certificate;
+			sourceTree = "<group>";
+		};
+		197C78E4251A0CAE00FD675F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				197C78E5251A0CAE00FD675F /* VidyoClient.h */,
+				197C78E6251A0CAE00FD675F /* VidyoClientParameters.h */,
+				197C78E7251A0CAE00FD675F /* VidyoClientConstants.h */,
+				197C78E8251A0CAE00FD675F /* VidyoClientMessages.h */,
+				197C78E9251A0CAE00FD675F /* VidyoTypes.h */,
+				197C78EA251A0CAE00FD675F /* VidyoClientPrivate.h */,
+				197C78EB251A0CAE00FD675F /* VidyoClientDllPluginSupport.h */,
+				197C78EC251A0CAE00FD675F /* VidyoClientPluginApi.h */,
 			);
 			path = include;
 			sourceTree = "<group>";
 		};
-		736024C01E7B27710071C2BF /* lib */ = {
+		197C78ED251A0CAE00FD675F /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				736024C11E7B27710071C2BF /* VidyoClientLib.a */,
+				197C78EE251A0CAE00FD675F /* VidyoClientLib.a */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -164,7 +180,7 @@
 		737226E01E79D2F500F964C0 = {
 			isa = PBXGroup;
 			children = (
-				736024B81E7B27710071C2BF /* VidyoClientLibrary */,
+				197C78E1251A0CAE00FD675F /* VidyoClientLibrary */,
 				737226EB1E79D2F500F964C0 /* VidyoSwiftSample */,
 				737227001E79D2F600F964C0 /* VidyoSwiftSampleTests */,
 				7372270B1E79D2F800F964C0 /* VidyoSwiftSampleUITests */,
@@ -195,6 +211,7 @@
 				7372271D1E79D31700F964C0 /* VidyoLibrary.m */,
 				7372271F1E79D32400F964C0 /* VidyoLibrary.h */,
 				7372271C1E79D31600F964C0 /* VidyoSwiftSample-Bridging-Header.h */,
+				197C78BA251A034E00FD675F /* VidyoSwiftSample.entitlements */,
 			);
 			path = VidyoSwiftSample;
 			sourceTree = "<group>";
@@ -305,12 +322,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Vidyo;
 				TargetAttributes = {
 					737226E81E79D2F500F964C0 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6888NB32SR;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -331,6 +347,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -353,6 +370,7 @@
 			files = (
 				737226F71E79D2F600F964C0 /* LaunchScreen.storyboard in Resources */,
 				737226F41E79D2F600F964C0 /* Assets.xcassets in Resources */,
+				197C78EF251A0CAE00FD675F /* ca-certificates-base.crt in Resources */,
 				737226F21E79D2F600F964C0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,20 +457,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -475,12 +503,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -489,20 +518,30 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -519,10 +558,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -534,10 +574,13 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 6888NB32SR;
+				CODE_SIGN_ENTITLEMENTS = VidyoSwiftSample/VidyoSwiftSample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VidyoSwiftSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -547,10 +590,11 @@
 				OTHER_CFLAGS = "-I/Users/dinesh/src/TAGS/ApiSamples/3x/iOSSwift/VidyoSwiftSample/VidyoSwiftSample/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.VidyoSwiftSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/VidyoSwiftSample/VidyoClientLibrary/Include/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/VidyoSwiftSample/VidyoSwiftSample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "armv7s armv7 arm64";
 			};
 			name = Debug;
@@ -561,10 +605,13 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 6888NB32SR;
+				CODE_SIGN_ENTITLEMENTS = VidyoSwiftSample/VidyoSwiftSample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = VidyoSwiftSample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -574,9 +621,10 @@
 				OTHER_CFLAGS = "-I/Users/dinesh/src/TAGS/ApiSamples/3x/iOSSwift/VidyoSwiftSample/VidyoSwiftSample/";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.VidyoSwiftSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/VidyoSwiftSample/VidyoClientLibrary/Include/**";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/VidyoSwiftSample/VidyoSwiftSample-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				VALID_ARCHS = "armv7s armv7 arm64";
 			};
 			name = Release;
@@ -586,6 +634,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				INFOPLIST_FILE = VidyoSwiftSampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.VidyoSwiftSampleTests;
@@ -600,6 +649,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				INFOPLIST_FILE = VidyoSwiftSampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.VidyoSwiftSampleTests;
@@ -613,11 +663,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				INFOPLIST_FILE = VidyoSwiftSampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.VidyoSwiftSampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = VidyoSwiftSample;
 			};
 			name = Debug;
@@ -626,11 +677,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				INFOPLIST_FILE = VidyoSwiftSampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vidyo.VidyoSwiftSampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = VidyoSwiftSample;
 			};
 			name = Release;

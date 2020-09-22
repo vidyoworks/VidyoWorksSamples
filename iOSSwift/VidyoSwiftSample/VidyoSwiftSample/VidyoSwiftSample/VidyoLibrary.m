@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "VidyoLibrary.h"
-#import "VidyoClientLibrary/include/VidyoClient.h"
-#import "VidyoClientLibrary/include/VidyoClientMessages.h"
-#import "VidyoClientLibrary/include/VidyoClientConstants.h"
-
-
+#import "VidyoClient.h"
+#import "VidyoClientMessages.h"
+#import "VidyoClientConstants.h"
 
 @implementation VidyoLibrary
 BOOL initiated;
@@ -199,7 +197,6 @@ void vidyoClientEvents(VidyoClientOutEvent event,
     logParams.logSize = 1024 * 1024 * 10;
     logParams.logLevelsAndCategories = "fatal error warning info@App info@AppGui info@AppEmcpClient info@LmiApp info@LmiH264SvcPace info@AppWebProxy";
     
-    
     if (VidyoClientInitialize(vidyoClientEvents, NULL, &logParams) == VIDYO_FALSE)
     {
         NSLog(@"VidyoClientInit() returned failure!\n");
@@ -212,9 +209,12 @@ void vidyoClientEvents(VidyoClientOutEvent event,
     VidyoView = vidyoRender;
     
     // determine video rectangle, from geometry of main window, assuming portrait right-side up orientation
-    VidyoRect videoRect
-    = {(VidyoInt)(0), (VidyoInt)(0),
-        (VidyoUint)(vidyoRender.frame.size.width), (VidyoUint)(vidyoRender.frame.size.height)};
+    VidyoRect videoRect = {
+        (VidyoInt)(0),
+        (VidyoInt)(0),
+        (VidyoUint)(vidyoRender.frame.size.width),
+        (VidyoUint)(vidyoRender.frame.size.height)
+    };
     
     // startup VidyoClient library
     ret = VidyoClientStart(vidyoClientEvents,
@@ -225,11 +225,12 @@ void vidyoClientEvents(VidyoClientOutEvent event,
                            NULL,
                            &profileParams,
                            VIDYO_FALSE);
+    
     didEverGoToBackground = YES;
+    
     if(ret)
     {
         _vidyoClientStarted = YES;
-        
     }
     else
     {
@@ -248,18 +249,17 @@ void vidyoClientEvents(VidyoClientOutEvent event,
     strlcpy(event.displayName, [name UTF8String], sizeof(event.displayName));
     strlcpy(event.pin, [pin UTF8String], sizeof(event.pin));
     
-    if (VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_ROOM_LINK, &event, sizeof(VidyoClientInEventRoomLink)) == false)
-    {
+    if (VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_ROOM_LINK, &event, sizeof(VidyoClientInEventRoomLink)) == false) {
+        
     }
-
 }
 
 
 
 -(void)LeaveRoom
 {
-    if (VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_LEAVE, NULL, 0) == false)
-    {
+    if (VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_LEAVE, NULL, 0) == false) {
+        
     }
 }
 
